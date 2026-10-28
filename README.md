@@ -57,6 +57,13 @@ python -m pip install -r requirements-e.txt
 python -m unittest discover -s tests -p "test_e_*.py" -v
 ```
 
+With conda instead, `environment-e.yml` pins the same versions from conda-forge:
+
+```sh
+conda env create -f environment-e.yml
+conda activate tempnet
+```
+
 ## Reproduce E's experiments
 
 ```sh
