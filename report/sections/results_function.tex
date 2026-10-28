@@ -1,0 +1,40 @@
+\subsection{Paths, centrality and spreading}
+\label{sec:r-function}
+
+% Owner: D
+\paragraph{Reachability.}
+\expect{[Expected] The fraction of pairs connected by a time-respecting path is
+well below the static value in both networks. Under P1 reachability changes
+because temporal order is destroyed, whereas P2 changes it through topology,
+so the two nulls attribute the loss to different causes.}
+
+\begin{figure}[t]
+\centering
+\figph{\columnwidth}{3.4cm}{reachability ratio $R$: real, P1, P2 (PS, CM)}
+\caption{Temporal reachability ratio, real vs.\ P1 and P2. (Placeholder.)}
+\label{fig:reach}
+\end{figure}
+
+% Owner: E
+\paragraph{Centrality.}
+\expect{[Expected] Rankings by static and temporal closeness are positively
+correlated but far from identical (Kendall $\tau$ clearly below 1), with the
+largest differences for nodes active only early or late.}
+
+% Owner: D
+\paragraph{Spreading.}
+\expect{[Expected] SIR epidemics on the real sequences peak later than on P1,
+$T_{\mathrm{real}}/T_{\mathrm{null}}>1$, and the effect is larger for the
+burstier CM. In PS, the final size is limited by the timetable (outbreaks pause
+overnight).}
+
+\begin{figure}[t]
+\centering
+\figph{\columnwidth}{3.4cm}{SIR prevalence curves: real, P1, P2 (PS, CM)}
+\caption{Mean SIR prevalence with $\geq 100$ seeds. (Placeholder.)}
+\label{fig:sir}
+\end{figure}
+
+\paragraph{Verdict on H6 and H7.}
+\outline{Supported / not supported / depends on network type or window.}
+\expect{[Expected] H6 supported in both networks. H7 supported, strongest for CM.}

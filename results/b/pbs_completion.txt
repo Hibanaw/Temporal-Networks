@@ -1,0 +1,24 @@
+Job Id: 1500299.stdct-mgmt-02
+    resources_used.cpupercent = 71
+    resources_used.cput = 00:08:38
+    resources_used.mem = 54468kb
+    resources_used.ncpus = 1
+    resources_used.ngpus = 0
+    resources_used.vmem = 858576kb
+    resources_used.walltime = 00:36:56
+    job_state = F
+    exec_host = CN-016/5
+    Exit_status = 0
+    project = personal-tianqi.hu
+Job Id: 1500361.stdct-mgmt-02
+    resources_used.cpupercent = 77
+    resources_used.cput = 00:04:50
+    resources_used.mem = 626816kb
+    resources_used.ncpus = 4
+    resources_used.ngpus = 0
+    resources_used.vmem = 2388192kb
+    resources_used.walltime = 00:02:54
+    job_state = F
+    exec_host = CN-016/5*4
+    Exit_status = 0
+    project = personal-tianqi.hu

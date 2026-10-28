@@ -1,0 +1,1842 @@
+[
+  {
+    "kind": "P3a",
+    "rep": 0,
+    "seed": 5253,
+    "alpha": 0.005690112174978834,
+    "mean_age": 11.473515402148248,
+    "age_best": "uniform",
+    "sha256": "35c6eb217d5a429f938a4065b39848df7cc8313594759e5171d9cdce2df9ce4f",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8031312155468364
+        ],
+        "loglik": -623541.5044400297,
+        "aic": 1247087.0088800595,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 1,
+    "seed": 5254,
+    "alpha": -0.0026743038201112305,
+    "mean_age": 11.405464794114836,
+    "age_best": "uniform",
+    "sha256": "9b3c3e58412a36dcdb57aab5adb2aca379da3e440fb01a74e8ba98bbdbfc7c7d",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8087368069739345
+        ],
+        "loglik": -623495.3579888098,
+        "aic": 1246994.7159776196,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0005844680493989002
+        ],
+        "loglik": -622761.5617327264,
+        "aic": 1245525.1234654528,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0028729705808887593
+        ],
+        "loglik": -622762.2394782691,
+        "aic": 1245526.4789565383,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 2,
+    "seed": 5255,
+    "alpha": 0.006722062886567358,
+    "mean_age": 11.478265023406898,
+    "age_best": "uniform",
+    "sha256": "aa943327abf361ed75489302427639420f80fd781f3fc8af38922cda562fc6f3",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.7988842820006055
+        ],
+        "loglik": -623520.8691544943,
+        "aic": 1247045.7383089885,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 3,
+    "seed": 5256,
+    "alpha": -0.010020537962141937,
+    "mean_age": 11.395460563130383,
+    "age_best": "powerlaw",
+    "sha256": "e32dab5b434b3021d91648c3d4d899ace7d22ae8139a9ceab292502e6c930886",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.817650238356193
+        ],
+        "loglik": -623592.3866248457,
+        "aic": 1247188.7732496914,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0007203260220632517
+        ],
+        "loglik": -622761.0757019483,
+        "aic": 1245524.1514038965,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.009436953970532715
+        ],
+        "loglik": -622759.6812769608,
+        "aic": 1245521.3625539215,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 4,
+    "seed": 5257,
+    "alpha": -0.001300478740349842,
+    "mean_age": 11.442724753988726,
+    "age_best": "uniform",
+    "sha256": "7407fe93e535b440989f258b7b0ffe850cca4e821f49867c792ad1edc410875d",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8064304978027366
+        ],
+        "loglik": -623530.3783632321,
+        "aic": 1247064.7567264643,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          8.716630948794088e-05
+        ],
+        "loglik": -622762.4791511922,
+        "aic": 1245526.9583023845,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.00017367594263932067
+        ],
+        "loglik": -622762.4988541378,
+        "aic": 1245526.9977082757,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 5,
+    "seed": 5258,
+    "alpha": 0.006674547039878788,
+    "mean_age": 11.49086243841188,
+    "age_best": "uniform",
+    "sha256": "a283d9fb6411b3c4df015bc3dbd8284e23ab12438d70b5d65df24282cdbe2391",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8005253743224163
+        ],
+        "loglik": -623541.770148182,
+        "aic": 1247087.540296364,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 6,
+    "seed": 5259,
+    "alpha": -0.003991822306088271,
+    "mean_age": 11.424163015736532,
+    "age_best": "uniform",
+    "sha256": "7899b85b803907eb5005bf2ebf9158456547bf37adb43f2f69d52c1f6e11dcc9",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8080532182574465
+        ],
+        "loglik": -623510.7522088507,
+        "aic": 1247025.5044177014,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0003619057378743388
+        ],
+        "loglik": -622762.1399369809,
+        "aic": 1245526.2798739618,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.002002215890074493
+        ],
+        "loglik": -622762.3735621939,
+        "aic": 1245526.7471243879,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 7,
+    "seed": 5260,
+    "alpha": -0.006217535718822209,
+    "mean_age": 11.388458966274959,
+    "age_best": "exponential",
+    "sha256": "f72f1b9545d9091ae6fa32d2e558f09ce402541ec2158c6bcff1635db889192a",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.814180807579509
+        ],
+        "loglik": -623516.6233958462,
+        "aic": 1247037.2467916925,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0008349362717175286
+        ],
+        "loglik": -622760.5873505848,
+        "aic": 1245523.1747011696,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.007499455766496336
+        ],
+        "loglik": -622760.7211924825,
+        "aic": 1245523.442384965,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 8,
+    "seed": 5261,
+    "alpha": 0.011010312240224338,
+    "mean_age": 11.51866410077932,
+    "age_best": "uniform",
+    "sha256": "0ed8b9aaa335dadd2165cac0d20184a9237e4845361d03f1c33331f21b9144b8",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.797959315802723
+        ],
+        "loglik": -623577.6714416333,
+        "aic": 1247159.3428832665,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 9,
+    "seed": 5262,
+    "alpha": -0.0003702663140605401,
+    "mean_age": 11.47558994936467,
+    "age_best": "uniform",
+    "sha256": "61327a33cb1359f564238f992533c019510e8e9538d481e1016af38a5eb31cdf",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8061182600532677
+        ],
+        "loglik": -623581.2106366493,
+        "aic": 1247166.4212732986,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 10,
+    "seed": 5263,
+    "alpha": -0.002804777043894874,
+    "mean_age": 11.44975364751805,
+    "age_best": "uniform",
+    "sha256": "716fe1d0f8cc4f1a1ee62299737a4933729b566e0f50014236c46b1cdcb88579",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.809623667914033
+        ],
+        "loglik": -623560.4715292908,
+        "aic": 1247124.9430585816,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.00011732543068889672
+        ],
+        "loglik": -622762.462177779,
+        "aic": 1245526.924355558,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.002654898237268899
+        ],
+        "loglik": -622762.2775782594,
+        "aic": 1245526.5551565187,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 11,
+    "seed": 5264,
+    "alpha": 0.006511655460368795,
+    "mean_age": 11.493278194052055,
+    "age_best": "uniform",
+    "sha256": "e218c87907dbc2285de7a89189478ce5de51b2d1ed90372687f35a14307553fd",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8039024042759506
+        ],
+        "loglik": -623594.1764534129,
+        "aic": 1247192.3529068257,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 12,
+    "seed": 5265,
+    "alpha": 0.00026894799021508664,
+    "mean_age": 11.471495448279628,
+    "age_best": "uniform",
+    "sha256": "4fbb517fd4481a5b6da8468db689a4a9a5bf11d9e2ced8c141ebc9654bb2aa93",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8048856606283554
+        ],
+        "loglik": -623557.5897697199,
+        "aic": 1247119.1795394397,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 13,
+    "seed": 5266,
+    "alpha": 0.003913030315345625,
+    "mean_age": 11.48035321896027,
+    "age_best": "uniform",
+    "sha256": "841d8cb70bf6fe25d0d35f82f9c563b23dbd86b33a6c9e5bdedf9a480d97b9d8",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8076398679730294
+        ],
+        "loglik": -623612.6259447648,
+        "aic": 1247229.2518895296,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          6.318433456685377e-06
+        ],
+        "loglik": -622762.5000692415,
+        "aic": 1245527.000138483,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 14,
+    "seed": 5267,
+    "alpha": 0.0024291448393379223,
+    "mean_age": 11.453152083418635,
+    "age_best": "uniform",
+    "sha256": "f432d69fb1d2418be0c8f59d0e122efcac2d861e388308deefddf9ac80205e1a",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.804344695597426
+        ],
+        "loglik": -623530.5330974977,
+        "aic": 1247065.0661949953,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 15,
+    "seed": 5268,
+    "alpha": 0.0018801957488767578,
+    "mean_age": 11.470581009703968,
+    "age_best": "uniform",
+    "sha256": "000fecd96fab4826ba7bdfc89d6409dbb10256419173f396bd9fb3db3111a09c",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8021565370061419
+        ],
+        "loglik": -623530.6795383713,
+        "aic": 1247065.3590767425,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 16,
+    "seed": 5269,
+    "alpha": -0.0002329243886066578,
+    "mean_age": 11.445276992998403,
+    "age_best": "uniform",
+    "sha256": "e17e67129e2630e2bd99252a13acbac04a03c2250540e1f7378f528cf4e9becb",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8066406600880787
+        ],
+        "loglik": -623549.9754799022,
+        "aic": 1247103.9509598045,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          7.009613075150751e-05
+        ],
+        "loglik": -622762.4865427597,
+        "aic": 1245526.9730855194,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          7.079884546755885e-05
+        ],
+        "loglik": -622762.4998689918,
+        "aic": 1245526.9997379836,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 17,
+    "seed": 5270,
+    "alpha": -0.002489729382766459,
+    "mean_age": 11.464848708184908,
+    "age_best": "uniform",
+    "sha256": "048f88481eb6f4d8ed7d4bff1f322cdcbbe60a302cdece8fec9fa2aaae04a813",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8054172936801876
+        ],
+        "loglik": -623567.2411180602,
+        "aic": 1247138.4822361204,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 18,
+    "seed": 5271,
+    "alpha": -0.0004364997349555344,
+    "mean_age": 11.442506380597525,
+    "age_best": "uniform",
+    "sha256": "325c5b19a8b2999e8a885594604173f2fbe7df3dbb8a7452befbee4ca10c3750",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.80692013261616
+        ],
+        "loglik": -623556.4660920624,
+        "aic": 1247116.9321841248,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.00011896063288307887
+        ],
+        "loglik": -622762.4611144608,
+        "aic": 1245526.9222289217,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0002352024609228083
+        ],
+        "loglik": -622762.4983275562,
+        "aic": 1245526.9966551124,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3a",
+    "rep": 19,
+    "seed": 5272,
+    "alpha": -0.002757097867685549,
+    "mean_age": 11.481950074383436,
+    "age_best": "uniform",
+    "sha256": "23863d341e7cb699aaeed3a3232c1e329411fbe11f3e908e9e0360c3f8db5823",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          5.0,
+          1.8075976256810955
+        ],
+        "loglik": -623640.881775897,
+        "aic": 1247285.763551794,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.0
+        ],
+        "loglik": -622762.500070869,
+        "aic": 1245527.000141738,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 0,
+    "seed": 15253,
+    "alpha": -0.64143664398049,
+    "mean_age": 5.7476695464657634,
+    "age_best": "lognormal",
+    "sha256": "ef92f2eb74c1702b5d6d4d80294bf2eafe9d52190312accfd4d1920829409866",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8693461623988266,
+          1.1207656153094179
+        ],
+        "loglik": -602061.8177668089,
+        "aic": 1204127.6355336178,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12051908355409635
+        ],
+        "loglik": -602276.6962992561,
+        "aic": 1204555.3925985121,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6622515170948838
+        ],
+        "loglik": -606559.3611187214,
+        "aic": 1213120.7222374429,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 1,
+    "seed": 15254,
+    "alpha": -0.6567046141792582,
+    "mean_age": 5.701292497509178,
+    "age_best": "lognormal",
+    "sha256": "03c21b4114a5f6e6eeb08fc267af7769d2676499bcde1de9f704445d10652c3b",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8479455305338688,
+          1.1050516589368677
+        ],
+        "loglik": -601602.7491316926,
+        "aic": 1203209.4982633851,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12224508692435633
+        ],
+        "loglik": -601888.6449608235,
+        "aic": 1203779.289921647,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6671139393229666
+        ],
+        "loglik": -606316.5493659144,
+        "aic": 1212635.0987318289,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 2,
+    "seed": 15255,
+    "alpha": -0.6543218013108351,
+    "mean_age": 5.692189056763433,
+    "age_best": "lognormal",
+    "sha256": "ffc36545050b7af11a317b0130914da91345229628e4e1286e4d1cc8ccf0a852",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8502367643296407,
+          1.1185187974656572
+        ],
+        "loglik": -601574.8252473775,
+        "aic": 1203153.650494755,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12252402401566428
+        ],
+        "loglik": -601825.9840959613,
+        "aic": 1203653.9681919226,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6716598683752789
+        ],
+        "loglik": -606088.0669613378,
+        "aic": 1212178.1339226756,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 3,
+    "seed": 15256,
+    "alpha": -0.65275732454318,
+    "mean_age": 5.692311891795985,
+    "age_best": "lognormal",
+    "sha256": "5bca5236e517c2d8d256f26ec84907cab9a6155d9855b98f713b0844319eaa7d",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8519117416162172,
+          1.1245336347946062
+        ],
+        "loglik": -601577.1499163511,
+        "aic": 1203158.2998327021,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12258513690339291
+        ],
+        "loglik": -601812.2579823292,
+        "aic": 1203626.5159646585,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.673316184951905
+        ],
+        "loglik": -606004.4673368172,
+        "aic": 1212010.9346736344,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 4,
+    "seed": 15257,
+    "alpha": -0.6629697909709862,
+    "mean_age": 5.695805866055221,
+    "age_best": "lognormal",
+    "sha256": "60884004887161fc8bb795139fd13e135208c380e14d4184365e95bae412de1c",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8493088412146135,
+          1.1162616513475447
+        ],
+        "loglik": -601565.5902636732,
+        "aic": 1203135.1805273464,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12247057989067989
+        ],
+        "loglik": -601837.9888320599,
+        "aic": 1203677.9776641198,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6711994801768479
+        ],
+        "loglik": -606111.2667442607,
+        "aic": 1212224.5334885214,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 5,
+    "seed": 15258,
+    "alpha": -0.6531562038239259,
+    "mean_age": 5.7352359115041835,
+    "age_best": "lognormal",
+    "sha256": "5883b8dc411855de659ab63cd4167b6bbf7eeed80596f3136ae7f649dc0563cc",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8657963501316455,
+          1.125091920553374
+        ],
+        "loglik": -601938.0360180633,
+        "aic": 1203880.0720361266,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12091996840172867
+        ],
+        "loglik": -602186.5189036335,
+        "aic": 1204375.037807267,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6660510734466473
+        ],
+        "loglik": -606369.7673010868,
+        "aic": 1212741.5346021736,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 6,
+    "seed": 15259,
+    "alpha": -0.6498716062630369,
+    "mean_age": 5.737446942090107,
+    "age_best": "lognormal",
+    "sha256": "e8622fba1ec176b696ca246c3b10c38f13a82dbcc9a64a94124e80550bc4200f",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8680442530868198,
+          1.124980782676295
+        ],
+        "loglik": -601997.5437351891,
+        "aic": 1203999.0874703783,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12072819506481537
+        ],
+        "loglik": -602229.6530912848,
+        "aic": 1204461.3061825696,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.664789291734
+        ],
+        "loglik": -606432.8441362657,
+        "aic": 1212867.6882725314,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 7,
+    "seed": 15260,
+    "alpha": -0.6577416180593512,
+    "mean_age": 5.691574881600677,
+    "age_best": "lognormal",
+    "sha256": "275fa68a3983c5168c563176479f1d4e934c518b59ac914c35cc6c653349bc0b",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8533464448005559,
+          1.1248211356184636
+        ],
+        "loglik": -601612.9917401009,
+        "aic": 1203229.9834802018,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12271730627622766
+        ],
+        "loglik": -601782.5763886245,
+        "aic": 1203567.152777249,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6726621519553777
+        ],
+        "loglik": -606037.496638092,
+        "aic": 1212076.993276184,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 8,
+    "seed": 15261,
+    "alpha": -0.6509477244025335,
+    "mean_age": 5.715950811393632,
+    "age_best": "lognormal",
+    "sha256": "b2f9229085decb3ea9d89a86d838f578b64324c72f1bab028953a4233ca75201",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.856889052869288,
+          1.1150892745731946
+        ],
+        "loglik": -601774.4770580444,
+        "aic": 1203552.9541160888,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12158864763568018
+        ],
+        "loglik": -602036.1639797812,
+        "aic": 1204074.3279595624,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6665566511246939
+        ],
+        "loglik": -606344.4582482514,
+        "aic": 1212690.9164965027,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 9,
+    "seed": 15262,
+    "alpha": -0.6520572571175552,
+    "mean_age": 5.71103741009158,
+    "age_best": "lognormal",
+    "sha256": "c66f242c5e122f711f71281becbd3eba4c2a0d0afdac647ce5d6c6d2750e2854",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8566353137462657,
+          1.1121426147215456
+        ],
+        "loglik": -601787.7026047301,
+        "aic": 1203579.4052094603,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12183178458905788
+        ],
+        "loglik": -601981.516112314,
+        "aic": 1203965.032224628,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6654162517627741
+        ],
+        "loglik": -606401.5111178723,
+        "aic": 1212805.0222357446,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 10,
+    "seed": 15263,
+    "alpha": -0.6481959258762553,
+    "mean_age": 5.71200644201504,
+    "age_best": "lognormal",
+    "sha256": "9751810a88798232f5750be9b43c28e1933d89e4c37dc49138380b2951a59d90",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.858037171929985,
+          1.119653450000243
+        ],
+        "loglik": -601773.2804597027,
+        "aic": 1203550.5609194054,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12167143744711424
+        ],
+        "loglik": -602017.5545835881,
+        "aic": 1204037.1091671763,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6679040300261099
+        ],
+        "loglik": -606276.9367863614,
+        "aic": 1212555.8735727228,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 11,
+    "seed": 15264,
+    "alpha": -0.6505383549939431,
+    "mean_age": 5.709304071298912,
+    "age_best": "lognormal",
+    "sha256": "403e9ab3322ed15b8ed45a1308bc83e82abbafabbaf8eb9348fecca32b49a015",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.857711489701508,
+          1.1214387491632802
+        ],
+        "loglik": -601752.1379042377,
+        "aic": 1203508.2758084754,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12194514029791194
+        ],
+        "loglik": -601956.0414260181,
+        "aic": 1203914.0828520362,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6688499032010838
+        ],
+        "loglik": -606229.4665056422,
+        "aic": 1212460.9330112843,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 12,
+    "seed": 15265,
+    "alpha": -0.6478630903842223,
+    "mean_age": 5.715950811393632,
+    "age_best": "lognormal",
+    "sha256": "1950c53d9aab441b402895d2e161217a49c20d16cd53e93fa061b36c32af8f50",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8595354190039475,
+          1.1167490021018054
+        ],
+        "loglik": -601832.9207575377,
+        "aic": 1203669.8415150754,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12150861993940539
+        ],
+        "loglik": -602054.1531776622,
+        "aic": 1204110.3063553243,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6658330928308734
+        ],
+        "loglik": -606380.673596359,
+        "aic": 1212763.347192718,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 13,
+    "seed": 15266,
+    "alpha": -0.6504326421806526,
+    "mean_age": 5.718816962153162,
+    "age_best": "lognormal",
+    "sha256": "044fc8853a1e069537e7272d86c028656da6468b066909289a7050e38cc0c509",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.860116821868967,
+          1.1227265174716639
+        ],
+        "loglik": -601806.151160093,
+        "aic": 1203616.302320186,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12143675581586176
+        ],
+        "loglik": -602070.3090455778,
+        "aic": 1204142.6180911555,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6681032763422916
+        ],
+        "loglik": -606266.9483218604,
+        "aic": 1212535.8966437208,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 14,
+    "seed": 15267,
+    "alpha": -0.6602699149803268,
+    "mean_age": 5.7335435177223655,
+    "age_best": "lognormal",
+    "sha256": "5c089bfc4e4c8c7f017b5ced655a331532fded4e388b11104589c5321bd53dcd",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8677486192774404,
+          1.1306540239098049
+        ],
+        "loglik": -601948.1946035293,
+        "aic": 1203900.3892070586,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.1209543772183087
+        ],
+        "loglik": -602178.7789246101,
+        "aic": 1204359.5578492202,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6673945318163877
+        ],
+        "loglik": -606302.4893527258,
+        "aic": 1212606.9787054516,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 15,
+    "seed": 15268,
+    "alpha": -0.6486144027770985,
+    "mean_age": 5.697866764934693,
+    "age_best": "lognormal",
+    "sha256": "c3d97ae7596c37585fa303f4a00e3c5a1286a87072aafe579cc6c5bebdf11a5e",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8503808553734753,
+          1.1103523862864624
+        ],
+        "loglik": -601633.6300666914,
+        "aic": 1203271.2601333829,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.1222848070160418
+        ],
+        "loglik": -601879.7196193772,
+        "aic": 1203761.4392387543,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6680686741995707
+        ],
+        "loglik": -606268.6859132077,
+        "aic": 1212539.3718264154,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 16,
+    "seed": 15269,
+    "alpha": -0.6467313919755776,
+    "mean_age": 5.734294176254624,
+    "age_best": "lognormal",
+    "sha256": "4423421d45e15d3e19ba6614070af10e179994c896201714ef29ccf366ae2da4",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.862898760314563,
+          1.119703754239871
+        ],
+        "loglik": -601900.5499302926,
+        "aic": 1203805.0998605853,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12105499728167236
+        ],
+        "loglik": -602156.1510495673,
+        "aic": 1204314.3020991345,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6652889131238983
+        ],
+        "loglik": -606407.8837702072,
+        "aic": 1212817.7675404144,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 17,
+    "seed": 15270,
+    "alpha": -0.6489727497689621,
+    "mean_age": 5.726064229073687,
+    "age_best": "lognormal",
+    "sha256": "d811dca53c4f3b49f5780967d4a9db51f40cd1f18fa787103250a743ef44d43b",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8588970803490636,
+          1.115977423086788
+        ],
+        "loglik": -601821.4262971377,
+        "aic": 1203646.8525942755,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12125811471663293
+        ],
+        "loglik": -602110.4750400656,
+        "aic": 1204222.9500801312,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6658459428999628
+        ],
+        "loglik": -606380.0194286548,
+        "aic": 1212762.0388573096,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 18,
+    "seed": 15271,
+    "alpha": -0.6443728201519844,
+    "mean_age": 5.745199197477787,
+    "age_best": "lognormal",
+    "sha256": "32c616fda77b43c543fcb85c7e446d708abcc04003638533460a977f6f4b8fab",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8680833481199306,
+          1.1173599472355624
+        ],
+        "loglik": -602052.8703199655,
+        "aic": 1204109.740639931,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.1205678378561327
+        ],
+        "loglik": -602265.7268440322,
+        "aic": 1204533.4536880644,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6614466059134932
+        ],
+        "loglik": -606599.4143703128,
+        "aic": 1213200.8287406256,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  },
+  {
+    "kind": "P3b",
+    "rep": 19,
+    "seed": 15272,
+    "alpha": -0.6457325339792919,
+    "mean_age": 5.719130873903015,
+    "age_best": "lognormal",
+    "sha256": "e244a428be65a6a2d01a9966ab18129523129f528dfef23429d6d8d1ef8bcaa1",
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.8607296413397536,
+          1.1190928250808945
+        ],
+        "loglik": -601848.1205098594,
+        "aic": 1203700.2410197188,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.12131097582214558
+        ],
+        "loglik": -602098.5891546481,
+        "aic": 1204199.1783092963,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6661987002123426
+        ],
+        "loglik": -606362.3820836742,
+        "aic": 1212726.7641673484,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -622762.500070869,
+        "aic": 1245525.000141738,
+        "success": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+%=====================================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{What the static network already tells us.}
+Conclusions that survive aggregation can be read from \cref{tab:cross}.
+For CIT, the final aggregate describes degree heterogeneity, clustering and
+connected components. It cannot by itself identify preferential attachment or
+ageing: these compare new citations with prior degrees and paper ages.
+Even densification requires a sequence of historical $N(t),E(t)$ pairs, rather
+than one final graph. The PS/CM claims remain to be tested.
+
+\paragraph{What requires time.}
+Some conclusions need windows (Parts I and III) and others the full event order
+(Parts II and IV).
+\expect{[Expected] Burstiness, turnover, community reorganisation, time-respecting
+reachability and spreading speed cannot be obtained from the aggregate.}
+
+\paragraph{Why network types differ.}
+The three networks differ in generating mechanism (physical proximity, voluntary
+messaging, citing earlier work), time scale and edge semantics (a contact ends, a
+message is a point event, a citation persists).
+\expect{[Expected] Proximity is constrained by timetables and space and thus has
+strong periodic structure, messages are driven by individual bursty decisions.}
+CIT has persistent edges and measured age-dependent target preferences.
+A cross-network ordering still needs PS/CM measurements.
+
+\paragraph{Robustness.}
+We check the choice of window size, the observation period (first vs.\ second
+half), the community-detection resolution and the choice of null model.
+For CIT, the full-period densification exponent is 1.343 but falls to 1.065 in
+the later half, while remaining 1.427 with cutoff 2015. Positive degree preference
+persists under all declared variants, although its exponent depends on the degree
+offset. The diameter verdict is unchanged by the sampled-source sensitivity
+checks. These are qualitative robustness findings, not evidence that coverage
+and censoring have been removed.
+
+
+% Owner: B (measured citation-specific interpretation).
+\paragraph{Citation-specific evidence.}
+CIT supports degree preference and age-dependent target choice, but separates two
+claims often grouped together: cumulative edges grow superlinearly, while the
+sampled effective diameter does not shrink. A three-parameter citation curve
+fits selected histories well, yet its paired MAE advantage over linear prediction
+is unresolved. Annual zero clustering is imposed by the strict-year snapshot
+construction. These examples show why representation, fitted-sample description
+and held-out prediction require separate interpretations. Late reference coverage,
+within-venue selection and right censoring constrain all citation conclusions.
+
+\paragraph{Limitations.}
+There is one dataset per network type, so generality is limited and conclusions
+hold ``in these data''. CIT also has within-venue sampling, annual timestamp ties and changing reference
+coverage. Its year-block bootstrap intervals are descriptive; cumulative graph
+observations are dependent. The 20-draw null ensembles give coarse tail resolution.
+Forecast selection excludes low-cited papers, and 38.6\% of short-history WSB fits
+hit parameter bounds; fitted collapse is not independent validation.
+Boundary effects
+and sampling bias remain (finite two-day contact window, sensor participation).
+Citation networks are degenerate temporal networks (DAG, no deletion), which is
+why several methods do not apply. Each system also contains several time scales
+\citep{holme2015modern}, so a window that suits one process may hide another. Finally, SocioPatterns data are released under
+CC BY-NC-SA.

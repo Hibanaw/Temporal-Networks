@@ -1,0 +1,212 @@
+[
+  {
+    "variant": "years_1990_2004",
+    "alpha": 0.6844243232976126,
+    "densification": {
+      "a": 1.4548319132419785,
+      "intercept": -2.732413973907488,
+      "r2": 0.9995925444390159,
+      "n_years": 15,
+      "start": 1990,
+      "end": 2004
+    },
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.4285423343764116,
+          1.0319360854808435
+        ],
+        "loglik": -138535.21170450165,
+        "aic": 277074.4234090033,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.18897867115810726
+        ],
+        "loglik": -138562.48088354128,
+        "aic": 277126.96176708257,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.8571074444993967
+        ],
+        "loglik": -139671.49088285866,
+        "aic": 279344.9817657173,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -145723.20612049772,
+        "aic": 291446.41224099544,
+        "success": true
+      }
+    ]
+  },
+  {
+    "variant": "years_2005_2020",
+    "alpha": 0.7214028680433678,
+    "densification": {
+      "a": 1.0645619278755636,
+      "intercept": 0.8288246495249663,
+      "r2": 0.9752000453580895,
+      "n_years": 16,
+      "start": 2005,
+      "end": 2020
+    },
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.9707196406728003,
+          1.0901317745465793
+        ],
+        "loglik": -462430.9816927352,
+        "aic": 924865.9633854704,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.10692021211418588
+        ],
+        "loglik": -462705.4453739697,
+        "aic": 925412.8907479394,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6060865192353642
+        ],
+        "loglik": -466458.4760492181,
+        "aic": 932918.9520984362,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -477039.29395037127,
+        "aic": 954078.5879007425,
+        "success": true
+      }
+    ]
+  },
+  {
+    "variant": "years_1990_2015",
+    "alpha": 0.7218135946899119,
+    "densification": {
+      "a": 1.4270031880740957,
+      "intercept": -2.497399851510729,
+      "r2": 0.9978361543487495,
+      "n_years": 26,
+      "start": 1990,
+      "end": 2015
+    },
+    "age_fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.7725083225358855,
+          1.0770536349184634
+        ],
+        "loglik": -490643.2767497512,
+        "aic": 981290.5534995024,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.13147460677047354
+        ],
+        "loglik": -490837.2583041894,
+        "aic": 981676.5166083788,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6899542279455911
+        ],
+        "loglik": -494781.86527736683,
+        "aic": 989565.7305547337,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -509315.1220133749,
+        "aic": 1018630.2440267497,
+        "success": true
+      }
+    ]
+  },
+  {
+    "variant": "pa_offset_0.5",
+    "alpha": 0.6040023041752834
+  },
+  {
+    "variant": "pa_offset_2.0",
+    "alpha": 0.8576018045923409
+  },
+  {
+    "variant": "diameter_sources_64",
+    "year": 1990,
+    "diameter90": 6.0
+  },
+  {
+    "variant": "diameter_sources_64",
+    "year": 2005,
+    "diameter90": 6.0
+  },
+  {
+    "variant": "diameter_sources_64",
+    "year": 2020,
+    "diameter90": 6.0
+  },
+  {
+    "variant": "diameter_sources_256",
+    "year": 1990,
+    "diameter90": 6.0
+  },
+  {
+    "variant": "diameter_sources_256",
+    "year": 2005,
+    "diameter90": 6.0
+  },
+  {
+    "variant": "diameter_sources_256",
+    "year": 2020,
+    "diameter90": 6.0
+  },
+  {
+    "variant": "same_year_included_structural_only",
+    "densification": {
+      "a": 1.3241732787645126,
+      "intercept": -1.528745889746203,
+      "r2": 0.9898148970350797,
+      "n_years": 31,
+      "start": 1990,
+      "end": 2020
+    }
+  },
+  {
+    "variant": "core_venues",
+    "N": 14235,
+    "E": 47009,
+    "alpha": 0.7308675462744698,
+    "densification": {
+      "a": 1.4098991011932915,
+      "intercept": -2.4807835823788853,
+      "r2": 0.9908296769778137,
+      "n_years": 31,
+      "start": 1990,
+      "end": 2020
+    }
+  }
+]

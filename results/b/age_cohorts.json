@@ -1,0 +1,134 @@
+[
+  {
+    "cohort": [
+      1970,
+      1989
+    ],
+    "events": 4990,
+    "fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.5093064286917988,
+          1.0752684834757342
+        ],
+        "loglik": -37194.59427046822,
+        "aic": 74393.18854093643,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.14846176702978395
+        ],
+        "loglik": -37236.10785303365,
+        "aic": 74474.2157060673,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          1.0602569639199837
+        ],
+        "loglik": -37339.66878221513,
+        "aic": 74681.33756443026,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -37968.26443966437,
+        "aic": 75936.52887932873,
+        "success": true
+      }
+    ]
+  },
+  {
+    "cohort": [
+      1990,
+      1999
+    ],
+    "events": 16608,
+    "fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          1.5584803799205196,
+          1.077814736209794
+        ],
+        "loglik": -124291.63612710696,
+        "aic": 248587.27225421392,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.15811911626677458
+        ],
+        "loglik": -124353.29174140806,
+        "aic": 248708.58348281612,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.6567930328404068
+        ],
+        "loglik": -124750.06340398698,
+        "aic": 249502.12680797395,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -125624.65724646811,
+        "aic": 251249.31449293622,
+        "success": true
+      }
+    ]
+  },
+  {
+    "cohort": [
+      2000,
+      2009
+    ],
+    "events": 33708,
+    "fits": [
+      {
+        "model": "lognormal",
+        "parameters": [
+          3.2382661542306557,
+          1.63212240029452
+        ],
+        "loglik": -273270.9931593243,
+        "aic": 546545.9863186486,
+        "success": true
+      },
+      {
+        "model": "exponential",
+        "parameters": [
+          0.05894617724208533
+        ],
+        "loglik": -273321.8143220733,
+        "aic": 546645.6286441466,
+        "success": true
+      },
+      {
+        "model": "powerlaw",
+        "parameters": [
+          0.19355374732527025
+        ],
+        "loglik": -273436.91928826796,
+        "aic": 546875.8385765359,
+        "success": true
+      },
+      {
+        "model": "uniform",
+        "parameters": [],
+        "loglik": -273646.83854467823,
+        "aic": 547293.6770893565,
+        "success": true
+      }
+    ]
+  }
+]

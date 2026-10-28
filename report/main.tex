@@ -1,0 +1,75 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+% CVPR author-kit style (https://github.com/cvpr-org/author-kit): letter paper,
+% Times 10pt, 6.875in x 8.875in text block, 0.3125in column gap. It already loads
+% graphicx, amsmath, amssymb, booktabs, xcolor, natbib and enumitem.
+% Option `pagenumbers' keeps page numbers (CVPR final mode hides them).
+\usepackage[pagenumbers]{cvpr}
+
+\usepackage{multirow}
+\usepackage{placeins}
+\usepackage[breaklinks=true,colorlinks,bookmarks=false,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\usepackage[capitalize]{cleveref}
+
+\graphicspath{{figures/}{../figures/}}
+
+% Outline notes; set \showoutline to false to hide them in the final version.
+\newif\ifshowoutline \showoutlinetrue
+\newcommand{\outline}[1]{\ifshowoutline{\color{gray}\small\itshape [Outline] #1\par}\fi}
+
+% Expected (not yet measured) results: shown in blue; replace with measured text, then
+% delete the macro. Set \showexpected to false to hide them.
+\newif\ifshowexpected \showexpectedtrue
+\newcommand{\expect}[1]{\ifshowexpected{\color{blue!60!black}#1}\fi}
+% Placeholder for a result figure that is not produced yet: \figph{width}{height}{text}
+\newcommand{\figph}[3]{\fbox{\parbox[c][#2][c]{\dimexpr#1-2\fboxsep-2\fboxrule\relax}{\centering\small\color{gray}#3}}}
+
+\title{How Much Does Time Matter?\\
+A Comparative Study of Aggregation, Temporal Patterns, Dynamics\\and Community Evolution in Real-World Temporal Networks}
+% CVPR-style author block for authors sharing one affiliation and one email domain:
+% names on one line, shared affiliation, then \{id1, id2, ...\}@domain.
+\newcommand{\sharedaffiliation}{Faculty of Science, National University of Singapore}
+\newcommand{\emailids}{}
+\newcommand{\emaildomain}{u.nus.edu}
+\author{%
+  Author One, Author Two, Author Three, Author Four, Author Five\\
+  \sharedaffiliation\\
+  {\small\texttt{\{\emailids\}@\emaildomain}}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Real networks are made of interactions that happen at specific times, yet they are
+routinely analysed as static aggregated graphs. We ask how much this discards. We
+organise the temporal-network literature around four questions---representation,
+activity patterns, structural evolution and function---distil seven testable
+hypotheses (H1--H7), and define a common pipeline of window analysis,
+randomized reference models and dynamic-community tracking on three networks of
+different type and time scale: face-to-face contacts in a primary school, online
+messaging among students, and a computer-science citation network. The planned cross-network comparison
+uses normalised \emph{time effects} rather than raw metrics.
+The completed citation-network study contains 19,150 papers and 73,269
+strictly older-target citations. It supports sublinear degree preference and
+age-dependent citation choice, with a densification exponent of 1.343, but no
+detected shrinkage of the sampled effective diameter. A three-parameter citation
+model fits selected histories well without an established MAE advantage over
+linear extrapolation. Contact and messaging experiments remain pending, so a
+cross-network ranking of temporal sensitivity is not yet inferred.
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/related}
+\input{sections/data}
+\input{sections/methods}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+{\small
+\bibliographystyle{ieeenat_fullname}
+\bibliography{references}
+}
+
+\end{document}

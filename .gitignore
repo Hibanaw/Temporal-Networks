@@ -1,0 +1,31 @@
+# Data is rebuilt from its source; metadata remains tracked.
+data/raw/
+data/processed/**/*.csv
+results/b/null_events/
+
+# User-requested exclusion of scheduler scripts.
+hpc/
+*.pbs
+
+# Local environments, caches and credentials.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+.DS_Store
+
+# LaTeX build files and local backup bundles.
+report/build/
+report/versions/
+report/report_sources.zip
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg

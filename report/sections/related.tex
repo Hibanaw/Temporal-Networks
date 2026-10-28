@@ -1,0 +1,94 @@
+%=====================================================================
+\section{Related Work}
+\label{sec:related}
+We organise the literature by question rather than paper by paper; the subsections
+follow Parts I--IV of the Introduction. General frameworks and reviews are given by
+\citet{holme2012temporal,holme2015modern} and the book of \citet{masuda2016guide}.
+A central point of these reviews is that the basic unit is a \emph{contact}
+(two nodes and a time), and that connectedness is no longer transitive: if $a$ meets
+$b$ and later $b$ meets $c$, a path from $a$ to $c$ exists, but not the other way
+round. Hence a temporal network cannot be turned into a simple graph without losing
+information or changing what a node means, and many static-network methods need
+non-trivial generalisations \citep{holme2015modern}.
+
+\subsection{Representing time: aggregation, snapshots and windows}
+\label{sec:rw-representation}
+Temporal networks can be stored as contact sequences, interval graphs or sequences of
+snapshots \citep{holme2012temporal}. Lossy representations such as weighted aggregates or reachability graphs reduce the
+data to a static object; lossless ones keep all contacts \citep{holme2015modern}.
+Each choice involves a trade-off: snapshots
+make static tools applicable but require a window length, whereas the full event
+sequence keeps all information. The effect of this choice has been quantified for
+communication data: window size and placement change the structure of the aggregated
+network \citep{krings2012effects}, and coarser temporal resolution distorts
+properties of the time-varying network in a way that depends on the system
+\citep{ribeiro2013quantifying}. This motivates \textbf{H1}: aggregation and window
+choice change structural conclusions.
+
+\subsection{Temporal activity patterns}
+\label{sec:rw-activity}
+Human activity is bursty: inter-event times are heavy-tailed rather than exponential
+\citep{barabasi2005origin}, and consecutive intervals are correlated, which
+\citet{goh2008burstiness} capture with a burstiness coefficient and a memory
+coefficient. Social ties are also repeated and persistent over long periods
+\citep{saramaki2014persistence}, while the set of active links turns over. Temporal motifs
+\citep{kovanen2011temporal,paranjape2017motifs} and activity-driven models
+\citep{perra2012activity} describe and generate such patterns. This gives
+\textbf{H2} (activity is bursty and has memory) and \textbf{H3} (ties are repeated and
+persistent while the network turns over).
+
+\subsection{Structural evolution: growth, ageing and communities}
+\label{sec:rw-evolution}
+Growth is classically explained by preferential attachment
+\citep{barabasi1999emergence}, whose strength can be measured directly from
+growth data \citep{jeong2003measuring,newman2001clustering}. Real systems usually
+show ageing, where old nodes attract fewer new links
+\citep{dorogovtsev2000aging}, and in citations this is captured by a relevance
+decay \citep{wang2013quantifying}. Growing networks also densify, with the number of
+edges growing superlinearly in the number of nodes
+\citep{leskovec2005graphs,leskovec2007graph}; node and link deletion alter these
+laws \citep{moore2006exact}. This gives \textbf{H4}: growth follows preferential
+attachment with ageing, and networks densify.
+
+At the mesoscale, multilayer modularity couples partitions across time
+\citep{mucha2010community}, communities can be tracked across snapshots through
+matching \citep{greene2010tracking} and change can be mapped between partitions
+\citep{rosvall2010mapping}; \citet{rossetti2018community} survey the field. Per-snapshot
+partitions are typically obtained with Louvain \citep{blondel2008fast} or Leiden
+\citep{traag2019louvain}. This gives \textbf{H5}: communities reorganise over time and
+a static partition hides this.
+
+\subsection{Time and network function}
+\label{sec:rw-function}
+Because interactions occur in sequence, only time-respecting paths can carry
+information: reachability in contact sequences is much lower than in the aggregated
+graph \citep{holme2005network}, and path lengths and centrality change accordingly
+\citep{pan2011path,kim2012temporal}. Burstiness and temporal correlations further
+slow down spreading even when the static topology is unchanged
+\citep{karsai2011small}. These results give \textbf{H6} (time ordering restricts
+reachability and changes centrality rankings) and \textbf{H7} (burstiness and
+temporal correlations slow down spreading).
+
+\subsection{Randomized reference models}
+\label{sec:rw-null}
+Randomization is more versatile for temporal than for static networks, where it is
+essentially limited to degree-preserving link shuffling, because one can switch off
+individual kinds of correlation \citep{holme2015modern}. Randomized reference models act as hypothesis tests: each one preserves some
+properties of the data and destroys others, so differences between data and model
+reveal which feature matters \citep{gauvin2022randomized}. We use them in Parts
+II--IV (\cref{sec:null}).
+
+\paragraph{Time scales and network types.}
+Temporal networks are usually defined as systems whose evolution is not much slower
+than the processes running on them, and a single system contains many time scales
+(seconds, hours, days) \citep{holme2015modern}. Contact and communication data are
+event sequences with such a hierarchy, whereas citation networks are acyclic by
+construction and all out-links of a paper appear at one instant
+\citep{holme2015modern}. This is why we expect, and test, different sensitivity to time
+across network types.
+
+\paragraph{Gap.}
+Most studies examine one dataset or one method. Few compare, within a single
+framework, how sensitive different \emph{types} of networks are to temporal
+information. The hypotheses distilled above (\cref{tab:hypotheses}) allow such a
+comparison.

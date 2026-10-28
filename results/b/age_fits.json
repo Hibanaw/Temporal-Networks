@@ -1,0 +1,37 @@
+[
+  {
+    "model": "lognormal",
+    "parameters": [
+      1.8583808503361725,
+      1.1078176401768494
+    ],
+    "loglik": -601862.1608647446,
+    "aic": 1203728.3217294891,
+    "success": true
+  },
+  {
+    "model": "exponential",
+    "parameters": [
+      0.1211621723451732
+    ],
+    "loglik": -602132.0504439003,
+    "aic": 1204266.1008878006,
+    "success": true
+  },
+  {
+    "model": "powerlaw",
+    "parameters": [
+      0.6625723651597378
+    ],
+    "loglik": -606543.3997495513,
+    "aic": 1213088.7994991026,
+    "success": true
+  },
+  {
+    "model": "uniform",
+    "parameters": [],
+    "loglik": -622762.500070869,
+    "aic": 1245525.000141738,
+    "success": true
+  }
+]

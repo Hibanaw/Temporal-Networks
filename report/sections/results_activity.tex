@@ -1,0 +1,46 @@
+\subsection{Activity patterns}
+\label{sec:r-activity}
+
+% Owner: C
+\paragraph{Burstiness and memory.}
+\expect{[Expected] Inter-event times of both PS and CM are heavy-tailed and have
+positive burstiness $B$ and memory $M$. Under P1 the heavy tail is largely
+removed, so $B_{\mathrm{real}}-B_{\mathrm{null}}>0$. Contact bursts in PS are
+bounded by the school timetable, while CM shows longer waiting times (hours to
+days) and a stronger tail.}
+
+\begin{figure}[t]
+\centering
+\figph{\columnwidth}{3.6cm}{inter-event time distributions, real vs.\ P1\\(PS, CM)}
+\caption{Inter-event time distributions on log--log axes. (Placeholder.)}
+\label{fig:iet}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & \multicolumn{2}{c}{PS} & \multicolumn{2}{c}{CM} \\
+ & real & P1 & real & P1 \\
+\midrule
+Burstiness $B$ & $>0$ & $\approx$ lower & $>0$ & $\approx$ lower \\
+Memory $M$ & $>0$ & $\approx 0$ & $>0$ & $\approx 0$ \\
+\bottomrule
+\end{tabular}
+\caption{Expected qualitative outcome of M2a (values to be measured; mean $\pm$
+std over $\geq 20$ P1 samples).}
+\label{tab:burst}
+\end{table}
+
+% Owner: C
+\paragraph{Persistence and turnover.}
+\expect{[Expected] Many contacts in PS are repeated within the same day (within
+class), so the edge repetition rate is high and consecutive-snapshot Jaccard is
+moderate, with drops at class changes. In CM most pairs interact only a few
+times, so tie lifetimes are short and turnover is high. P1 keeps the static graph
+and therefore the repetition rate, but changes lifetimes and Jaccard.}
+
+\paragraph{Verdict on H2 and H3.}
+\outline{Supported / not supported / depends on network type or window.}
+\expect{[Expected] H2 supported in both. H3 supported in PS, only partly in CM.}

@@ -1,0 +1,93 @@
+% Owner: B. Measured-result-independent methods, PLAN v3.1.
+\paragraph{Citation data and time resolution.}
+We stream AMiner DBLP-Citation V14 \citep{tang2008arnetminer} and retain an induced subgraph of database
+venues selected by a fixed whitelist (SIGMOD, VLDB/PVLDB, ICDE, PODS, EDBT,
+ICDT, TODS, VLDB Journal, Data \& Knowledge Engineering, and Information Systems).
+All selected papers published in 1960--2020 are retained, including isolates.
+A distinct citation $u\to v$ occurs in the publication year of $u$.
+The primary analysis requires $y_v<y_u$; same-year citations are saved for
+structural sensitivity analysis because their order cannot be resolved.
+We exclude self-citations to the same paper, duplicate edges and future references.
+Author self-citations are not removed. Counts refer to citations within the
+selected venues, rather than global citation impact. The primary analysis years
+are 1990--2020, initialized using the available earlier history.
+
+\paragraph{M1: annual and cumulative citation structure.}
+Annual and cumulative networks use the same node denominator: all selected
+papers already published by year $t$. Directed density is $E/[N(N-1)]$ and
+mean total degree is $2E/N$. Clustering, component counts and largest-component
+fractions use the weak undirected projection, including isolates.
+Trailing windows of 1, 2, 5 and 10 years provide a window-sensitivity check;
+sensitivity is $(\max-\min)/\mathrm{mean}$ over the grid at each endpoint,
+then averaged over endpoints.
+
+\paragraph{M2c-1: preferential attachment.}
+Following the degree-class approach of \citet{jeong2003measuring}, we freeze
+in-degree at the start of each citing year and count eligible nodes $n_{tk}$ and
+new citations $h_{tk}$ in each prior-degree class $k$.
+We estimate $\alpha$ by conditional likelihood with probabilities proportional
+to $n_{tk}(k+1)^\alpha$, conditioning on the total number of citations in each year.
+The offset admits citations to previously uncited papers; offsets 0.5 and 2
+provide sensitivity checks. Confidence intervals use 400 resamples of citing-year
+blocks. These are descriptive uncertainty intervals; neither positive $\alpha$
+nor its departure from an age-only null identifies a causal mechanism.
+
+\paragraph{M2c-2: ageing.}
+For ages 1--60, the target probability in citing year $t$ is proportional to
+$n_{ta}f(a)$, where $n_{ta}$ counts available papers of age $a$.
+A conditional target likelihood compares discrete-grid lognormal, exponential,
+power-law and uniform kernels using AIC on identical observations and support.
+We repeat the comparison by publication cohort (1970--1989, 1990--1999,
+2000--2009), accounting for each cohort's actual exposure.
+This estimates marginal ageing; degree, fitness and venue coverage can also
+influence this curve.
+
+\paragraph{M2c-3: densification and diameter.}
+We fit $\log E(t)=a\log N(t)+b$ over 1990--2020 and repeat over split periods and
+an earlier observation cutoff. Year-resampling intervals are descriptive because
+cumulative observations are dependent.
+Effective diameter is the 90th percentile of weak shortest-path distances
+within the largest connected component, using 128 uniformly sampled source nodes
+per year. Sensitivity checks use 64 and 256 sources. We save the component size
+and number of sources with every estimate \citep{leskovec2005graphs}.
+
+\paragraph{M2c-4: citation dynamics and prediction.}
+We fit the Wang--Song--Barab\'asi curve \citep{wang2013quantifying},
+\begin{equation}
+ c(t)=m\left[\exp\!\left\{\lambda\Phi\left(\frac{\log t-\mu}{\sigma}\right)\right\}-1\right],
+\end{equation}
+where $m$ is fixed to the mean observed within-subgraph reference count of papers
+published through 1989. Bounded multistart least squares minimizes squared
+$\log(1+c)$ errors; parameter bounds and boundary flags are preserved.
+For descriptive full-history fits we randomly select at most 500 papers born in
+1990--2005 with at least 10 citations by age 15 and fit years 1--15. The resulting
+collapse is in-sample evidence only.
+For prediction, selection uses only the first five years: at least five observed
+citations by age five, followed by a fixed random sample of at most 500 papers.
+Using only years 1--5, we compare WSB against no-ageing PA,
+$c(t)=m[\exp(rt)-1]$, and linear extrapolation, $c(5)t/5$.
+All models predict the same papers at age 15 and at the observed endpoint in 2020;
+these are censored observed totals, not unobserved lifetime citations.
+We report MAE, median absolute error, RMSLE, paired bootstrap differences
+(1000 resamples) and an interior-fit sensitivity check. Boundary fits remain in
+the primary evaluation so that difficult cases are not silently discarded.
+
+\paragraph{P3: citation-target randomization.}
+Twenty realizations per model preserve each paper's publication year and exact
+number of distinct observed references, with no replacement and strictly older
+targets. P3a selects eligible targets uniformly. P3b weights targets by a nonparametric age kernel fitted by conditional
+target likelihood, accounting for each citing year's available age distribution,
+and removes degree preference.
+Its age weights are calibrated from the data, so agreement on ageing is not an
+independent confirmation. We report null means and sample standard deviations;
+empirical tail probabilities have minimum resolution $1/21$.
+Both models fix $N(t)$ and $E(t)$ and hence exactly preserve the densification
+exponent. They can test diameter and target preference, but cannot supply a
+significance test for densification itself.
+
+\paragraph{Reproducibility.}
+All significant CPU workloads run on Vanda compute nodes through PBS without GPU
+allocation. Fixed seeds, input/source checksums, environment lock file, filtering
+counts, individual forecasts and every randomized edge list are saved.
+Robustness checks cover time splits, cutoff 2015, degree offsets, same-year edges,
+core database venues, diameter sampling, and 10 versus 20 null realizations.

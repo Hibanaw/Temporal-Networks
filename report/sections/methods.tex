@@ -1,0 +1,139 @@
+%=====================================================================
+\section{Methods}
+\label{sec:methods}
+Every analysis follows the same template: hypothesis from the literature $\to$ metric
+$\to$ randomized reference model. \Cref{tab:hypotheses} lists the seven hypotheses,
+the methods (M1--M4) that test them and the datasets where each method is meaningful
+(19 method--dataset pairs). The empty cells are deliberate: CIT is a year-resolution
+DAG without fine-grained events (no M2a, M2b, M3) and without community
+reorganisation (no M4), while PS and CM have no growth process (no M2c).
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}cl p{6.2cm} l l l ccc@{}}
+\toprule
+Part & ID & Hypothesis & Source & Method & Null & PS & CM & CIT \\
+\midrule
+I   & H1 & Aggregation and window choice change structural conclusions
+           & \citep{krings2012effects,ribeiro2013quantifying} & M1 & -- & \checkmark & \checkmark & \checkmark \\
+\midrule
+II  & H2 & Activity is bursty and has memory
+           & \citep{goh2008burstiness} & M2a & P1 & \checkmark & \checkmark & \\
+    & H3 & Ties are repeated and persistent; the network turns over
+           & \citep{saramaki2014persistence} & M2b & P1 & \checkmark & \checkmark & \\
+\midrule
+III & H4 & Growth follows preferential attachment with ageing; networks densify
+           & \citep{jeong2003measuring,wang2013quantifying,leskovec2005graphs} & M2c-1--4 & P3 & & & \checkmark \\
+    & H5 & Communities reorganise over time; the static partition hides this
+           & \citep{greene2010tracking,mucha2010community} & M4 & P1 & \checkmark & \checkmark & \\
+\midrule
+IV  & H6 & Time ordering restricts reachability and changes centrality rankings
+           & \citep{holme2005network,pan2011path,kim2012temporal} & M3a, M3b & P1, P2 & \checkmark & \checkmark & \\
+    & H7 & Burstiness and temporal correlations slow down spreading
+           & \citep{karsai2011small} & M3c & P1, P2 & \checkmark & \checkmark & \\
+\bottomrule
+\end{tabular}
+\caption{Hypotheses tested in this work, with methods, null models
+(\cref{sec:null}) and applicable datasets.}
+\label{tab:hypotheses}
+\end{table*}
+
+\subsection{Notation}
+\label{sec:notation}
+Let $\mathcal{E}=\{(u,v,t)\}$ be the event sequence. The static aggregate $G$
+contains a link $(u,v)$ if at least one event occurs between $u$ and $v$. A
+snapshot $G_{\Delta t}(k)$ contains the events in $[k\Delta t,(k+1)\Delta t)$, and the
+cumulative network $G(\le t)$ contains all events up to $t$.
+
+\subsection{Aggregation and time windows (M1)}
+\label{sec:m-aggregation}
+For each window length $\Delta t$ on a grid (PS: 5\,min to 1\,day; CM: 1\,h to 1\,month)
+we compute density, mean degree, clustering coefficient and giant-component size of the
+snapshots and of the aggregate. For CIT, yearly and cumulative networks are compared.
+\emph{Window sensitivity} is the relative change of a metric across the grid.
+Rankings are handled separately in M3b. \Cref{fig:aggschem} shows why aggregation can
+mislead: a path present in the static graph may not be traversable in time.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.7\linewidth]{fig_aggregation_schematic.pdf}
+\caption{Aggregation adds paths that do not exist in time. In (a) $a$ appears to
+reach $d$; in (b) the link $c$--$d$ is active before $a$--$b$, so in (c) only $b$ and
+$c$ are reachable from $a$.}
+\label{fig:aggschem}
+\end{figure*}
+
+\subsection{Activity patterns (M2a, M2b)}
+\label{sec:m-activity}
+\textbf{M2a} measures the inter-event time distribution of each node pair and of each
+node, fitted with a heavy-tailed model, together with burstiness
+$B=(\sigma-\mu)/(\sigma+\mu)$ and memory $M$, the correlation of consecutive
+intervals \citep{goh2008burstiness}. \textbf{M2b} measures the edge repetition rate,
+tie lifetime and the Jaccard similarity of consecutive snapshots, which quantifies
+the turnover of nodes and links.
+
+\subsection{Structural evolution (M2c, M4)}
+\label{sec:m-evolution}
+% Owner: B (expanded M2c-1 through M2c-4 and P3).
+\input{sections/methods_b}
+
+\textbf{M4} detects communities in every snapshot (Leiden or Louvain), matches them
+across snapshots \citep{greene2010tracking} and reports modularity and the number of
+communities over time, the normalised mutual information (NMI) between consecutive
+snapshots, the NMI between the dynamic and the static partition, and for PS the NMI
+with the class labels. The resolution parameter is fixed and its effect is checked.
+
+\subsection{Paths, centrality and spreading (M3)}
+\label{sec:m-function}
+\textbf{M3a} computes earliest-arrival time-respecting paths and the temporal reachability
+ratio $R$ (fraction of node pairs connected by a time-respecting path, relative to the
+static aggregate). \textbf{M3b} compares static and temporal closeness rankings by
+Kendall's $\tau$. \textbf{M3c} runs an event-driven SIR process on the event sequence with
+at least 100 random seeds; SI with certain transmission is equivalent to M3a, so only SIR
+is run.
+
+\subsection{Randomized reference models}
+\label{sec:null}
+No single temporal counterpart of the configuration model exists, so one switches off
+selected correlations with different models and compares the outcomes
+\citep{holme2012temporal,gauvin2022randomized}. For PS and CM we use two complementary models, which
+correspond to \emph{randomly permuted times} (RP) and \emph{randomized edges} (RE) in the
+naming of \citet{holme2012temporal}. \textbf{P1} (RP) permutes timestamps among events:
+it keeps the static graph and the number of contacts of every pair, and destroys
+burstiness and temporal correlations. \textbf{P2} (RE) rewires the static graph in a
+degree-preserving way while each pair's contact sequence moves with its link: it
+destroys the wiring diagram but keeps per-link burstiness and the overall event rate
+(\cref{fig:nullmodels}). Comparing the two separates the effect of time from that of
+structure. Combined models (RE+RP) and fully random times (RT) are possible extensions. Each is run with at least
+20 realisations and reported as mean $\pm$ standard deviation.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\linewidth]{fig_nullmodels.pdf}
+\caption{Toy illustration of the randomized reference models. Rows are node pairs,
+ticks are events. P1 permutes the timestamps, P2 permutes which pair each event
+belongs to.}
+\label{fig:nullmodels}
+\end{figure*}
+
+\subsection{Measuring the effect of time}
+\label{sec:time-effect}
+Raw metrics cannot be compared across a contact network, a message network and a
+citation network, so we define one normalised measure per hypothesis:
+H1 window sensitivity (relative change of a metric over the $\Delta t$ grid);
+H2 $B_{\mathrm{real}}-B_{\mathrm{null}}$;
+H3 mean consecutive-snapshot Jaccard similarity;
+H4 exponents $\alpha$ and $a$;
+H5 mean consecutive-snapshot NMI and dynamic-vs-static NMI;
+H6 reachability ratio $R$ and Kendall $\tau$(static, temporal);
+H7 slowdown $T_{\mathrm{real}}/T_{\mathrm{null}}$, where $T$ is the time to the epidemic peak.
+
+\subsection{Implementation}
+All code is in Python. We use NetworkX for static graph analysis, Raphtory
+\citep{steer2024raphtory} for time-respecting paths, tnetwork for dynamic communities,
+and Leiden/Louvain for per-snapshot partitions. Null models, the attachment-kernel
+estimator and the SIR process are custom code, unit-tested on hand-built examples
+whose answers are known (reachability, SIR, preserved quantities of P1 and P2). Random
+seeds are fixed and every figure is generated by one script.

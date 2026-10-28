@@ -1,0 +1,124 @@
+{
+  "m_fixed_pre1990": 2.0064484126984126,
+  "n_forecast_eligible": 1220,
+  "n_forecast_selected": 500,
+  "n_full_eligible": 1019,
+  "n_full_selected": 500,
+  "forecast_boundary_fraction": 0.386,
+  "full_boundary_fraction": 0.102,
+  "forecast_fit_success_fraction": 1.0,
+  "evaluation": [
+    {
+      "evaluation": "age15",
+      "model": "wsb",
+      "n": 500,
+      "MAE": 15.14401770980608,
+      "median_AE": 5.432908922341579,
+      "RMSLE": 0.6011807154080154
+    },
+    {
+      "evaluation": "age15",
+      "model": "pa_no_age",
+      "n": 500,
+      "MAE": 27588.04230685982,
+      "median_AE": 945.9372259986219,
+      "RMSLE": 4.601135498091558
+    },
+    {
+      "evaluation": "age15",
+      "model": "linear",
+      "n": 500,
+      "MAE": 17.064,
+      "median_AE": 13.0,
+      "RMSLE": 0.6620869200584015
+    },
+    {
+      "evaluation": "age15",
+      "paired_difference": "WSB minus pa_no_age",
+      "mean_MAE_difference": -27572.89828915002,
+      "ci95": [
+        -52969.60983483497,
+        -10612.064631480089
+      ]
+    },
+    {
+      "evaluation": "age15",
+      "paired_difference": "WSB minus linear",
+      "mean_MAE_difference": -1.9199822901939174,
+      "ci95": [
+        -4.471335885254888,
+        0.8060429098737212
+      ]
+    },
+    {
+      "evaluation": "observed_endpoint",
+      "model": "wsb",
+      "n": 500,
+      "MAE": 28.01595325396986,
+      "median_AE": 6.7858705152576615,
+      "RMSLE": 0.7780939791402993
+    },
+    {
+      "evaluation": "observed_endpoint",
+      "model": "pa_no_age",
+      "n": 500,
+      "MAE": 2791787.9809130863,
+      "median_AE": 6466.681710970912,
+      "RMSLE": 6.999859633045401
+    },
+    {
+      "evaluation": "observed_endpoint",
+      "model": "linear",
+      "n": 500,
+      "MAE": 27.271199999999997,
+      "median_AE": 20.9,
+      "RMSLE": 0.876409464254676
+    },
+    {
+      "evaluation": "observed_endpoint",
+      "paired_difference": "WSB minus pa_no_age",
+      "mean_MAE_difference": -2791759.9649598324,
+      "ci95": [
+        -5179789.459483111,
+        -1072495.870466543
+      ]
+    },
+    {
+      "evaluation": "observed_endpoint",
+      "paired_difference": "WSB minus linear",
+      "mean_MAE_difference": 0.7447532539698646,
+      "ci95": [
+        -4.764388600253312,
+        8.128084445222811
+      ]
+    }
+  ],
+  "interior_only": [
+    {
+      "evaluation": "age15",
+      "n": 307,
+      "wsb_MAE": 9.99071189094938,
+      "linear_MAE": 18.547231270358306,
+      "PA_MAE": 30132.875312887194
+    },
+    {
+      "evaluation": "observed_endpoint",
+      "n": 307,
+      "wsb_MAE": 13.722727678815136,
+      "linear_MAE": 29.68990228013029,
+      "PA_MAE": 2737200.6042951536
+    }
+  ],
+  "full_fit_diagnostics": {
+    "median_RMSLE": 0.07362015993742553,
+    "median_scaled_collapse_RMSE": 0.021979459468598077,
+    "p90_scaled_collapse_RMSE": 0.045317590160790476,
+    "median_scaled_collapse_max_abs_error": 0.04799503853945569,
+    "parameter_medians": {
+      "lambda": 2.7167348860001446,
+      "mu": 0.8343426203105915,
+      "sigma": 1.237549565056867
+    },
+    "interpretation": "Fitted-sample diagnostics only; no goodness-of-fit p-value or universal-collapse claim inferred"
+  }
+}

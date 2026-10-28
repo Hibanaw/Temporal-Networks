@@ -1,0 +1,11 @@
+{
+  "source_time_equals_source_birth_for_all_events": true,
+  "strictly_older_target_for_all_events": true,
+  "annual_bipartiteness_follows_from_these_two_invariants": true,
+  "reference_filter_categories_partition_all_entries": true,
+  "events": 73269,
+  "nodes": 19150,
+  "pa_bootstrap_draws": 400,
+  "full_wsb_fits": 500,
+  "forecast_rows": 1000
+}
