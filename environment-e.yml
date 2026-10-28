@@ -1,0 +1,18 @@
+# Conda alternative to requirements-e.txt for member E's code (same pinned versions).
+#   conda env create -f environment-e.yml
+#   conda activate tempnet
+# On Windows, run scripts inside the activated env (or via `conda run -n tempnet ...`);
+# calling envs\tempnet\python.exe directly makes matplotlib crash on savefig.
+name: tempnet
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy=2.5.4
+  - scipy=1.18.1
+  - pandas=3.1.0
+  - networkx=3.7
+  - matplotlib=3.11.2
+  - scikit-learn=1.9.1
+  - python-igraph=1.0.0
+  - leidenalg=0.12.0
