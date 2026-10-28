@@ -1,0 +1,18 @@
+% Owner: E. M3b (H6), input from methods.tex.
+\textbf{M3b} compares static and temporal closeness. Static closeness is harmonic
+closeness \citep{marchiori2000harmony}, $C^{\mathrm{s}}(i)=\sum_{j\neq i}1/d(i,j)$, on
+the aggregate (outgoing distances for CM), with hop distance (unweighted) or distance
+$1/w_{ij}$ (weighted). Temporal closeness \citep{pan2011path,kim2012temporal} uses the
+same time-respecting paths as M3a: from a start time $t_0$, an event $(u,v,t)$ can be
+used only if $u$ was reached strictly before $t$, and $v$ is then reached at $t$, so no
+path takes two hops within one timestamp. With $a_{t_0}(i\to j)$ the earliest arrival
+time,
+\begin{equation}
+  C^{\mathrm{t}}(i)=\frac{1}{|\mathcal{T}|}\sum_{t_0\in\mathcal{T}}\frac{1}{N-1}
+  \sum_{j\neq i}\frac{1}{a_{t_0}(i\to j)-t_0},
+\end{equation}
+where unreachable nodes contribute zero. $\mathcal{T}$ holds every full hour from
+09:00 to 16:00 on both PS days (16 start times) and 20 evenly spaced times over the
+first 90\% of the CM period. Agreement is measured by Kendall's $\tau_b$ and the overlap
+of the top 10\% nodes. P1 leaves the static graph and so $C^{\mathrm{s}}$ unchanged;
+recomputing $C^{\mathrm{t}}$ on 20 P1 samples therefore isolates the effect of timing.

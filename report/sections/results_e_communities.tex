@@ -1,0 +1,74 @@
+% Owner: E. M4 / H5, input from results_evolution.tex.
+% Values: results/e_summary.csv and results/e/m4_*; figures: scripts/plot_e.py.
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\linewidth]{e_m4_ps_timeseries.pdf}
+\caption{Snapshot communities in PS (15-min windows, $\gamma=1$). Rows: NMI of each
+snapshot partition with the classes, with the previous window and with the static
+partition. Blue: real; orange: P1 (mean $\pm$ sd, 20 samples); green dotted: same window
+partitioned with another seed (noise floor).}
+\label{fig:m4-ps}
+\end{figure*}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{e_m4_cm_timeseries.pdf}
+\caption{Snapshot communities in CM (7-day windows, $\gamma=1$); encoding as in
+\cref{fig:m4-ps}. CM has no ground-truth labels.}
+\label{fig:m4-cm}
+\end{figure}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\linewidth]{e_m4_sensitivity.pdf}
+\caption{Sensitivity of H5 to window width and resolution $\gamma$. Top two rows: real
+minus P1 mean of the window-averaged NMI with the static partition and with the previous
+window (negative: real snapshots agree less). Bottom: communities per real snapshot.}
+\label{fig:m4-sens}
+\end{figure*}
+
+\paragraph{Dynamic vs.\ static communities.}
+In PS (\cref{fig:m4-ps}) the snapshot communities mostly match the classes outside the
+midday break (NMI $\approx 0.85$--$0.95$), as does the static partition (six communities,
+NMI 0.86 with the classes). Between about 12:00 and 14:00 on both days the NMI with the
+classes falls to $\approx 0.5$, and the NMI with the static partition falls just as far.
+Under P1 both curves stay flat (class NMI $0.86\pm0.002$), so the drop comes from when
+contacts happen, not from who is in contact. It is not algorithmic noise either: two
+Leiden runs on the same window agree with NMI 0.98 on average. Averaged over the day,
+real snapshots agree with the static partition less than P1 snapshots (0.72 vs.\
+$0.94\pm0.003$).
+
+CM behaves differently (\cref{fig:m4-cm}). Weekly snapshots agree only weakly with each
+other and with the static partition (NMI 0.52 and 0.34), and P1 gives almost the same
+values (0.42 and 0.32). The snapshots are sparse (326 of 1{,}899 users active per week on
+average), and during the busy first two months two runs of the same algorithm agree only
+at NMI $\approx 0.65$--$0.7$. Where real and null differ, real snapshots are \emph{more}
+similar to their predecessor than random ones, which points to persistent conversation
+groups rather than reorganisation. The same contrast appears at the level of ties
+(\cref{sec:r-activity}): the mean Jaccard overlap of consecutive edge sets is lower than
+under P1 in PS (0.22 vs.\ 0.37, 1-h windows) but higher in CM (0.096 vs.\ 0.069, 7-day
+windows).
+
+One property of P1 matters for reading these numbers. Permuting timestamps spreads every
+node's events over the whole observation period, so a P1 window contains almost all nodes
+(240 vs.\ 175 active nodes per 15-min PS window) and resembles a sample of the static
+graph. Part of the gap between real and P1 agreement with the static partition therefore
+reflects \emph{who is active when}, not only \emph{who meets whom}. The lunch-time drop
+in class NMI is not affected by this, since it compares real snapshots with external
+labels.
+
+\Cref{fig:m4-sens} repeats the comparison for three window widths and three resolutions.
+In PS, real snapshots agree less with the static partition than P1 in all nine settings
+(difference $-0.03$ to $-0.23$). In CM the difference stays within $\pm0.06$, and within
+$\pm0.025$ except for 30\,days with $\gamma=0.5$. The comparison with the previous window
+is not robust in PS: at 15 and 60\,min real snapshots change more than P1 ones, but at
+5\,min the order flips, because a 5-min P1 snapshot is a small random sample of the static
+graph and is itself noisy. Larger $\gamma$ gives more, smaller communities without changing
+any of these signs.
+
+\paragraph{Verdict on H5.}
+\emph{Supported for face-to-face contacts, not supported for online messages.} In PS the
+static partition recovers the classes but hides the daily mixing at lunch, which P1 does
+not reproduce. In CM the static partition summarises weekly snapshots as well as it
+summarises time-shuffled ones, and snapshots are, if anything, more persistent than random.
+

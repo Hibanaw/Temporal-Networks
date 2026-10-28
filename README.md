@@ -3,9 +3,11 @@
 **How Much Does Time Matter?** A comparative study of aggregation, temporal patterns,
 structural evolution, and dynamics in real-world temporal networks.
 
-This repository follows [PLAN.md](PLAN.md), version 3.1. The completed implementation
-is member **B's five citation-network experiments**. PS (primary-school contacts)
-and CM (CollegeMsg) work remains pending; report placeholders are not measurements.
+This repository follows [PLAN.md](PLAN.md), version 3.1. The completed implementations
+are member **B's five citation-network experiments** and member **E's community (M4)
+and centrality-ranking (M3b) experiments** on PS and CM. Other PS (primary-school
+contacts) and CM (CollegeMsg) work remains pending; report placeholders are not
+measurements.
 
 ## Project layout
 
@@ -19,6 +21,12 @@ and CM (CollegeMsg) work remains pending; report placeholders are not measuremen
 | `results/b_summary.csv` | Shared `dataset,metric,value,null_mean,null_std` interface |
 | `results/b/` | Measured metric tables, fitted parameters, robustness, and provenance |
 | `figures/` | Reproducible measured PDF/PNG plots |
+| `src/community.py` | E: snapshots, Leiden and multislice partitions, NMI on shared nodes |
+| `src/temporal_paths_placeholder.py` | E: all-source earliest arrival (D's convention) and temporal closeness |
+| `src/nullmodels.py` | C: P1 timestamp shuffle and P2 edge randomisation, as delivered by C |
+| `src/e_datasets.py` | E: PS/CM loading and per-dataset settings, until A's `io.py` exists |
+| `tests/test_e_*.py` | E: 17 hand-built known-answer tests (communities, paths, P1) |
+| `results/e_summary.csv`, `results/e/` | E: shared summary rows and per-window / per-node tables |
 | `report/` | Self-contained LaTeX sources and compiled reports; snapshot from Overleaf |
 | `notes/` | Experimental design, source notes, historical execution record |
 
@@ -36,8 +44,30 @@ HPC execution used Python 3.9. Exact installed packages are recorded in
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r requirements-b.txt
-python -m unittest discover -s tests -v
+python -m unittest discover -s tests -p "test_b*.py" -v
 ```
+
+Member E's code needs Python 3.12 and its own environment (`requirements-e.txt`
+pins newer numpy and pandas than B's):
+
+```sh
+python3.12 -m venv .venv-e
+. .venv-e/bin/activate
+python -m pip install -r requirements-e.txt
+python -m unittest discover -s tests -p "test_e_*.py" -v
+```
+
+## Reproduce E's experiments
+
+```sh
+python scripts/download_e.py   # PS and CM raw files into data/raw/
+python scripts/run_e.py        # M3b and 18 M4 settings, about 45 min, then the figures
+python scripts/plot_e.py       # figures only, from the committed tables
+```
+
+`scripts/m4_communities.py` and `scripts/m3b_closeness.py` run single settings
+(`--dataset PS|CM --width 15min --gamma 1`). Null samples use C's P1 with 20
+seeds; Leiden uses seed 0.
 
 ## Reproduce B's experiments
 

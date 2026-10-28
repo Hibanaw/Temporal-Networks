@@ -1,0 +1,21 @@
+% Owner: E. M4 (H5), input from methods.tex.
+\textbf{M4} cuts the event sequence into consecutive windows of width $\Delta t$ and
+aggregates each into a weighted undirected snapshot (weight = number of events). Windows
+with very few events are dropped (fewer than 100 for PS, which removes nights; fewer
+than 50 for CM), and only nodes active in a window belong to its snapshot. The main
+settings are $\Delta t=15$\,min for PS and 7\,days for CM. Every snapshot and the
+static aggregate are partitioned with Leiden \citep{traag2019louvain} maximising
+modularity with resolution $\gamma$ \citep{reichardt2006statistical}. A multislice
+partition \citep{mucha2010community} with interslice coupling $\omega=1$ gives labels
+that are consistent across windows; we use it only for tracking, because the coupling
+itself pulls consecutive partitions together.
+
+Partitions are compared with NMI \citep{danon2005comparing}, always on the nodes the two
+partitions share. For each window we record the NMI with the previous window (only for
+back-to-back windows, not across a night), with the static partition, and for PS with
+the classes (teachers excluded). As a noise floor, every window is partitioned a second
+time with another random seed. All measures are recomputed on 20 P1 samples: P1 keeps
+the static graph, and hence the static partition, and the number of events per window,
+so H5 predicts that real snapshots agree less with each other and with the static
+partition than P1 snapshots do. We repeat the analysis for $\gamma\in\{0.5,1,2\}$ and
+$\Delta t\in\{5,15,60\}$\,min (PS) or $\{1,7,30\}$\,days (CM).
