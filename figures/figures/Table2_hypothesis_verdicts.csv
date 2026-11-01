@@ -1,5 +1,0 @@
-dataset,hypothesis,interpretation
-PS,H6a,Real arrival delay exceeds both null means; reachability is lower than both null means
-PS,H7,Real peak time is later and final size smaller than both null means
-CM,H6a,Real arrival delay exceeds both null means; reachability is lower than both null means
-CM,H7,Inconclusive: identical final size and peak time in Real/P1/P2; inspect simulation setup
