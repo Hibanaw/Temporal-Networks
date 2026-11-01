@@ -99,11 +99,13 @@ def summarise(m3a, m3c, name):
         major = part["final_size"] >= OUTBREAK
         part = part.assign(major=major.astype(float))
         # peak and half-time are averaged over major outbreaks only (NaN if none occurred)
-        per_net = part.groupby(["mode", "iteration"]).apply(
-            lambda g: pd.Series(dict(
-                size=g["final_size"].mean(), p_major=g["major"].mean(),
-                peak=g.loc[g["major"] == 1, "peak_time"].mean(),
-                half=g.loc[g["major"] == 1, "half_time"].mean())), include_groups=False).reset_index()
+        rows_net = []
+        for (mode, it), g in part.groupby(["mode", "iteration"]):
+            m = g[g["major"] == 1]
+            rows_net.append(dict(mode=mode, iteration=it, size=g["final_size"].mean(),
+                                 p_major=g["major"].mean(), peak=m["peak_time"].mean(),
+                                 half=m["half_time"].mean()))
+        per_net = pd.DataFrame(rows_net)
         for col, metric in (("size", "final_size"), ("p_major", "p_major"), ("peak", "peak_time_s"),
                             ("half", "half_time_s")):
             add(f"m3c_{setting}_{metric}", float(per_net[per_net["mode"] == "Real"][col].iloc[0]),
