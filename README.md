@@ -27,7 +27,7 @@ Supplementary runs use CBIS PBS; the manuscript is maintained separately in
 | `src/e_datasets.py` | E: PS/CM loading and per-dataset settings, until A's `io.py` exists |
 | `tests/test_e_*.py` | E: 17 hand-built known-answer tests (communities, paths, P1) |
 | `results/e_summary.csv`, `results/e/` | E: shared summary rows and per-window / per-node tables |
-| `report/` | Self-contained LaTeX sources and compiled reports; snapshot from Overleaf |
+| `report/` | Git submodule of `Hibanaw/Temporal-Networks-Report`, pinned to a reconciled main commit |
 | `notes/` | Experimental design, source notes, historical execution record |
 
 See [B_RESULTS.md](B_RESULTS.md) for findings and [docs/B_DELIVERY.md](docs/B_DELIVERY.md)
@@ -107,6 +107,36 @@ On a cluster, execute the workflow on an allocated compute node through its
 scheduler. Scheduler/HPC scripts are intentionally excluded from this repository.
 The saved job records describe the historical run, not a deployment interface.
 
+## Report repository and cloning
+
+`report/` is a Git submodule of
+[Temporal-Networks-Report](https://github.com/Hibanaw/Temporal-Networks-Report),
+with `main` configured as its update branch. The parent commit pins a specific
+report revision. The former report copy was reconciled before replacement;
+see [the merge audit](report/MERGE_AUDIT.md).
+
+For a fresh checkout:
+
+```sh
+git clone --recurse-submodules https://github.com/Hibanaw/Temporal-Networks.git
+```
+
+For an existing checkout:
+
+```sh
+git submodule update --init --recursive
+```
+
+Commit and push report edits inside `report/` first. Then commit and push the
+updated `report` pointer in this repository. To incorporate newer report `main`
+commits while preserving local committed work:
+
+```sh
+git submodule update --remote --merge report
+git add report
+git commit -m "Update report revision"
+```
+
 ## Rebuild figures or report from saved results
 
 Most plots use the committed tables. `b_activity` additionally requires the processed
@@ -158,7 +188,7 @@ are retained in `results/robustness/`. Run the commands in
 - `scripts/make_summary_table.py`: one primary H1--H7 effect per applicable dataset.
 - `scripts/summarize_robustness.py`: all checks with explicit coverage and limitations.
 - `scripts/plot_supplement.py`: figures from saved results.
-- `scripts/sync_report_results.py --report ../Temporal-Networks-Report`: measured sections.
+- `scripts/sync_report_results.py`: measured sections into the `report/` submodule.
 
 `src/io.py` is imported as `src.io` to avoid Python's built-in `io`; legacy D/E
 imports through `e_datasets` use this same reader. Cleaned CSVs remain untracked;

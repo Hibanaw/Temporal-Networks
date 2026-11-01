@@ -1,6 +1,7 @@
 """Generate measured A/C/D result sections and cross table into a report checkout.
 
-Usage: python scripts/sync_report_results.py --report ../Temporal-Networks-Report
+Usage: python scripts/sync_report_results.py  # initialized report/ Git submodule
+Optional: --report ../Temporal-Networks-Report for a separate report checkout.
 E's delivered result/method sections and figures are copied without re-running M4.
 """
 import argparse

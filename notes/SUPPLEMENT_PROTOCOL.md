@@ -1,7 +1,7 @@
 # Supplement protocol
 
 Canonical source: this repository, branch `supplement-experiments`.
-Manuscript: separate GitHub repository `Hibanaw/Temporal-Networks-Report`.
+Manuscript: GitHub repository `Hibanaw/Temporal-Networks-Report`, mounted as the `report/` Git submodule.
 The abandoned Overleaf checkout is not the manuscript delivery target.
 
 ## Execution
@@ -56,8 +56,17 @@ spread of real/null ratios, not seed uncertainty or a confidence interval.
 7. `python scripts/run_e_robustness.py`; `python scripts/run_b_robustness.py`.
 8. `python scripts/make_summary_table.py`; `python scripts/summarize_robustness.py`.
 9. `python scripts/plot_supplement.py` and
-   `python scripts/sync_report_results.py --report ../Temporal-Networks-Report`.
+   `python scripts/sync_report_results.py` (writes the initialized `report/` submodule).
 
 PBS deployment scripts remain local under `hpc/`, following the repository's
 pre-existing exclusion rule. Checkpoints/raw data are not committed. Per-network
 CSV outputs and source/environment hashes form the reproducible delivery.
+
+## Report consolidation
+
+The code copy was reconciled with the report repository before conversion to a
+submodule. Its bibliography and E contributions were already included; stale
+placeholders and older B/D wording were not restored. The report repository's
+`MERGE_AUDIT.md` records this comparison. Commit and push report edits first,
+then commit the updated parent gitlink. Initialize with
+`git submodule update --init --recursive` before generating or building reports.
