@@ -18,15 +18,17 @@ def save(fig,name):
 
 def main():
     OUT.mkdir(exist_ok=True)
-    fig,axs=plt.subplots(2,3,figsize=(10,5))
+    fig,axs=plt.subplots(2,5,figsize=(10,4.4))
     keys=['density','mean_total_degree','clustering','components','lcc_fraction']
-    for name,c in zip(['PS','CM'],COLORS):
+    for name,c,axes in zip(['PS','CM'],COLORS,axs):
         m=pd.read_csv(ROOT/f'results/ac/m1_{name}_full_means.csv')
         static=pd.read_csv(ROOT/f'results/ac/m1_{name}_full_static.csv').iloc[0] if (ROOT/f'results/ac/m1_{name}_full_static.csv').exists() else None
-        for ax,key in zip(axs.flat,keys):
-            ax.plot(m.width_s/3600,m[key],'-o',label=name,color=c,ms=3);ax.set_xscale('log');ax.set_title(key.replace('_',' '));ax.set_xlabel('Window (hours)')
-            if static is not None: ax.axhline(static[key],color=c,ls='--',lw=.7,alpha=.6)
-    axs.flat[-1].axis('off');axs.flat[0].legend();save(fig,'ac_m1_windows')
+        for ax,key in zip(axes,keys):
+            ax.plot(m.width_s/3600,m[key],'-o',color=c,ms=3)
+            ax.set_xscale('log');ax.set_title(key.replace('_',' '));ax.set_xlabel('Window (hours)')
+            if static is not None:ax.axhline(static[key],color=c,ls='--',lw=.8,alpha=.65)
+        axes[0].set_ylabel(name)
+    save(fig,'ac_m1_windows')
     d=pd.read_csv(ROOT/'results/d_summary.csv')
     def row(ds,key):return d[(d.dataset==ds)&(d.metric==key)].iloc[0]
     fig,axs=plt.subplots(1,2,figsize=(7,2.8))

@@ -6,7 +6,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'src'))
 from aggregate import windows, graph_metrics
 from stats import activity, persistence
-from nullmodels import edge_shuffle
+from nullmodels import edge_shuffle, timestamp_shuffle
 from collections import Counter
 
 
@@ -34,6 +34,16 @@ class ACTests(unittest.TestCase):
         self.assertEqual([len(g) for _,g in snaps],[1,0,1])
         self.assertAlmostEqual(graph_metrics(snaps[0][1],[1,2,3])['density'],1/3)
         self.assertEqual(graph_metrics(snaps[1][1],[1,2,3])['components'],3)
+
+    def test_p1_coincident_events_keep_message_counts(self):
+        e=ev([(1,2,1),(1,2,2),(2,3,1),(2,3,2)])
+        found=False
+        for seed in range(20):
+            nul=timestamp_shuffle(e,seed)
+            found=found or nul.duplicated().any()
+            result,_=persistence(nul,1,True)
+            self.assertEqual(result['repeated_event_fraction'],.5)
+        self.assertTrue(found)
 
     def test_directed_metrics(self):
         m=graph_metrics(ev([(1,2,0),(2,3,1),(1,3,2)]),[1,2,3],True)

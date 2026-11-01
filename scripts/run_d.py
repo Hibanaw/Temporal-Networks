@@ -131,6 +131,12 @@ def summarise(m3a, m3c, name):
 ARGS = None
 
 
+def init_worker(args, out):
+    """Support spawn-based pools as well as CBIS fork-based pools."""
+    global ARGS, OUT
+    ARGS, OUT = args, out
+
+
 def main():
     global ARGS, OUT
     p = argparse.ArgumentParser()
@@ -150,8 +156,7 @@ def main():
     summaries = []
     for name in ARGS.datasets:
         tasks = [(name, "Real", 0)] + [(name, m, i) for m in ("P1", "P2") for i in range(ARGS.nulls)]
-        # a fork-based pool inherits ARGS; heavy tasks first
-        with Pool(ARGS.workers) as pool:
+        with Pool(ARGS.workers, initializer=init_worker, initargs=(ARGS, OUT)) as pool:
             results = pool.map(work, tasks, chunksize=1)
         m3a = pd.DataFrame(list(itertools.chain.from_iterable(r[0] for r in results)))
         m3c = pd.DataFrame(list(itertools.chain.from_iterable(r[1] for r in results)))

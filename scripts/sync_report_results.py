@@ -18,7 +18,7 @@ def main():
     def r(o,ds,key):
         g=tables[o];return g[(g.dataset==ds)&(g.metric==key)].iloc[0]
     def f(x):return '--' if not np.isfinite(x) else f'{x:.3f}'
-    def pm(row):return '$'+f(row.null_mean)+r'\pm'+f(row.null_std)+'$'
+    def pm(row):return '$'+f'{row.null_mean:.4f}'+r'\pm'+f'{row.null_std:.4f}'+'$'
     def write(name,text): (sec/name).write_text(text.strip()+'\n')
     def figure(name,caption,label,wide=False):
         env='figure*' if wide else 'figure'
@@ -52,7 +52,7 @@ their mean across grid widths.
 \\caption{Measured relative ranges over the stated grids. These are descriptive
 sensitivity measures, not temporal-null significance tests.}\\label{tab:a-windows}
 \\end{table}
-'''+figure('ac_m1_windows','Structural metrics averaged over windows; dashed lines show full aggregates. The denominator includes inactive nodes.','fig:agg-window',True)+'''
+'''+figure('ac_m1_windows','Structural metrics averaged over windows (PS top, CM bottom; separate scales). Dashed lines show full aggregates. The denominator includes inactive nodes.','fig:agg-window',True)+'''
 \\input{sections/results_b_aggregation}
 \\paragraph{Verdict on H1.}
 Supported as a representation effect in all three datasets. Numerical sensitivity
@@ -65,7 +65,10 @@ these values alone do not establish a universal ranking of network types.
 Inter-event intervals are pooled within dyads. In PS, contiguous 20-second contacts
 are merged into episode onsets before burstiness, memory and repeated-tie analysis.
 Memory pools adjacent interval pairs within each tie, without joining different ties.
-Lifetimes and Jaccard use the original cleaned records. P1 uses seeds 0--19.
+Lifetimes and Jaccard use the original cleaned records. P1 uses seeds 0--19;
+coincident events produced by timestamp shuffling are retained to preserve message
+counts. Canonical input ordering fixes each seeded realization; null values below
+are recomputed rather than copied from earlier rounded report tables.
 \\begin{table}[t]\\centering\\small
 \\begin{tabular*}{\\columnwidth}{@{\\extracolsep{\\fill}}llrr@{}}
 \\toprule Network & Metric & Real & P1 mean $\\pm$ SD \\\\
@@ -165,7 +168,7 @@ unsuitable short duration; it is not evidence for an intrinsic property of CM.
 H6's reachability component is supported under the multi-start protocol in both datasets;
 rankings show a partial effect, with correlated rankings but different top nodes.
 H7 is conditional on parameters and the reference model. PS peaks later under its
-primary setting; CM peaks earlier than P1 across the four tested settings and is close
+primary setting; CM peaks earlier than P1 across the four tested full-period settings and is close
 to P2. The claim that slowing is strongest in CM is therefore not supported.
 Peak timing among major outbreaks does not by itself measure population-wide epidemic speed.
 ''')
@@ -244,6 +247,14 @@ robustness tables retain individual networks and elapsed-time half-window result
 The 60-null run nests the first 20; H7 ratios condition on major outbreaks. A and E real
 values do not depend on null count, while H2 differences and H7 ratios do.}\label{tab:robust-halves}
 \end{table*}
+Primary H7 ratios remain on the same side of one under the 20/60 comparison:
+PS changes from 1.160 to 1.161 and CM from 0.888 to 0.884. Both primary half-period
+ratios preserve those directions. This does not hold uniformly over parameter settings:
+at PS $\beta=.02$, $D=4$ h the full-period ratio moves from 1.0005 (20 nulls) to
+0.9992 (60 nulls), so no directional slowing claim is supported there. PS's one-hour
+setting peaks earlier than P1 in the first half (ratio 0.874) despite a full-period
+ratio above one. In CM's second half, two settings produce no major real outbreaks
+and their conditional peak ratios are undefined; these are not treated as zero.
 Individual realizations, sample SDs and 20/60 changes are retained in the supplementary
 CSV files. Splitting changes node populations and the time available for paths and
 outbreaks, so agreement of signs is more informative than equality of raw effect sizes.

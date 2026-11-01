@@ -31,7 +31,11 @@ constitute a universal ranking of network types.
 C reconstructs the delivered report definitions: dyad-pooled gaps, PS contiguous
 20-second records collapsed for B/M and repetition, uncollapsed records for
 lifetime and Jaccard, memory pairs within dyads, null seeds 0--19 (and 0--59).
-Real B/M and default Jaccard agree with the historical report. PS lifetime is
+Observed B/M, episode repetition and default Jaccard agree with the historical
+report. Canonical event ordering can change individual seeded null realizations;
+new null means and SDs are regenerated rather than copied from rounded report values.
+Coincident events produced by P1 remain present (raw duplicates are removed only
+at ingestion). PS lifetime is
 recomputed on canonical undirected pairs; the historical value is not copied.
 
 H7 is a ratio of mean peak delays conditional on >=5% outbreaks in each network.

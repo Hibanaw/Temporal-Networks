@@ -41,6 +41,6 @@ def main():
             rows.append(row)
     out=pd.DataFrame(rows); out.to_csv(ROOT/'results/cross_network_summary.csv',index=False)
     display=out.pivot(index='hypothesis',columns='dataset',values='effect').reindex(columns=['PS','CM','CIT'])
-    (ROOT/'results/cross_network_summary.md').write_text(display.to_markdown()+'\n\nH2 = real minus P1; H7 = ratio conditional on major outbreaks.\n')
+    (ROOT/'results/cross_network_summary.md').write_text(display.fillna('--').to_markdown()+'\n\nH2 = real minus P1; H7 = ratio conditional on major outbreaks.\n')
     print(out.to_string(index=False))
 if __name__=='__main__': main()

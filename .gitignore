@@ -29,3 +29,12 @@ report/report_sources.zip
 *.synctex.gz
 *.bbl
 *.blg
+
+# Rebuildable per-task checkpoints; per-network CSV result tables remain tracked.
+results/d/checkpoints*/
+results/d/*/checkpoints*/
+results/robustness/e/PS_*.csv
+results/robustness/e/CM_*.csv
+results/robustness/b/full_*.csv
+results/robustness/b/first_*.csv
+results/robustness/b/second_*.csv
