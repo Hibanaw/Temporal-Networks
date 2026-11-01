@@ -200,10 +200,11 @@ memory. H3 and H5 depend on network type and window. H6 shows loss of reachable 
 with partial ranking disagreement. H7 slowing is supported in primary PS, but not CM.
 The window grids, node universes, edge semantics and conditioning must accompany these values.
 '''
-    text=text.replace(r'\begin{table}[t]\centering\small',
-                      r'\begin{center}\begin{minipage}{\columnwidth}\centering\small')
+    text=text.replace(r'\begin{table}[t]\centering\small', r'\begin{center}\small')
+    text=text.replace(r'{\columnwidth}{@{\extracolsep{\fill}}llrrr@{}}', r'{\textwidth}{@{\extracolsep{\fill}}llrrr@{}}')
     text=text.replace(r'\caption{Measured H1', r'\captionof{table}{Measured H1')
-    text=text.replace(r'\label{tab:cross}\end{table}', r'\label{tab:cross}\end{minipage}\end{center}')
+    text=text.replace(r'\label{tab:cross}\end{table}', r'\label{tab:cross}\end{center}')
+    text=r'\twocolumn[\begin{@twocolumnfalse}'+"\n"+text+r'\end{@twocolumnfalse}]'+"\n"
     write('results_cross.tex',text)
     # Results preamble is evidence-based, preserving B's diagnostics and section order.
     write('results.tex',r'''
@@ -217,7 +218,6 @@ robustness tables retain individual networks and elapsed-time half-window result
 \input{sections/results_function}
 \input{sections/results_b_diagnostics}
 \input{sections/results_robustness}
-\clearpage
 \input{sections/results_cross}
 ''')
     checks=ROOT/'results/robustness/all_checks.csv'
