@@ -1,6 +1,6 @@
 # Supplement protocol
 
-Canonical source: this repository, branch `supplement-experiments`.
+Canonical source: this repository, branch `main` (supplement initially developed on `supplement-experiments`).
 Manuscript: GitHub repository `Hibanaw/Temporal-Networks-Report`, mounted as the `report/` Git submodule.
 The abandoned Overleaf checkout is not the manuscript delivery target.
 
@@ -70,3 +70,32 @@ placeholders and older B/D wording were not restored. The report repository's
 `MERGE_AUDIT.md` records this comparison. Commit and push report edits first,
 then commit the updated parent gitlink. Initialize with
 `git submodule update --init --recursive` before generating or building reports.
+
+## Review corrections to effect semantics and verdicts
+
+Every finite `cross_network_summary.csv` effect equals `value - null_mean`.
+H1 has no null, so effect is undefined and its value is descriptive only; different
+grids and definitions prevent cross-dataset ranking. Density and total-degree
+sensitivity are redundant. H4 uses the PA-alpha contrast against P3a; the actual
+alpha remains in value. H6 retains both P1/P2 contrasts. H7 now stores actual
+peak delays and their difference in seconds, with both null ratios in the separate
+`ratio` field. This is a schema change from the earlier ratio-valued H7 row.
+Missing/undefined values must not be interpreted as zero. Different hypotheses
+still have different metrics and do not share an overall sensitivity scale.
+
+CM H3 reverses from +0.027 full-period Jaccard excess to -0.039/-0.022 in the
+halves. PS H2 has small absolute full-period excess (+0.016), versus +0.116/+0.120
+in its halves; small absolute effect is distinct from null uncertainty. Both
+verdicts depend on the observation interval. Inter-day inactivity and P1's
+redistribution over the selected interval are plausible mechanisms, not isolated
+causal attributions from these summaries.
+
+P1-invariant raw repeated-event fractions, and CM repeated-tie fraction, provide
+no temporal-null evidence. Conditional PS peak slowing depends on beta/duration;
+CM does not support a general slowdown across nulls and timing metrics. At beta=.5,
+CM's peak ratio to P1 is 0.924 but its half-final-size ratio is 1.061. The half-size
+threshold is trajectory-specific, not a common infected-count target. Two weaker
+CM second-half settings have no major real outbreaks; the primary setting remains
+defined with probability 0.360. Changed seed selection/horizons limit interpretation
+of PS full/half final-size differences. WSB cohort checks are not observation-half
+validation; SIR parameter grids are dataset-specific by design.

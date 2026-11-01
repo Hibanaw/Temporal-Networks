@@ -185,7 +185,7 @@ are retained in `results/robustness/`. Run the commands in
 - `scripts/run_d.py`: M3a/M3c, checkpointed per network; four settings, 200 event-start seeds.
 - `scripts/run_e_robustness.py`: primary M4/M3b halves and 20/60 P1; retains existing resolution grid.
 - `scripts/run_b_robustness.py`: PA, age and diameter, halves and nested 20/60 P3.
-- `scripts/make_summary_table.py`: one primary H1--H7 effect per applicable dataset.
+- `scripts/make_summary_table.py`: primary H1--H7 summaries; explicit null references and separately labelled H7 ratios.
 - `scripts/summarize_robustness.py`: all checks with explicit coverage and limitations.
 - `scripts/plot_supplement.py`: figures from saved results.
 - `scripts/sync_report_results.py`: measured sections into the `report/` submodule.
@@ -193,3 +193,10 @@ are retained in `results/robustness/`. Run the commands in
 `src/io.py` is imported as `src.io` to avoid Python's built-in `io`; legacy D/E
 imports through `e_datasets` use this same reader. Cleaned CSVs remain untracked;
 metadata and source checksums are committed.
+
+The reviewed cross-network CSV uses `(hypothesis, dataset, reference)` as its key.
+Every finite `effect` is `value - null_mean` in the underlying metric's units.
+H1 has no null (`effect` is undefined); use its descriptive `value` without ranking
+different grids. H7 now stores peak delays in seconds and exposes both P1/P2
+comparisons in `ratio`; the old ratio-valued H7 row is superseded. See
+[the review record](notes/RESULTS_REVIEW_CORRECTIONS.md) for interval-sensitive verdicts.

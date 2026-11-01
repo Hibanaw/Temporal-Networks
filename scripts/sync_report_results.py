@@ -58,7 +58,11 @@ sensitivity measures, not temporal-null significance tests.}\\label{tab:a-window
 \\paragraph{Verdict on H1.}
 Supported as a representation effect in all three datasets. Numerical sensitivity
 depends on the width grid, alignment, inclusion of inactive nodes and observation span;
-these values alone do not establish a universal ranking of network types.
+these values alone do not establish a ranking of network types. Density and mean
+total degree are proportional under the fixed node denominator, so their identical
+sensitivity values are one representation effect, not two independent findings.
+PS clustering sensitivity changes from 1.628 in the full interval to 0.921 and
+0.959 in the halves, demonstrating observation-interval dependence.
 '''
     write('results_aggregation.tex',a)
     c='''\\subsection{Activity patterns}\\label{sec:r-activity}
@@ -80,7 +84,7 @@ are recomputed rather than copied from earlier rounded report tables.
             row=r('c',ds,'m2_'+key);c+=ds+' & '+label+' & '+f(row.value)+' & '+pm(row)+r' \\'+'\n'
     c+='''\\bottomrule\\end{tabular*}
 \\caption{Measured activity and persistence. Jaccard uses 1-hour PS and 7-day CM windows,
-including empty windows when their union is nonempty.}\\label{tab:burst}
+including empty windows when their union is nonempty. The CM repeated-tie row is descriptive only: it is P1-invariant.}\\label{tab:burst}
 \\end{table}
 '''+figure('c_activity_reproduced','Pooled burstiness and memory relative to 20 P1 samples.','fig:activity-reproduced')
     for ds in ['PS','CM']:
@@ -88,9 +92,29 @@ including empty windows when their union is nonempty.}\\label{tab:burst}
         c+=f"In {ds}, $\\Delta B={b.value-b.null_mean:+.4f}$ and $\\Delta M={m.value-m.null_mean:+.4f}$. "
         c+=f"Mean tie lifetime is {life.value/86400:.3f} days, versus {life.null_mean/86400:.3f} days under P1.\n"
     c+='''\\paragraph{Verdict on H2 and H3.}
-Burstiness exceeds P1 in both datasets, while pooled positive memory is weaker than P1.
-Thus H2 has a mixed verdict. H3 depends on the statistic: real ties are temporally
-concentrated, and adjacent overlap is below P1 in PS but above it in CM at the primary widths.
+For PS, H2's excess burstiness is small in absolute terms over the full interval:
+$B=0.535$ versus P1 0.518 ($\\Delta B=0.016$), despite being separated from the
+small null dispersion. It grows to 0.116 and 0.120 in the two day-length halves
+(real/null 0.404/0.288 and 0.395/0.275). The magnitude is therefore interval-dependent;
+inter-day inactivity is a plausible contributor, not a separately identified cause.
+CM has a larger excess; positive pooled memory remains weaker than P1 in both datasets.
+H2 has a mixed, interval-dependent verdict rather than uniform strong support.
+
+CM's H3 overlap contrast reverses with the observation interval: full-period
+Jaccard is 0.096 versus P1 0.069 ($+0.027$), but first-half 0.074 versus 0.113
+($-0.039$) and second-half 0.118 versus 0.140 ($-0.022$).
+\\emph{CM persistence is observation-interval-dependent.} The full-period result
+does not support an interval-independent claim of more persistent real ties.
+P1 redistributes timestamps across each selected interval; changes in duration,
+activity and window composition alter the null baseline. This explanation is
+consistent with the comparisons but is not isolated causally by them.
+
+\\paragraph{P1 invariants are descriptive only.}
+The raw-record repeated-event fraction in both datasets and CM's repeated-tie
+fraction are invariant under P1 by construction. Their near-zero null SDs are
+floating-point effects, not strong evidence for H3; they are not used as null-test
+evidence. PS's episode-based repeated-tie fraction can change because P1 breaks
+contiguous contact episodes.
 The PS lifetime is recomputed over canonical undirected dyads; the earlier report's
 lifetime value is superseded by this shared-interface calculation. Pooling across
 heterogeneous ties and short observation windows limit generalization.
@@ -120,8 +144,12 @@ Individual starts and null SDs are retained in the result tables.}\\label{tab:d-
     d1+='''\\paragraph{Interpretation.}
 Both networks lose reachable pairs when observation starts at different times.
 The reduction is stronger in CM, where direction and late starts restrict causal paths.
-P1 preserves the static graph; the real--P1 difference isolates timing conditional on
-that graph. P2 also changes topology and cannot isolate timing alone.
+P1 preserves the static graph, but $R$ also depends on how much observation time
+remains after each start; later starts have shorter horizons. P1's almost unit PS
+reachability reflects contacts spread across the timetable. Thus $R$ is not a pure
+topological effect or an observation-boundary-free timing measure. The real--P1
+contrast compares timing under this same finite-horizon protocol. P2 also changes
+topology and cannot isolate timing alone.
 '''
     write('D1.tex',d1)
     d2='''% Owner: D. Event-started SIR; supersedes the observation-start experiment.
@@ -158,6 +186,30 @@ to major outbreaks and can differ between real and null networks.}\\label{tab:d-
     d2+='''The revised design produces nontrivial CM outbreaks. Absence of secondary infections
 in the earlier run arose from infecting seeds at the observation boundary with an
 unsuitable short duration; it is not evidence for an intrinsic property of CM.
+
+\\paragraph{Parameter, null and outcome dependence.}
+For PS versus P1, the peak ratio is 1.0005 at $\\beta=.02$ (negligible peak difference),
+1.160 at .05 and 1.311 at .10 for a four-hour infectious duration. Final size is
+lower than both null families in all four tested settings; at the primary setting
+it is 0.629 versus P1 0.776. The qualifying populations also differ: major outbreaks
+occur for 0.860 of real seeds versus a mean 0.908 under P1. Conditional peak comparisons
+therefore use different seed subsets and are not paired-seed causal slowdowns.
+
+CM peaks earlier than P1 across the full-period settings (ratios 0.72--0.94),
+whereas P2 peak ratios are approximately 0.98--1.01. Even the choice of timing
+metric matters: at $\\beta=.5$, 14 days, the peak ratio to P1 is 0.924 but the
+half-final-size time ratio is 1.061. The latter is time to half of each trajectory's
+own final infected count, not time to a common epidemic size. These opposing signs
+exclude a general claim that the entire spreading process is faster or slower.
+In CM's second half, two weaker settings have no major real outbreaks (undefined
+peak ratios); the primary setting still has major-outbreak probability 0.360.
+
+PS's real mean final fraction is 0.629 over the full interval versus 0.821/0.788
+in the halves. Uniform sampling from the first 70\\% of each event stream changes
+seed identities, start positions and residual observation horizons when the interval
+is split. Finite horizons and schedule boundaries may contribute; these CSV comparisons
+alone do not identify their contribution separately. These are protocol sensitivities,
+not evidence that truncating the data intrinsically strengthens propagation.
 '''
     write('D2.tex',d2)
     write('results_function.tex',r'''
@@ -168,10 +220,16 @@ unsuitable short duration; it is not evidence for an intrinsic property of CM.
 \paragraph{Verdict on H6 and H7.}
 H6's reachability component is supported under the multi-start protocol in both datasets;
 rankings show a partial effect, with correlated rankings but different top nodes.
-H7 is conditional on parameters and the reference model. PS peaks later under its
-primary setting; CM peaks earlier than P1 across the four tested full-period settings and is close
-to P2. The claim that slowing is strongest in CM is therefore not supported.
-Peak timing among major outbreaks does not by itself measure population-wide epidemic speed.
+H7 receives conditional support in PS at its primary setting, with negligible
+peak effect at low transmission probability and a reversal for the one-hour setting
+in the first half. Lower final size is a separate result from delayed peak timing.
+CM does not support the hypothesized slowdown: full-period peak delays are shorter
+than P1, approximately unchanged against P2, and can disagree in sign with half-size
+timing. Against P2 the primary half-period ratios fall to 0.961/0.877, so even the
+near-null full-period comparison is observation-dependent.
+The verdict depends on the null, outcome metric, parameters and observation interval.
+All peak ratios condition on network-specific major-outbreak seed subsets; they do
+not establish a population-wide causal slowing effect. Undefined ratios are not zeros.
 ''')
     write('results_evolution.tex',r'''
 \subsection{Structural evolution}\label{sec:r-evolution}
@@ -187,23 +245,41 @@ differ, so the table does not define a single overall sensitivity score.
 \toprule ID & Measure & PS & CM & CIT \\
 \midrule
 '''
-    labels={'H1':'Density range/mean','H2':'$B-B_{P1}$','H3':'Adjacent Jaccard','H4':'PA $\\alpha$','H5':'Adjacent NMI','H6':'Reach ratio $R$','H7':'Peak ratio vs P1'}
-    for h,label in labels.items():
-        part=cross[cross.hypothesis==h].set_index('dataset')
-        text+=h+' & '+label+' & '+' & '.join(f(part.loc[ds,'effect']) for ds in ['PS','CM','CIT'])+r' \\'+'\n'
-    text+=r'''\bottomrule\end{tabular*}
-\caption{Measured H1--H7 primary effects; -- means inapplicable. H4 uses PA as its scalar
-representative; ageing, densification and predictive diagnostics retain separate verdicts.
-H5 uses 15-min PS/7-day CM windows; H7 uses the first parameter setting and major outbreaks.}
+    specifications=[
+        ('H1','none','Density sensitivity (descriptive)','value'),
+        ('H2','P1',r'$\Delta B$ vs P1','effect'),
+        ('H3','P1',r'$\Delta J$ vs P1','effect'),
+        ('H4','P3a',r'$\Delta\alpha$ vs P3a','effect'),
+        ('H5','P1',r'$\Delta$ adjacent NMI vs P1','effect'),
+        ('H6','P1',r'$\Delta R$ vs P1','effect'),
+        ('H6','P2',r'$\Delta R$ vs P2','effect'),
+        ('H7','P1',r'Peak ratio vs P1 (conditional)','ratio'),
+        ('H7','P2',r'Peak ratio vs P2 (conditional)','ratio')]
+    for h,reference,label,column in specifications:
+        part=cross[(cross.hypothesis==h)&(cross.reference==reference)].set_index('dataset')
+        text+=h+' & '+label+' & '+' & '.join(f(part.loc[ds,column]) for ds in ['PS','CM','CIT'])+r' \\'+'\n'
+    text+=r"""
+\bottomrule\end{tabular*}
+\caption{H1 is descriptive; H2--H6 are real minus the named null mean, in their
+respective metric units. H7 explicitly reports both primary-setting peak ratios,
+conditional on major outbreaks; its CSV effect column instead contains real minus
+null peak delay in seconds. -- denotes inapplicability, not a zero effect.
+H1 uses different grids/definitions (PS 5 min--1 day, CM 1 h--30 days, CIT trailing
+1/2/5/10-year windows); its three values cannot be ranked. Density and mean total
+degree sensitivities are algebraically redundant. H4 represents PA only; the other
+H4 verdicts remain separate. H5 uses 15-min PS/7-day CM windows.}
 \label{tab:cross}\end{table}
-H1 is supported as window dependence. H2 separates excess burstiness from weaker-than-null
-memory. H3 and H5 depend on network type and window. H6 shows loss of reachable pairs,
-with partial ranking disagreement. H7 slowing is supported in primary PS, but not CM.
-The window grids, node universes, edge semantics and conditioning must accompany these values.
-'''
+A common subtraction operator does not create a common substantive effect scale.
+H2's PS excess is small over the full interval and changes in the halves.
+CM's positive full-period H3 overlap contrast reverses in both halves; its verdict
+is observation-interval-dependent. H5 has dataset-specific structural evidence;
+H6 shows lower reachability than both nulls under the finite-horizon protocol.
+H7 has conditional primary-setting support in PS and no general slowdown support
+in CM; neither choice of null nor the conditioning on major outbreaks may be hidden.
+"""
     text=text.replace(r'\begin{table}[t]\centering\small', r'\begin{center}\small')
     text=text.replace(r'{\columnwidth}{@{\extracolsep{\fill}}llrrr@{}}', r'{\textwidth}{@{\extracolsep{\fill}}llrrr@{}}')
-    text=text.replace(r'\caption{Measured H1', r'\captionof{table}{Measured H1')
+    text=text.replace(r'\caption{H1', r'\captionof{table}{H1')
     text=text.replace(r'\label{tab:cross}\end{table}', r'\label{tab:cross}\end{center}')
     text=r'\twocolumn[\begin{@twocolumnfalse}'+"\n"+text+r'\end{@twocolumnfalse}]'+"\n"
     write('results_cross.tex',text)
@@ -231,11 +307,14 @@ robustness tables retain individual networks and elapsed-time half-window result
 \midrule
 """
         keys=[('A','PS','H1_window_sensitivity_density','H1 density'),('A','CM','H1_window_sensitivity_density','H1 density'),
-              ('C','PS','m2_burstiness','H2 $\\Delta B$'),('C','CM','m2_burstiness','H2 $\\Delta B$'),
+              ('A','PS','H1_window_sensitivity_clustering','H1 clustering'),
+              ('C','PS','m2_burstiness',r'H2 $\Delta B$'),('C','CM','m2_burstiness',r'H2 $\Delta B$'),
+              ('C','PS','m2_adjacent_jaccard',r'H3 $\Delta J$'),('C','CM','m2_adjacent_jaccard',r'H3 $\Delta J$'),
               ('D','PS','m3a_R_vsP1','H6 $R$'),('D','CM','m3a_R_vsP1','H6 $R$'),
-              ('D','PS','m3c_b0.05_D4h_peak_ratio_vsP1','H7 ratio'),('D','CM','m3c_b0.2_D336h_peak_ratio_vsP1','H7 ratio'),
+              ('D','PS','m3c_b0.05_D4h_peak_ratio_vsP1','H7 ratio P1'),('D','CM','m3c_b0.2_D336h_peak_ratio_vsP1','H7 ratio P1'),
+              ('D','PS','m3c_b0.05_D4h_peak_ratio_vsP2','H7 ratio P2'),('D','CM','m3c_b0.2_D336h_peak_ratio_vsP2','H7 ratio P2'),
               ('E','PS','m4_adj_nmi_mean','H5 NMI'),('E','CM','m4_adj_nmi_mean','H5 NMI'),
-              ('B','CIT','alpha__P3a','H4 $\\alpha$')]
+              ('B','CIT','alpha__P3a',r'H4 $\alpha$')]
         for owner,ds,key,label in keys:
             vals=[]
             for period,n in [('full',20),('first',20),('second',20),('full',60)]:
@@ -250,7 +329,7 @@ robustness tables retain individual networks and elapsed-time half-window result
         text+=r"""\bottomrule\end{tabular*}
 \caption{Elapsed-time halves for PS/CM and analysis-year halves for CIT. A uses no null.
 The 60-null run nests the first 20; H7 ratios condition on major outbreaks. A and E real
-values do not depend on null count, while H2 differences and H7 ratios do.}\label{tab:robust-halves}
+values do not depend on null count, while H2/H3 differences and H7 ratios do. H2/H3 are real minus P1; H5/H6 show observed NMI/$R$, and H7 shows conditional ratios.}\label{tab:robust-halves}
 \end{table}
 Primary H7 ratios remain on the same side of one under the 20/60 comparison:
 PS changes from 1.160 to 1.161 and CM from 0.888 to 0.884. Both primary half-period
@@ -260,6 +339,11 @@ at PS $\beta=.02$, $D=4$ h the full-period ratio moves from 1.0005 (20 nulls) to
 setting peaks earlier than P1 in the first half (ratio 0.874) despite a full-period
 ratio above one. In CM's second half, two settings produce no major real outbreaks
 and their conditional peak ratios are undefined; these are not treated as zero.
+The primary CM setting remains defined in that half (major-outbreak probability 0.360).
+CM's H3 contrast reverses from $+0.027$ in the full interval to $-0.039/-0.022$
+in the halves. PS's H2 excess grows from 0.016 to 0.116/0.120, while its clustering
+sensitivity drops from 1.628 to 0.921/0.959. These are substantive interval
+sensitivities even when increasing the null ensemble from 20 to 60 changes little.
 Individual realizations, sample SDs and 20/60 changes are retained in the supplementary
 CSV files. Splitting changes node populations and the time available for paths and
 outbreaks, so agreement of signs is more informative than equality of raw effect sizes.

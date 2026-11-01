@@ -1,0 +1,26 @@
+{
+  "revision_type": "derived summary and interpretation review; experiment measurements unchanged",
+  "base_code_commit": "aa4e48f222b9abfb02e041b102ba024f53518b67",
+  "effect_definition": "value_minus_null_mean",
+  "H1_effect": "undefined_no_null",
+  "H7": "actual peak delays and effect in seconds; P1/P2 ratios in separate ratio column",
+  "key": [
+    "hypothesis",
+    "dataset",
+    "reference"
+  ],
+  "tests_passed": 55,
+  "inputs_sha256": {
+    "results/a_summary.csv": "e5ddf9820d10ec29a19e202e3ef3c49493ad7bcd50afca6b948117432dae82f4",
+    "results/b_summary.csv": "7598f77cccfa9a9cbc93352000430afb0faf6c88e0bc5246adc5584916e9dc7e",
+    "results/c_summary.csv": "9ca8012c9c3d2af4ffb0cdcd14edde63b906c6e17ee47b5d131254af0f0f013d",
+    "results/d_summary.csv": "e66b3461803cf4a1370b84deb2faf67ed4504b9b79d3a934e17d3399dede40bb",
+    "results/e_summary.csv": "3e2b9fa2ba81590017493f34b4b8e022b2428a97ae63b239dcdc2f4e2754c94b",
+    "results/robustness/all_checks.csv": "5f77b101919ed7fde60aa3bb7602089b02d28ce98ebedab2bcfa50d87cf3a72a"
+  },
+  "sources_sha256": {
+    "scripts/make_summary_table.py": "a3693bfd40615952a08774280002834f76c422e504dd349ad8889421ecb0856e",
+    "scripts/sync_report_results.py": "611cc4dadd89eb8c5016b40e3077faf4180921a00f956db664b5691d7461d9e2",
+    "tests/test_summary_table.py": "1c04ec4671fb7671bda9c1286719a32a0df7e87b248150e97def100406813888"
+  }
+}
