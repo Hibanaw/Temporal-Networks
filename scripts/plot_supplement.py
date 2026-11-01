@@ -6,28 +6,42 @@ import numpy as np
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
+import sys
 import matplotlib.pyplot as plt
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'figures'
-plt.rcParams.update({'font.size':9,'axes.spines.top':False,'axes.spines.right':False,'pdf.fonttype':42})
-COLORS=['#2878a0','#e58a2b','#4b9560']
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+import figstyle
+figstyle.apply()
+COLORS=figstyle.SERIES
 
 
 def save(fig,name):
-    fig.tight_layout();fig.savefig(OUT/f'{name}.pdf',bbox_inches='tight');fig.savefig(OUT/f'{name}.png',dpi=170,bbox_inches='tight');plt.close(fig)
+    figstyle.save(fig,name,ROOT)
 
 
 def main():
     OUT.mkdir(exist_ok=True)
-    fig,axs=plt.subplots(2,5,figsize=(10,4.4))
-    keys=['density','mean_total_degree','clustering','components','lcc_fraction']
-    for name,c,axes in zip(['PS','CM'],COLORS,axs):
+    # H1: each metric divided by its mean over the window grid, so the vertical range of a
+    # curve equals the window sensitivity; CIT curves are averaged over end years 1990-2020.
+    fig,axs=figstyle.grid(None,1,3,figstyle.WIDTH,1.35)
+    axs=axs[0]
+    keys=[('density','density_directed','Density'),('clustering','clustering_weak','Clustering'),
+          ('lcc_fraction','lcc_fraction','LCC fraction')]
+    for ax,name in zip(axs[:2],['PS','CM']):
         m=pd.read_csv(ROOT/f'results/ac/m1_{name}_full_means.csv')
-        static=pd.read_csv(ROOT/f'results/ac/m1_{name}_full_static.csv').iloc[0] if (ROOT/f'results/ac/m1_{name}_full_static.csv').exists() else None
-        for ax,key in zip(axes,keys):
-            ax.plot(m.width_s/3600,m[key],'-o',color=c,ms=3)
-            ax.set_xscale('log');ax.set_title(key.replace('_',' '));ax.set_xlabel('Window (hours)')
-            if static is not None:ax.axhline(static[key],color=c,ls='--',lw=.8,alpha=.65)
-        axes[0].set_ylabel(name)
+        for (key,_,label),c in zip(keys,COLORS):
+            ax.plot(m.width_s/3600,m[key]/m[key].mean(),'-o',color=c,label=label)
+        ax.set(xscale='log',xlabel='Window width (h)',title=f'({"ab"[name=="CM"]}) {name}')
+    w=pd.read_csv(ROOT/'results/b/windows.csv')
+    for (_,key,label),c in zip(keys,COLORS):
+        rel=w.pivot(index='year',columns='window',values=key)
+        rel=rel.div(rel.mean(axis=1),axis=0).mean()
+        axs[2].plot(rel.index,rel.values,'-o',color=c,label=label)
+    axs[2].set(xscale='log',xlabel='Trailing window (yr)',title='(c) CIT',xticks=[1,2,5,10],xticklabels=['1','2','5','10'])
+    axs[0].set_ylabel('Value / grid mean')
+    for ax in axs:
+        ax.grid(axis='y');ax.minorticks_off()
+    axs[2].legend(frameon=False,loc='upper left',handlelength=1.4,labelspacing=.2)
     save(fig,'ac_m1_windows')
     d=pd.read_csv(ROOT/'results/d_summary.csv')
     def row(ds,key):return d[(d.dataset==ds)&(d.metric==key)].iloc[0]
