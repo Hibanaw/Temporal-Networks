@@ -22,5 +22,7 @@
     "scripts/make_summary_table.py": "a3693bfd40615952a08774280002834f76c422e504dd349ad8889421ecb0856e",
     "scripts/sync_report_results.py": "611cc4dadd89eb8c5016b40e3077faf4180921a00f956db664b5691d7461d9e2",
     "tests/test_summary_table.py": "1c04ec4671fb7671bda9c1286719a32a0df7e87b248150e97def100406813888"
-  }
+  },
+  "test_log": "results/robustness/review_checks.txt",
+  "test_log_sha256": "a04f93eecbc38124c180cee73639e5c0ba8d690ae3a8c12e27081a0e76adb23e"
 }
