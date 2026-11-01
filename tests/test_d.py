@@ -93,6 +93,10 @@ class SirTests(unittest.TestCase):
         inf = self.run_sir([(1, 2, 5), (2, 3, 20)], 1, 1.0, 100, t_start=10)
         self.assertEqual(np.isfinite(inf).sum(), 1)
 
+    def test_simultaneous_recovery_does_not_create_peak(self):
+        _, peak, _ = outbreak_summary(np.array([0., 10., 20.]), 0., 10.)
+        self.assertEqual(peak, 0.)
+
     def test_outbreak_summary(self):
         inf = np.array([0.0, 10.0, 20.0, np.inf])
         size, peak, half = outbreak_summary(inf, 0.0, 100.0)

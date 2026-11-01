@@ -1,0 +1,12 @@
+# Python >=3.9; exact CBIS versions are retained in results/robustness/environment.lock.txt.
+numpy>=1.26,<3
+pandas>=2.2,<4
+scipy>=1.13,<2
+networkx>=3.2,<4
+matplotlib>=3.9,<4
+numba>=0.60
+scikit-learn>=1.5,<2
+igraph==1.0.0
+leidenalg==0.12.0
+ijson>=3.3
+tabulate>=0.9

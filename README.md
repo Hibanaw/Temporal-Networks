@@ -3,11 +3,11 @@
 **How Much Does Time Matter?** A comparative study of aggregation, temporal patterns,
 structural evolution, and dynamics in real-world temporal networks.
 
-This repository follows [PLAN.md](PLAN.md), version 3.1. The completed implementations
-are member **B's five citation-network experiments** and member **E's community (M4)
-and centrality-ranking (M3b) experiments** on PS and CM. Other PS (primary-school
-contacts) and CM (CollegeMsg) work remains pending; report placeholders are not
-measurements.
+This repository follows [PLAN.md](PLAN.md), version 3.1. The implementations cover A's PS/CM aggregation and shared data interface,
+B's five citation-network experiments, C's reproducible activity/persistence,
+D's multi-start reachability and event-started SIR, and E's communities/centrality.
+Supplementary runs use CBIS PBS; the manuscript is maintained separately in
+`Hibanaw/Temporal-Networks-Report`. See [supplement protocol](notes/SUPPLEMENT_PROTOCOL.md).
 
 ## Project layout
 
@@ -144,3 +144,22 @@ construction property. Forecast selection uses only the training window; the
 
 No project code licence has been chosen; third-party report style files retain their
 original notices.
+
+## Supplementary workflow
+
+Install `requirements-supplement.txt`; the exact CBIS environment and job provenance
+are retained in `results/robustness/`. Run the commands in
+[notes/SUPPLEMENT_PROTOCOL.md](notes/SUPPLEMENT_PROTOCOL.md).
+
+- `scripts/run_ac.py`: M1 and M2a/M2b, full and elapsed-time halves, nested 20/60 P1.
+- `scripts/run_d.py`: M3a/M3c, checkpointed per network; four settings, 200 event-start seeds.
+- `scripts/run_e_robustness.py`: primary M4/M3b halves and 20/60 P1; retains existing resolution grid.
+- `scripts/run_b_robustness.py`: PA, age and diameter, halves and nested 20/60 P3.
+- `scripts/make_summary_table.py`: one primary H1--H7 effect per applicable dataset.
+- `scripts/summarize_robustness.py`: all checks with explicit coverage and limitations.
+- `scripts/plot_supplement.py`: figures from saved results.
+- `scripts/sync_report_results.py --report ../Temporal-Networks-Report`: measured sections.
+
+`src/io.py` is imported as `src.io` to avoid Python's built-in `io`; legacy D/E
+imports through `e_datasets` use this same reader. Cleaned CSVs remain untracked;
+metadata and source checksums are committed.

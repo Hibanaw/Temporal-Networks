@@ -48,7 +48,12 @@ def build(events, mode, iteration, directed):
 
 def work(task):
     name, mode, iteration = task
-    ds = load(name)
+    cache = OUT / "checkpoints_v2"
+    cache.mkdir(parents=True, exist_ok=True)
+    target = cache / f"{name}_{mode}_{iteration}.pkl"
+    if target.exists():
+        return pd.read_pickle(target)
+    ds = load(name, ARGS.period)
     events = build(ds.events, mode, iteration, ds.directed)
     events = events.sort_values("t", kind="stable").reset_index(drop=True)
     nodes = sorted(set(ds.events["u"]) | set(ds.events["v"]))
@@ -77,6 +82,8 @@ def work(task):
             size, peak, half = outbreak_summary(inf, t[pos], duration)
             m3c.append(dict(dataset=name, mode=mode, iteration=iteration, setting=label(beta, duration),
                             seed=k, final_size=size, peak_time=peak, half_time=half))
+    pd.to_pickle((m3a, m3c), target)
+    print(name, mode, iteration, "checkpointed", flush=True)
     return m3a, m3c
 
 
@@ -110,6 +117,14 @@ def summarise(m3a, m3c, name):
                             ("half", "half_time_s")):
             add(f"m3c_{setting}_{metric}", float(per_net[per_net["mode"] == "Real"][col].iloc[0]),
                 per_net[per_net["mode"] == "P1"][col].to_numpy(), per_net[per_net["mode"] == "P2"][col].to_numpy())
+        for mode in ("P1", "P2"):
+            real_peak = float(per_net[per_net["mode"] == "Real"]["peak"].iloc[0])
+            peaks = per_net[per_net["mode"] == mode]["peak"].to_numpy()
+            valid = peaks[np.isfinite(peaks) & (peaks > 0)]
+            ratios = real_peak / valid
+            rows.append(dict(dataset=name, metric=f"m3c_{setting}_peak_ratio_vs{mode}",
+                             value=real_peak / np.mean(valid) if len(valid) else np.nan,
+                             null_mean=1., null_std=np.std(ratios, ddof=1) if len(valid)>1 else np.nan))
     return pd.DataFrame(rows)
 
 
@@ -117,13 +132,20 @@ ARGS = None
 
 
 def main():
-    global ARGS
+    global ARGS, OUT
     p = argparse.ArgumentParser()
     p.add_argument("--datasets", nargs="+", default=["PS", "CM"])
     p.add_argument("--workers", type=int, default=4)
     p.add_argument("--seeds", type=int, default=200)
     p.add_argument("--nulls", type=int, default=N_NULL)
+    p.add_argument("--period", choices=["full", "first", "second"], default="full")
+    p.add_argument("--out", type=Path, default=OUT)
     ARGS = p.parse_args()
+    OUT = ARGS.out
+    if ARGS.period != "full":
+        OUT = OUT / ARGS.period
+    # Prevent silently reusing a checkpoint from a different seeding protocol.
+    OUT = OUT / f"seeds{ARGS.seeds}" if ARGS.seeds != 200 else OUT
     OUT.mkdir(parents=True, exist_ok=True)
     summaries = []
     for name in ARGS.datasets:
@@ -135,9 +157,12 @@ def main():
         m3c = pd.DataFrame(list(itertools.chain.from_iterable(r[1] for r in results)))
         m3a.to_csv(OUT / f"m3a_{name}.csv", index=False)
         m3c.to_csv(OUT / f"m3c_{name}.csv", index=False)
-        summaries.append(summarise(m3a, m3c, name))
+        summary = summarise(m3a, m3c, name)
+        summary.to_csv(OUT / f"summary_{name}.csv", index=False)
+        summaries.append(summary)
         print(name, "done", flush=True)
-    pd.concat(summaries).to_csv(ROOT / "results" / "d_summary.csv", index=False)
+    destination = ROOT / "results" / "d_summary.csv" if OUT == ROOT / "results" / "d" else OUT / "d_summary.csv"
+    pd.concat(summaries).to_csv(destination, index=False)
 
 
 if __name__ == "__main__":

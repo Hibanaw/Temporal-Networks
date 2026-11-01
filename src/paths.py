@@ -22,14 +22,29 @@ def earliest_arrival(events, nodes, t_start, directed):
     us = ev["u"].map(index).to_numpy()
     vs = ev["v"].map(index).to_numpy()
     ts = ev["t"].to_numpy()
-    arr = np.full((len(nodes), len(nodes)), np.inf)
-    np.fill_diagonal(arr, t_start)
-    for u, v, t in zip(us, vs, ts):
-        from_u = arr[u] < t
-        if not directed:
-            from_v = arr[v] < t
-            np.minimum(arr[u], np.where(from_v, t, np.inf), out=arr[u])
-        np.minimum(arr[v], np.where(from_u, t, np.inf), out=arr[v])
+    return _arrival_kernel(us, vs, ts, len(nodes), t_start, directed)
+
+
+try:
+    from numba import njit
+except ImportError:
+    def njit(**kwargs):
+        return lambda fn: fn
+
+
+@njit(cache=True)
+def _arrival_kernel(us, vs, ts, n, t_start, directed):
+    arr = np.full((n, n), np.inf)
+    for i in range(n):
+        arr[i, i] = t_start
+    for k in range(len(ts)):
+        u, v, t = us[k], vs[k], ts[k]
+        for source in range(n):
+            au, av = arr[u, source], arr[v, source]
+            if au < t and av > t:
+                arr[v, source] = t
+            if not directed and av < t and au > t:
+                arr[u, source] = t
     return arr
 
 
