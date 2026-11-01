@@ -19,7 +19,7 @@ def main():
         g=tables[o];return g[(g.dataset==ds)&(g.metric==key)].iloc[0]
     def f(x):return '--' if not np.isfinite(x) else f'{x:.3f}'
     def pm(row):return '$'+f'{row.null_mean:.4f}'+r'\pm'+f'{row.null_std:.4f}'+'$'
-    def write(name,text): (sec/name).write_text(text.strip()+'\n')
+    def write(name,text): (sec/name).write_text(text.strip().replace('[t]', '[!htbp]')+'\n')
     def figure(name,caption,label,wide=False):
         env='figure*' if wide else 'figure'
         return '\\begin{'+env+'}[t]\n\\centering\n\\includegraphics[width=\\linewidth]{'+name+'.pdf}\n\\caption{'+caption+'}\n\\label{'+label+'}\n\\end{'+env+'}\n'
@@ -200,6 +200,10 @@ memory. H3 and H5 depend on network type and window. H6 shows loss of reachable 
 with partial ranking disagreement. H7 slowing is supported in primary PS, but not CM.
 The window grids, node universes, edge semantics and conditioning must accompany these values.
 '''
+    text=text.replace(r'\begin{table}[t]\centering\small',
+                      r'\begin{center}\begin{minipage}{\columnwidth}\centering\small')
+    text=text.replace(r'\caption{Measured H1', r'\captionof{table}{Measured H1')
+    text=text.replace(r'\label{tab:cross}\end{table}', r'\label{tab:cross}\end{minipage}\end{center}')
     write('results_cross.tex',text)
     # Results preamble is evidence-based, preserving B's diagnostics and section order.
     write('results.tex',r'''
@@ -213,24 +217,24 @@ robustness tables retain individual networks and elapsed-time half-window result
 \input{sections/results_function}
 \input{sections/results_b_diagnostics}
 \input{sections/results_robustness}
+\clearpage
 \input{sections/results_cross}
-\FloatBarrier
 ''')
     checks=ROOT/'results/robustness/all_checks.csv'
     if checks.exists():
         g=pd.read_csv(checks)
         text=r"""\subsection{Observation and null-count sensitivity}\label{sec:r-robustness}
-\begin{table*}[t]\centering\small
-\begin{tabular}{@{}llrrrr@{}}
-\toprule Dataset & Measure & Full & First half & Second half & Full, 60 nulls \\
+\begin{table}[!htbp]\centering\small
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}llrrrr@{}}
+\toprule & Measure & Full & First & Second & 60 nulls \\
 \midrule
 """
-        keys=[('A','PS','H1_window_sensitivity_density','H1 density sensitivity'),('A','CM','H1_window_sensitivity_density','H1 density sensitivity'),
-              ('C','PS','m2_burstiness','H2 excess burstiness'),('C','CM','m2_burstiness','H2 excess burstiness'),
-              ('D','PS','m3a_R_vsP1','H6 reach ratio'),('D','CM','m3a_R_vsP1','H6 reach ratio'),
-              ('D','PS','m3c_b0.05_D4h_peak_ratio_vsP1','H7 peak ratio vs P1'),('D','CM','m3c_b0.2_D336h_peak_ratio_vsP1','H7 peak ratio vs P1'),
-              ('E','PS','m4_adj_nmi_mean','H5 adjacent NMI'),('E','CM','m4_adj_nmi_mean','H5 adjacent NMI'),
-              ('B','CIT','alpha__P3a','H4 PA exponent')]
+        keys=[('A','PS','H1_window_sensitivity_density','H1 density'),('A','CM','H1_window_sensitivity_density','H1 density'),
+              ('C','PS','m2_burstiness','H2 $\\Delta B$'),('C','CM','m2_burstiness','H2 $\\Delta B$'),
+              ('D','PS','m3a_R_vsP1','H6 $R$'),('D','CM','m3a_R_vsP1','H6 $R$'),
+              ('D','PS','m3c_b0.05_D4h_peak_ratio_vsP1','H7 ratio'),('D','CM','m3c_b0.2_D336h_peak_ratio_vsP1','H7 ratio'),
+              ('E','PS','m4_adj_nmi_mean','H5 NMI'),('E','CM','m4_adj_nmi_mean','H5 NMI'),
+              ('B','CIT','alpha__P3a','H4 $\\alpha$')]
         for owner,ds,key,label in keys:
             vals=[]
             for period,n in [('full',20),('first',20),('second',20),('full',60)]:
@@ -242,11 +246,11 @@ robustness tables retain individual networks and elapsed-time half-window result
                     rr=part.iloc[0];value=rr.value-rr.null_mean if owner=='C' else rr.value
                 vals.append(value)
             text+=ds+' & '+label+' & '+' & '.join(f(v) for v in vals)+r' \\'+'\n'
-        text+=r"""\bottomrule\end{tabular}
+        text+=r"""\bottomrule\end{tabular*}
 \caption{Elapsed-time halves for PS/CM and analysis-year halves for CIT. A uses no null.
 The 60-null run nests the first 20; H7 ratios condition on major outbreaks. A and E real
 values do not depend on null count, while H2 differences and H7 ratios do.}\label{tab:robust-halves}
-\end{table*}
+\end{table}
 Primary H7 ratios remain on the same side of one under the 20/60 comparison:
 PS changes from 1.160 to 1.161 and CM from 0.888 to 0.884. Both primary half-period
 ratios preserve those directions. This does not hold uniformly over parameter settings:

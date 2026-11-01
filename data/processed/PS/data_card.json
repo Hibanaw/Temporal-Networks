@@ -1,0 +1,37 @@
+{
+  "dataset": "PS",
+  "directed": false,
+  "n_nodes": 242,
+  "n_events": 125773,
+  "t_min": 31220,
+  "t_max": 148120,
+  "time_unit": "second",
+  "resolution_s": 20,
+  "closeness_starts": [
+    32400,
+    36000,
+    39600,
+    43200,
+    46800,
+    50400,
+    54000,
+    57600,
+    118800,
+    122400,
+    126000,
+    129600,
+    133200,
+    136800,
+    140400,
+    144000
+  ],
+  "min_events": 100,
+  "cleaning": "remove self-loops and duplicate (u,v,t); canonical undirected pairs",
+  "source": "https://www.sociopatterns.org/datasets/primary-school-temporal-network-data/",
+  "sha256": {
+    "primaryschool.csv.gz": "5c93d9f5a61ad44b3c90fb5146d42345ae86dd44d77bc5da2461989d3d547fc9",
+    "primaryschool_metadata.txt": "92844d1206ba38825d6ca801563cfc5c0f1c993f3efd012012c21aceaeff4329"
+  },
+  "license": "CC BY-NC-SA",
+  "observation_boundary": "untrimmed cleaned event interval; retain partial windows"
+}

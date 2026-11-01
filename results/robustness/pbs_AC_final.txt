@@ -1,0 +1,61 @@
+Job Id: 37534.cbis-pbs
+    Job_Name = pc5253_AC
+    Job_Owner = tianqi.hu@kahuna01-admin.cbis.nus.edu.sg
+    resources_used.cpupercent = 52
+    resources_used.cput = 00:02:32
+    resources_used.mem = 803760kb
+    resources_used.ncpus = 2
+    resources_used.ngpus = 0
+    resources_used.vmem = 1226368kb
+    resources_used.walltime = 00:02:38
+    job_state = F
+    queue = ais_cpu
+    server = cbis-pbs
+    Checkpoint = u
+    ctime = Mon Nov  2 00:31:58 2026
+    Error_Path = kahuna01-admin.cbis.nus.edu.sg:/oceanstor/home/ais2602/tianqi.
+	hu/pc5253-supplement/pc5253_AC.e37534
+    exec_host = skylake11/0*2
+    exec_vnode = (skylake11:ncpus=2:mem=8388608kb)
+    Hold_Types = n
+    Join_Path = oe
+    Keep_Files = oed
+    Mail_Points = a
+    mtime = Mon Nov  2 00:34:37 2026
+    Output_Path = kahuna01-admin.cbis.nus.edu.sg:/oceanstor/home/ais2602/tianqi
+	.hu/pc5253-supplement/pc5253_AC.o37534
+    Priority = 0
+    qtime = Mon Nov  2 00:31:58 2026
+    Rerunable = True
+    Resource_List.mem = 8gb
+    Resource_List.ncpus = 2
+    Resource_List.ngpus = 0
+    Resource_List.nodect = 1
+    Resource_List.place = free
+    Resource_List.queue_charge_rate = 1
+    Resource_List.select = 1:ncpus=2:mem=8gb
+    Resource_List.walltime = 04:00:00
+    stime = Mon Nov  2 00:31:58 2026
+    obittime = Mon Nov  2 00:34:37 2026
+    session_id = 3233875
+    jobdir = /home/svu/tianqi.hu
+    substate = 92
+    Variable_List = PBS_O_HOME=/home/svu/tianqi.hu,PBS_O_LANG=C.UTF-8,
+	PBS_O_LOGNAME=tianqi.hu,
+	PBS_O_PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/am/p
+	ython/bin:/opt/pbs/bin:/opt/am/python/bin:/opt/pbs/bin,
+	PBS_O_MAIL=/var/spool/mail/tianqi.hu,PBS_O_SHELL=/bin/bash,
+	PBS_O_INTERACTIVE_AUTH_METHOD=resvport,
+	PBS_O_HOST=kahuna01.cbis.nus.edu.sg,
+	PBS_O_WORKDIR=/oceanstor/home/ais2602/tianqi.hu/pc5253-supplement,
+	PBS_O_SYSTEM=Linux,PBS_O_QUEUE=ais_cpu
+    comment = Job run at Mon Nov 02 at 00:31 on (skylake11:ncpus=2:mem=8388608k
+	b) and finished
+    etime = Mon Nov  2 00:31:58 2026
+    run_count = 1
+    Stageout_status = 1
+    Exit_status = 0
+    Submit_arguments = hpc/cbis_ac.pbs
+    history_timestamp = 1793550877
+    project = _pbs_project_default
+    Submit_Host = kahuna01-admin.cbis.nus.edu.sg

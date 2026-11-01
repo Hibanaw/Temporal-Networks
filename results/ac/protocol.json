@@ -1,0 +1,8 @@
+{
+  "null_seed_base": 0,
+  "nulls": 60,
+  "split": "elapsed-time midpoint",
+  "iet": "dyad; PS 20s contact episodes collapsed",
+  "m1": "fixed period node universe; empty and trailing windows included",
+  "C_status": "reconstructed implementation; historical report numbers require comparison"
+}

@@ -1,0 +1,473 @@
+test_chain_and_simultaneous (test_d.PathTests.test_chain_and_simultaneous) ... ok
+test_directed (test_d.PathTests.test_directed) ... ok
+test_reachability_and_latency (test_d.PathTests.test_reachability_and_latency) ... ok
+test_start_time_excludes_earlier_events (test_d.PathTests.test_start_time_excludes_earlier_events) ... ok
+test_static_reachability (test_d.PathTests.test_static_reachability) ... ok
+test_time_order_blocks_path (test_d.PathTests.test_time_order_blocks_path) ... ok
+test_beta_zero (test_d.SirTests.test_beta_zero) ... ok
+test_chain_with_beta_one (test_d.SirTests.test_chain_with_beta_one) ... ok
+test_directed_only_sender_infects (test_d.SirTests.test_directed_only_sender_infects) ... ok
+test_events_before_start_ignored (test_d.SirTests.test_events_before_start_ignored) ... ok
+test_no_chain_within_one_timestamp (test_d.SirTests.test_no_chain_within_one_timestamp) ... ok
+test_outbreak_summary (test_d.SirTests.test_outbreak_summary) ... ok
+test_recovery_stops_transmission (test_d.SirTests.test_recovery_stops_transmission) ... ok
+test_simultaneous_recovery_does_not_create_peak (test_d.SirTests.test_simultaneous_recovery_does_not_create_peak) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 1.275s
+
+OK
+test_contact_episode_and_persistence (test_ac.ACTests.test_contact_episode_and_persistence) ... ok
+test_directed_metrics (test_ac.ACTests.test_directed_metrics) ... ok
+test_empty_windows_and_fixed_denominator (test_ac.ACTests.test_empty_windows_and_fixed_denominator) ... ok
+test_known_burstiness (test_ac.ACTests.test_known_burstiness) ... ok
+test_no_cross_tie_memory (test_ac.ACTests.test_no_cross_tie_memory) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.178s
+
+OK
+PS P1 6 checkpointed
+PS P1 0 checkpointed
+PS P1 1 checkpointed
+PS Real 0 checkpointed
+PS P1 3 checkpointed
+PS P1 5 checkpointed
+PS P1 2 checkpointed
+PS P1 4 checkpointed
+PS P1 8 checkpointed
+PS P1 7 checkpointed
+PS P1 9 checkpointed
+PS P1 11 checkpointed
+PS P1 10 checkpointed
+PS P1 12 checkpointed
+PS P1 14 checkpointed
+PS P1 15 checkpointed
+PS P1 13 checkpointed
+PS P1 16 checkpointed
+PS P1 17 checkpointed
+PS P1 18 checkpointed
+PS P1 19 checkpointed
+PS P2 1 checkpointed
+PS P2 0 checkpointed
+PS P2 8 checkpointed
+PS P2 2 checkpointed
+PS P2 4 checkpointed
+PS P2 6 checkpointed
+PS P2 5 checkpointed
+PS P2 7 checkpointed
+PS P2 3 checkpointed
+PS P2 9 checkpointed
+PS P2 14 checkpointed
+PS P2 11 checkpointed
+PS P2 17 checkpointed
+PS P2 12 checkpointed
+PS P2 15 checkpointed
+PS P2 10 checkpointed
+PS P2 13 checkpointed
+PS P2 16 checkpointed
+PS P2 18 checkpointed
+PS P2 19 checkpointed
+PS done
+CM Real 0 checkpointed
+CM P1 2 checkpointed
+CM P1 7 checkpointed
+CM P1 3 checkpointed
+CM P1 0 checkpointed
+CM P1 8 checkpointed
+CM P1 4 checkpointed
+CM P1 5 checkpointed
+CM P1 1 checkpointed
+CM P1 6 checkpointed
+CM P1 9 checkpointed
+CM P1 10 checkpointed
+CM P1 11 checkpointed
+CM P1 12 checkpointed
+CM P1 16 checkpointed
+CM P1 15 checkpointed
+CM P1 17 checkpointed
+CM P1 14 checkpointed
+CM P1 13 checkpointed
+CM P1 18 checkpointed
+CM P1 19 checkpointed
+CM P2 0 checkpointed
+CM P2 1 checkpointed
+CM P2 2 checkpointed
+CM P2 3 checkpointed
+CM P2 4 checkpointed
+CM P2 5 checkpointed
+CM P2 6 checkpointed
+CM P2 7 checkpointed
+CM P2 8 checkpointed
+CM P2 9 checkpointed
+CM P2 10 checkpointed
+CM P2 11 checkpointed
+CM P2 13 checkpointed
+CM P2 12 checkpointed
+CM P2 14 checkpointed
+CM P2 16 checkpointed
+CM P2 15 checkpointed
+CM P2 17 checkpointed
+CM P2 18 checkpointed
+CM P2 19 checkpointed
+CM done
+PS full complete
+PS first complete
+PS second complete
+CM full complete
+CM first complete
+CM second complete
+PS P1 23 checkpointed
+PS P1 22 checkpointed
+PS P1 27 checkpointed
+PS P1 29 checkpointed
+PS P1 21 checkpointed
+PS P1 26 checkpointed
+PS P1 25 checkpointed
+PS P1 20 checkpointed
+PS P1 24 checkpointed
+PS P1 28 checkpointed
+PS P1 30 checkpointed
+PS P1 31 checkpointed
+PS P1 34 checkpointed
+PS P1 35 checkpointed
+PS P1 36 checkpointed
+PS P1 32 checkpointed
+PS P1 33 checkpointed
+PS P1 37 checkpointed
+PS P1 38 checkpointed
+PS P1 39 checkpointed
+PS P1 40 checkpointed
+PS P1 41 checkpointed
+PS P1 43 checkpointed
+PS P1 42 checkpointed
+PS P1 44 checkpointed
+PS P1 45 checkpointed
+PS P1 46 checkpointed
+PS P1 47 checkpointed
+PS P1 48 checkpointed
+PS P1 49 checkpointed
+PS P1 51 checkpointed
+PS P1 50 checkpointed
+PS P1 54 checkpointed
+PS P1 52 checkpointed
+PS P1 53 checkpointed
+PS P1 55 checkpointed
+PS P1 56 checkpointed
+PS P1 57 checkpointed
+PS P1 58 checkpointed
+PS P1 59 checkpointed
+PS P2 22 checkpointed
+PS P2 23 checkpointed
+PS P2 26 checkpointed
+PS P2 27 checkpointed
+PS P2 25 checkpointed
+PS P2 21 checkpointed
+PS P2 24 checkpointed
+PS P2 20 checkpointed
+PS P2 28 checkpointed
+PS P2 29 checkpointed
+PS P2 30 checkpointed
+PS P2 32 checkpointed
+PS P2 31 checkpointed
+PS P2 34 checkpointed
+PS P2 35 checkpointed
+PS P2 36 checkpointed
+PS P2 33 checkpointed
+PS P2 38 checkpointed
+PS P2 37 checkpointed
+PS P2 39 checkpointed
+PS P2 40 checkpointed
+PS P2 41 checkpointed
+PS P2 42 checkpointed
+PS P2 43 checkpointed
+PS P2 45 checkpointed
+PS P2 44 checkpointed
+PS P2 46 checkpointed
+PS P2 47 checkpointed
+PS P2 49 checkpointed
+PS P2 48 checkpointed
+PS P2 50 checkpointed
+PS P2 52 checkpointed
+PS P2 51 checkpointed
+PS P2 54 checkpointed
+PS P2 55 checkpointed
+PS P2 53 checkpointed
+PS P2 56 checkpointed
+PS P2 58 checkpointed
+PS P2 57 checkpointed
+PS P2 59 checkpointed
+PS done
+CM P1 26 checkpointed
+CM P1 29 checkpointed
+CM P1 28 checkpointed
+CM P1 24 checkpointed
+CM P1 23 checkpointed
+CM P1 20 checkpointed
+CM P1 25 checkpointed
+CM P1 27 checkpointed
+CM P1 21 checkpointed
+CM P1 22 checkpointed
+CM P1 32 checkpointed
+CM P1 31 checkpointed
+CM P1 30 checkpointed
+CM P1 33 checkpointed
+CM P1 34 checkpointed
+CM P1 35 checkpointed
+CM P1 37 checkpointed
+CM P1 36 checkpointed
+CM P1 39 checkpointed
+CM P1 38 checkpointed
+CM P1 40 checkpointed
+CM P1 41 checkpointed
+CM P1 42 checkpointed
+CM P1 44 checkpointed
+CM P1 43 checkpointed
+CM P1 47 checkpointed
+CM P1 45 checkpointed
+CM P1 46 checkpointed
+CM P1 48 checkpointed
+CM P1 49 checkpointed
+CM P1 50 checkpointed
+CM P1 51 checkpointed
+CM P1 54 checkpointed
+CM P1 53 checkpointed
+CM P1 52 checkpointed
+CM P1 55 checkpointed
+CM P1 56 checkpointed
+CM P1 59 checkpointed
+CM P1 57 checkpointed
+CM P1 58 checkpointed
+CM P2 21 checkpointed
+CM P2 20 checkpointed
+CM P2 23 checkpointed
+CM P2 24 checkpointed
+CM P2 22 checkpointed
+CM P2 27 checkpointed
+CM P2 26 checkpointed
+CM P2 29 checkpointed
+CM P2 28 checkpointed
+CM P2 25 checkpointed
+CM P2 30 checkpointed
+CM P2 33 checkpointed
+CM P2 31 checkpointed
+CM P2 32 checkpointed
+CM P2 34 checkpointed
+CM P2 37 checkpointed
+CM P2 38 checkpointed
+CM P2 35 checkpointed
+CM P2 36 checkpointed
+CM P2 39 checkpointed
+CM P2 40 checkpointed
+CM P2 41 checkpointed
+CM P2 43 checkpointed
+CM P2 42 checkpointed
+CM P2 44 checkpointed
+CM P2 45 checkpointed
+CM P2 46 checkpointed
+CM P2 49 checkpointed
+CM P2 48 checkpointed
+CM P2 47 checkpointed
+CM P2 50 checkpointed
+CM P2 51 checkpointed
+CM P2 52 checkpointed
+CM P2 53 checkpointed
+CM P2 54 checkpointed
+CM P2 55 checkpointed
+CM P2 57 checkpointed
+CM P2 56 checkpointed
+CM P2 58 checkpointed
+CM P2 59 checkpointed
+CM done
+PS done
+CM done
+PS P1 1 checkpointed
+PS P1 3 checkpointed
+PS P1 0 checkpointed
+PS P1 4 checkpointed
+PS P1 8 checkpointed
+PS P1 5 checkpointed
+PS P1 7 checkpointed
+PS P1 2 checkpointed
+PS Real 0 checkpointed
+PS P1 6 checkpointed
+PS P1 9 checkpointed
+PS P1 10 checkpointed
+PS P1 11 checkpointed
+PS P1 12 checkpointed
+PS P1 13 checkpointed
+PS P1 14 checkpointed
+PS P1 16 checkpointed
+PS P1 15 checkpointed
+PS P1 17 checkpointed
+PS P1 18 checkpointed
+PS P1 19 checkpointed
+PS P2 2 checkpointed
+PS P2 3 checkpointed
+PS P2 8 checkpointed
+PS P2 6 checkpointed
+PS P2 4 checkpointed
+PS P2 1 checkpointed
+PS P2 0 checkpointed
+PS P2 5 checkpointed
+PS P2 7 checkpointed
+PS P2 9 checkpointed
+PS P2 10 checkpointed
+PS P2 13 checkpointed
+PS P2 12 checkpointed
+PS P2 11 checkpointed
+PS P2 14 checkpointed
+PS P2 15 checkpointed
+PS P2 17 checkpointed
+PS P2 16 checkpointed
+PS P2 18 checkpointed
+PS P2 19 checkpointed
+PS done
+CM Real 0 checkpointed
+CM P1 4 checkpointed
+CM P1 0 checkpointed
+CM P1 7 checkpointed
+CM P1 5 checkpointed
+CM P1 6 checkpointed
+CM P1 3 checkpointed
+CM P1 2 checkpointed
+CM P1 8 checkpointed
+CM P1 1 checkpointed
+CM P1 9 checkpointed
+CM P1 10 checkpointed
+CM P1 12 checkpointed
+CM P1 11 checkpointed
+CM P1 16 checkpointed
+CM P1 13 checkpointed
+CM P1 15 checkpointed
+CM P1 18 checkpointed
+CM P1 17 checkpointed
+CM P1 14 checkpointed
+CM P1 19 checkpointed
+CM P2 0 checkpointed
+CM P2 1 checkpointed
+CM P2 3 checkpointed
+CM P2 2 checkpointed
+CM P2 5 checkpointed
+CM P2 6 checkpointed
+CM P2 4 checkpointed
+CM P2 8 checkpointed
+CM P2 7 checkpointed
+CM P2 9 checkpointed
+CM P2 10 checkpointed
+CM P2 11 checkpointed
+CM P2 14 checkpointed
+CM P2 15 checkpointed
+CM P2 13 checkpointed
+CM P2 16 checkpointed
+CM P2 12 checkpointed
+CM P2 18 checkpointed
+CM P2 17 checkpointed
+CM P2 19 checkpointed
+CM done
+PS P1 0 checkpointed
+PS P1 5 checkpointed
+PS P1 1 checkpointed
+PS Real 0 checkpointed
+PS P1 6 checkpointed
+PS P1 3 checkpointed
+PS P1 4 checkpointed
+PS P1 2 checkpointed
+PS P1 8 checkpointed
+PS P1 7 checkpointed
+PS P1 9 checkpointed
+PS P1 10 checkpointed
+PS P1 12 checkpointed
+PS P1 11 checkpointed
+PS P1 15 checkpointed
+PS P1 16 checkpointed
+PS P1 13 checkpointed
+PS P1 18 checkpointed
+PS P1 17 checkpointed
+PS P1 14 checkpointed
+PS P1 19 checkpointed
+PS P2 2 checkpointed
+PS P2 1 checkpointed
+PS P2 7 checkpointed
+PS P2 0 checkpointed
+PS P2 3 checkpointed
+PS P2 4 checkpointed
+PS P2 5 checkpointed
+PS P2 6 checkpointed
+PS P2 8 checkpointed
+PS P2 9 checkpointed
+PS P2 10 checkpointed
+PS P2 12 checkpointed
+PS P2 11 checkpointed
+PS P2 15 checkpointed
+PS P2 13 checkpointed
+PS P2 14 checkpointed
+PS P2 16 checkpointed
+PS P2 18 checkpointed
+PS P2 17 checkpointed
+PS P2 19 checkpointed
+PS done
+CM P1 2 checkpointed
+CM P1 4 checkpointed
+CM P1 6 checkpointed
+CM P1 3 checkpointed
+CM P1 1 checkpointed
+CM P1 7 checkpointed
+CM P1 8 checkpointed
+CM Real 0 checkpointed
+CM P1 5 checkpointed
+CM P1 0 checkpointed
+CM P1 9 checkpointed
+CM P1 10 checkpointed
+CM P1 11 checkpointed
+CM P1 12 checkpointed
+CM P1 14 checkpointed
+CM P1 15 checkpointed
+CM P1 13 checkpointed
+CM P1 16 checkpointed
+CM P1 17 checkpointed
+CM P1 18 checkpointed
+CM P1 19 checkpointed
+CM P2 1 checkpointed
+CM P2 0 checkpointed
+CM P2 2 checkpointed
+CM P2 3 checkpointed
+CM P2 5 checkpointed
+CM P2 6 checkpointed
+CM P2 4 checkpointed
+CM P2 7 checkpointed
+CM P2 8 checkpointed
+CM P2 9 checkpointed
+CM P2 11 checkpointed
+CM P2 10 checkpointed
+CM P2 12 checkpointed
+CM P2 13 checkpointed
+CM P2 15 checkpointed
+CM P2 16 checkpointed
+CM P2 14 checkpointed
+CM P2 17 checkpointed
+CM P2 18 checkpointed
+CM P2 19 checkpointed
+CM done
+hypothesis dataset                                 metric       status    value  null_mean     null_std   effect                source
+        H1      PS          H1_window_sensitivity_density     measured 3.358911        NaN          NaN 3.358911 results/a_summary.csv
+        H1      CM          H1_window_sensitivity_density     measured 3.861721        NaN          NaN 3.861721 results/a_summary.csv
+        H1     CIT H1_window_sensitivity_density_directed     measured 1.797651        NaN          NaN 1.797651 results/b_summary.csv
+        H2      PS                          m2_burstiness     measured 0.534641   0.518389 4.340012e-04 0.016252 results/c_summary.csv
+        H2      CM                          m2_burstiness     measured 0.581072   0.245089 1.194833e-03 0.335983 results/c_summary.csv
+        H2     CIT                          m2_burstiness inapplicable      NaN        NaN          NaN      NaN
+        H3      PS                    m2_adjacent_jaccard     measured 0.219756   0.366826 1.005762e-03 0.219756 results/c_summary.csv
+        H3      CM                    m2_adjacent_jaccard     measured 0.095771   0.069045 9.405800e-04 0.095771 results/c_summary.csv
+        H3     CIT                    m2_adjacent_jaccard inapplicable      NaN        NaN          NaN      NaN
+        H4      PS                          pa_alpha__P3a inapplicable      NaN        NaN          NaN      NaN
+        H4      CM                          pa_alpha__P3a inapplicable      NaN        NaN          NaN      NaN
+        H4     CIT                          pa_alpha__P3a     measured 0.713552   0.000590 5.075694e-03 0.713552 results/b_summary.csv
+        H5      PS              m4_adj_nmi_mean_w15min_g1     measured 0.816183   0.912083 4.044834e-03 0.816183 results/e_summary.csv
+        H5      CM                 m4_adj_nmi_mean_w7D_g1     measured 0.518527   0.420282 5.726485e-03 0.518527 results/e_summary.csv
+        H5     CIT                 m4_adj_nmi_mean_w7D_g1 inapplicable      NaN        NaN          NaN      NaN
+        H6      PS                             m3a_R_vsP1     measured 0.866031   1.000000 9.585011e-07 0.866031 results/d_summary.csv
+        H6      CM                             m3a_R_vsP1     measured 0.205470   0.325858 2.475348e-03 0.205470 results/d_summary.csv
+        H6     CIT                             m3a_R_vsP1 inapplicable      NaN        NaN          NaN      NaN
+        H7      PS          m3c_b0.05_D4h_peak_ratio_vsP1     measured 1.160385   1.000000 1.292309e-02 1.160385 results/d_summary.csv
+        H7      CM         m3c_b0.2_D336h_peak_ratio_vsP1     measured 0.888071   1.000000 1.262255e-02 0.888071 results/d_summary.csv
+        H7     CIT         m3c_b0.2_D336h_peak_ratio_vsP1 inapplicable      NaN        NaN          NaN      NaN

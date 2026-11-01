@@ -1,0 +1,22 @@
+hypothesis dataset                                 metric       status    value  null_mean     null_std   effect                source
+        H1      PS          H1_window_sensitivity_density     measured 3.358911        NaN          NaN 3.358911 results/a_summary.csv
+        H1      CM          H1_window_sensitivity_density     measured 3.861721        NaN          NaN 3.861721 results/a_summary.csv
+        H1     CIT H1_window_sensitivity_density_directed     measured 1.797651        NaN          NaN 1.797651 results/b_summary.csv
+        H2      PS                          m2_burstiness     measured 0.534641   0.518389 4.340012e-04 0.016252 results/c_summary.csv
+        H2      CM                          m2_burstiness     measured 0.581072   0.245093 1.194837e-03 0.335980 results/c_summary.csv
+        H2     CIT                          m2_burstiness inapplicable      NaN        NaN          NaN      NaN
+        H3      PS                    m2_adjacent_jaccard     measured 0.219756   0.366826 1.005762e-03 0.219756 results/c_summary.csv
+        H3      CM                    m2_adjacent_jaccard     measured 0.095771   0.069045 9.405800e-04 0.095771 results/c_summary.csv
+        H3     CIT                    m2_adjacent_jaccard inapplicable      NaN        NaN          NaN      NaN
+        H4      PS                          pa_alpha__P3a inapplicable      NaN        NaN          NaN      NaN
+        H4      CM                          pa_alpha__P3a inapplicable      NaN        NaN          NaN      NaN
+        H4     CIT                          pa_alpha__P3a     measured 0.713552   0.000590 5.075694e-03 0.713552 results/b_summary.csv
+        H5      PS              m4_adj_nmi_mean_w15min_g1     measured 0.816183   0.912083 4.044834e-03 0.816183 results/e_summary.csv
+        H5      CM                 m4_adj_nmi_mean_w7D_g1     measured 0.518527   0.420282 5.726485e-03 0.518527 results/e_summary.csv
+        H5     CIT                 m4_adj_nmi_mean_w7D_g1 inapplicable      NaN        NaN          NaN      NaN
+        H6      PS                             m3a_R_vsP1     measured 0.866031   1.000000 9.585011e-07 0.866031 results/d_summary.csv
+        H6      CM                             m3a_R_vsP1     measured 0.205470   0.325858 2.475348e-03 0.205470 results/d_summary.csv
+        H6     CIT                             m3a_R_vsP1 inapplicable      NaN        NaN          NaN      NaN
+        H7      PS          m3c_b0.05_D4h_peak_ratio_vsP1     measured 1.160385   1.000000 1.292309e-02 1.160385 results/d_summary.csv
+        H7      CM         m3c_b0.2_D336h_peak_ratio_vsP1     measured 0.888071   1.000000 1.262255e-02 0.888071 results/d_summary.csv
+        H7     CIT         m3c_b0.2_D336h_peak_ratio_vsP1 inapplicable      NaN        NaN          NaN      NaN

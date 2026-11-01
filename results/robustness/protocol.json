@@ -1,0 +1,19 @@
+{
+  "primary_nulls": 20,
+  "sensitivity_nulls": 60,
+  "PS_CM_split": "elapsed observation-time midpoint",
+  "CIT_split": "1990--2004 vs 2005--2020; history retained",
+  "coverage": {
+    "A": "all five M1 metrics",
+    "C": "M2a/M2b",
+    "D": "M3a/all four SIR settings",
+    "E": "primary M4/M3b; existing resolution grid retained",
+    "B": "PA/age P3 counts and halves; existing growth-law splits"
+  },
+  "limits": [
+    "WSB forecasts retain their established fixed-horizon evaluation; not reinterpreted as stationary halves",
+    "CIT diameter uses cumulative endpoint graphs in each analysis segment; not an induced graph of only new papers",
+    "Half-window node populations and effective observation horizons differ",
+    "H7 ratios condition on major outbreaks; ratio null_mean=1 is the reference, not a measured peak mean"
+  ]
+}

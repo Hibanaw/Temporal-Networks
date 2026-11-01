@@ -1,0 +1,18 @@
+test_contact_episode_and_persistence (test_ac.ACTests.test_contact_episode_and_persistence) ... ok
+test_directed_metrics (test_ac.ACTests.test_directed_metrics) ... ok
+test_empty_windows_and_fixed_denominator (test_ac.ACTests.test_empty_windows_and_fixed_denominator) ... ok
+test_known_burstiness (test_ac.ACTests.test_known_burstiness) ... ok
+test_no_cross_tie_memory (test_ac.ACTests.test_no_cross_tie_memory) ... ok
+test_p1_coincident_events_keep_message_counts (test_ac.ACTests.test_p1_coincident_events_keep_message_counts) ... ok
+test_p2_event_invariants_directed_and_undirected (test_ac.ACTests.test_p2_event_invariants_directed_and_undirected) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.250s
+
+OK
+PS full complete
+PS first complete
+PS second complete
+CM full complete
+CM first complete
+CM second complete

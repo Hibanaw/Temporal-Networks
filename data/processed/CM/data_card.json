@@ -1,0 +1,40 @@
+{
+  "dataset": "CM",
+  "directed": true,
+  "n_nodes": 1899,
+  "n_events": 59798,
+  "t_min": 1082040961,
+  "t_max": 1098777142,
+  "time_unit": "second",
+  "resolution_s": 1,
+  "closeness_starts": [
+    1082040961,
+    1082833727,
+    1083626493,
+    1084419260,
+    1085212026,
+    1086004793,
+    1086797559,
+    1087590326,
+    1088383092,
+    1089175859,
+    1089968625,
+    1090761392,
+    1091554158,
+    1092346925,
+    1093139691,
+    1093932458,
+    1094725224,
+    1095517990,
+    1096310757,
+    1097103523
+  ],
+  "min_events": 50,
+  "cleaning": "remove self-loops and duplicate (u,v,t); canonical undirected pairs",
+  "source": "https://snap.stanford.edu/data/CollegeMsg.html",
+  "sha256": {
+    "CollegeMsg.txt.gz": "50ae2d98ed3bad9ddb18dbd495a89e5e10cfb8f7e86932827db29fc41b41f9fa"
+  },
+  "license": "See SNAP source terms",
+  "observation_boundary": "untrimmed cleaned event interval; retain partial windows"
+}
