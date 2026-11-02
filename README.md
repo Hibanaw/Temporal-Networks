@@ -1,6 +1,6 @@
 # Temporal Networks — PC5253 Final Project
 
-**How Much Does Time Matter?** A comparative study of aggregation, temporal patterns,
+**Quantifying the Role of Time.** A comparative study of aggregation, temporal patterns,
 structural evolution, and dynamics in real-world temporal networks.
 
 This repository follows [PLAN.md](PLAN.md), version 3.1. The implementations cover A's PS/CM aggregation and shared data interface,
