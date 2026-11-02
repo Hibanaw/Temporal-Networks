@@ -1,0 +1,10 @@
+dataset,period,node_basis,metric,sensitivity,n_scales,min_windows_per_scale
+PS,full,fixed,density,3.2622801851174703,8,1
+PS,full,fixed,mean_degree,3.26228018511747,8,1
+PS,full,fixed,mean_in_degree,,0,0
+PS,full,fixed,mean_out_degree,,0,0
+PS,full,fixed,clustering,1.5777306804643072,8,1
+PS,full,fixed,n_components,1.7117248238167877,8,1
+PS,full,fixed,component_fraction,1.7117248238167877,8,1
+PS,full,fixed,largest_component_fraction,2.0959445839793296,8,1
+PS,full,fixed,active_fraction,1.123441173223305,8,1

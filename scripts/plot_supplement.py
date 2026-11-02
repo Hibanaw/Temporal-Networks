@@ -25,12 +25,15 @@ def main():
     # curve equals the window sensitivity; CIT curves are averaged over end years 1990-2020.
     fig,axs=figstyle.grid(None,1,3,figstyle.WIDTH,1.35)
     axs=axs[0]
+    # PS/CM: Member A's M1 (complete windows, fixed node set; CM directed clustering).
     keys=[('density','density_directed','Density'),('clustering','clustering_weak','Clustering'),
-          ('lcc_fraction','lcc_fraction','LCC fraction')]
+          ('largest_component_fraction','lcc_fraction','LCC fraction')]
     for ax,name in zip(axs[:2],['PS','CM']):
-        m=pd.read_csv(ROOT/f'results/ac/m1_{name}_full_means.csv')
+        s=pd.read_csv(ROOT/f'results/m1/main_fixed/{name}_summary.csv')
+        s=s[(s.period=='full')&(s.node_basis=='fixed')&(s.window_policy=='complete_only')]
+        m=s.pivot(index='delta_seconds',columns='metric',values='mean')
         for (key,_,label),c in zip(keys,COLORS):
-            ax.plot(m.width_s/3600,m[key]/m[key].mean(),'-o',color=c,label=label)
+            ax.plot(m.index/3600,m[key]/m[key].mean(),'-o',color=c,label=label)
         ax.set(xscale='log',xlabel='Window width (h)',title=f'({"ab"[name=="CM"]}) {name}')
     w=pd.read_csv(ROOT/'results/b/windows.csv')
     for (_,key,label),c in zip(keys,COLORS):

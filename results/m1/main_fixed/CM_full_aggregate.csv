@@ -1,0 +1,2 @@
+dataset,period,node_basis,event_count,n_nodes,n_active,n_edges,density,mean_degree,mean_in_degree,mean_out_degree,clustering,n_components,component_fraction,largest_component_size,largest_component_fraction,active_fraction
+CM,full,fixed,59798,1899,1899,20296,0.005631048674611617,21.375460768825697,10.687730384412848,10.687730384412848,0.08723899580135272,4,0.00210637177461822,1893,0.9968404423380727,1.0

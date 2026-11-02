@@ -33,13 +33,26 @@ requires rebuilding these files and rerunning the experiment pipeline.
 Download with `python scripts/download_e.py`, which prints each file's size and SHA-256.
 
 - Primary School (PS): SocioPatterns, https://www.sociopatterns.org/datasets/primary-school-temporal-network-data/
-  (`primaryschool.csv.gz`, `primaryschool_metadata.txt`). Licence CC BY-NC-SA 4.0; cite
+  (`primaryschool.csv.gz`, `primaryschool_metadata.txt`). Licence [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/); cite
   Stehlé et al. (2011) and Gemmetto et al. (2014). The old `wp-content` links return 404.
   Columns: `t i j Ci Cj`, tab-separated; `t` is seconds from midnight of the first day,
   in 20-s steps. Contacts are undirected.
 - CollegeMsg (CM): SNAP, https://snap.stanford.edu/data/CollegeMsg.html
   (`CollegeMsg.txt.gz`). Columns `SRC DST UNIXTS`, space-separated; messages are directed.
 
-E's loaders (`src/e_datasets.py`) remove self-loops and duplicate events and store PS
-pairs as `u < v`. They will be replaced by A's `io.py` once `data/processed/` exists.
-Raw files are not committed.
+The shared reader is `src/io.py`. It removes self-loops and duplicate events,
+orders undirected PS endpoints, and preserves CM sender and recipient order.
+The download and preparation commands rebuild the ignored raw and processed files.
+
+From the repository root, reproduce the PS/CM activity figure used in the report:
+
+```sh
+python scripts/download_e.py
+python scripts/prepare_a.py
+python -m scripts.plot_activity
+```
+
+The script writes `figures/activity_PS_CM.pdf`, a PNG for slides and the
+PS/CM bin counts to `results/PS_activity.csv` and `results/CM_activity.csv`.
+PS bins count contact records per ten minutes. CM bins count cleaned messages
+per UTC day. Both retain empty bins between the first and last event bins.

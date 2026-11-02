@@ -1,0 +1,11 @@
+dataset,metric,value,null_mean,null_std
+PS,H1_window_sensitivity_density,3.262280185117472,,
+PS,H1_window_sensitivity_mean_degree,3.26228018511747,,
+PS,H1_window_sensitivity_clustering,1.5777306804643079,,
+PS,H1_window_sensitivity_component_fraction,1.7117248238167877,,
+PS,H1_window_sensitivity_largest_component_fraction,2.09594458397933,,
+CM,H1_window_sensitivity_density,5.410920299543415,,
+CM,H1_window_sensitivity_mean_degree,5.410920299543338,,
+CM,H1_window_sensitivity_clustering,5.67142835938539,,
+CM,H1_window_sensitivity_component_fraction,0.39810135208510106,,
+CM,H1_window_sensitivity_largest_component_fraction,4.11476709693235,,

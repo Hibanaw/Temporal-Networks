@@ -64,6 +64,33 @@ def load_raw(name):
 PROCESSED = RAW.parent / "processed"
 
 
+def integer_columns(frame, columns):
+    """Return a copy with the columns validated as finite integers."""
+    result = frame.copy()
+    for col in columns:
+        values = pd.to_numeric(result[col], errors="raise")
+        if values.isna().any() or not np.isfinite(values).all():
+            raise ValueError(f"{col}: missing or non-finite values")
+        if (values != np.floor(values)).any():
+            raise ValueError(f"{col}: non-integer values")
+        result[col] = values.astype("int64")
+    return result
+
+
+def load_processed(directory):
+    """A's validated reader for data/processed/<name>/ (used by M1)."""
+    directory = Path(directory)
+    events = integer_columns(pd.read_csv(directory / "events.csv"), ["u", "v", "t"])
+    nodes = integer_columns(pd.read_csv(directory / "nodes.csv", keep_default_na=False), ["id"])
+    if nodes.id.duplicated().any() or not set(events.u).union(events.v) <= set(nodes.id):
+        raise ValueError("Invalid node IDs")
+    if events.duplicated(["u", "v", "t"]).any() or (events.u == events.v).any():
+        raise ValueError("Processed events contain duplicates or self-loops")
+    if not events.t.is_monotonic_increasing:
+        raise ValueError("Processed events are not time-sorted")
+    return events, nodes
+
+
 def load(name, period="full"):
     """Read canonical processed data if available, otherwise clean raw input.
 
@@ -116,7 +143,7 @@ def prepare(name):
                 resolution_s=20 if name == "PS" else 1, closeness_starts=ds.closeness_starts,
                 min_events=ds.min_events, cleaning="remove self-loops and duplicate (u,v,t); canonical undirected pairs",
                 source="https://www.sociopatterns.org/datasets/primary-school-temporal-network-data/" if name == "PS" else "https://snap.stanford.edu/data/CollegeMsg.html",
-                license="CC BY-NC-SA" if name == "PS" else "See SNAP source terms",
+                license="CC BY-NC-SA 3.0" if name == "PS" else "See SNAP source terms",
                 observation_boundary="untrimmed cleaned event interval; retain partial windows",
                 sha256={p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs})
     (folder / "data_card.json").write_text(json.dumps(card, indent=2)+"\n")

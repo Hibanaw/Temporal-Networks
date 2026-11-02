@@ -32,6 +32,6 @@
     "primaryschool.csv.gz": "5c93d9f5a61ad44b3c90fb5146d42345ae86dd44d77bc5da2461989d3d547fc9",
     "primaryschool_metadata.txt": "92844d1206ba38825d6ca801563cfc5c0f1c993f3efd012012c21aceaeff4329"
   },
-  "license": "CC BY-NC-SA",
+  "license": "CC BY-NC-SA 3.0",
   "observation_boundary": "untrimmed cleaned event interval; retain partial windows"
 }

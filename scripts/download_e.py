@@ -1,6 +1,6 @@
 """Download the raw PS and CM files used by member E (and by C and D).
 
-  data/raw/primaryschool/primaryschool.csv.gz        SocioPatterns, CC BY-NC-SA 4.0
+  data/raw/primaryschool/primaryschool.csv.gz        SocioPatterns, CC BY-NC-SA 3.0
   data/raw/primaryschool/primaryschool_metadata.txt
   data/raw/collegemsg/CollegeMsg.txt.gz              SNAP
 

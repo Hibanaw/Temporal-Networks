@@ -1,0 +1,61 @@
+{
+  "generated_utc": "2026-11-01T17:55:43.658701+00:00",
+  "datasets": [
+    "PS",
+    "CM"
+  ],
+  "windows_seconds": {
+    "PS": [
+      300,
+      900,
+      1800,
+      3600,
+      7200,
+      14400,
+      28800,
+      86400
+    ],
+    "CM": [
+      3600,
+      10800,
+      21600,
+      43200,
+      86400,
+      259200,
+      604800,
+      2592000
+    ]
+  },
+  "inputs": {
+    "PS": {
+      "start": 31220,
+      "stop_exclusive": 148140,
+      "resolution_seconds": 20,
+      "events_sha256": "1f328544f9a8feeb75a71e77dcaf259a8cc95dc744ae4bdc4792ce6265d5d912",
+      "nodes_sha256": "a20e3695e92c0ce90f30601a8f5e0596ccdc0aa622a8dea0e609066deb8a8c9a"
+    },
+    "CM": {
+      "start": 1082040961,
+      "stop_exclusive": 1098777143,
+      "resolution_seconds": 1,
+      "events_sha256": "527f6744ace59435c6427601e4872efd1d5977bf2775a329f9ad65712e6d79b7",
+      "nodes_sha256": "37b0ebb96248a87e2413bb6fecb0beb5e6bad1e1dafa83d134d46cb9d0e5d199"
+    }
+  },
+  "node_basis": "fixed",
+  "robustness": true,
+  "window_alignment": "first timestamp of each period",
+  "observation_stop": "last timestamp + one source resolution step",
+  "primary_summary": "unweighted mean across complete non-overlapping windows, including empty windows",
+  "partial_tail": "saved; excluded from primary means; include_partial diagnostic also saved",
+  "PS_gaps": "chronological gaps retained; absence of events is not proof of observed absence of contact",
+  "CM_components": "weak; these are not temporally reachable components",
+  "CM_clustering": "NetworkX unweighted directed (Fagiolo)",
+  "mean_degree": "PS ordinary degree; CM in+out degree; isolates included for fixed basis",
+  "null_model": "not applicable to M1 under PLAN v3",
+  "python": "3.12.14",
+  "networkx": "3.7",
+  "numpy": "2.3.5",
+  "pandas": "2.2.3",
+  "elapsed_seconds": 80.16198483700009
+}
