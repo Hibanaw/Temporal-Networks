@@ -82,12 +82,12 @@ final_project/
 
 每类 2–4 篇，笔记放 `notes/`。
 
-- [ ] **综述/框架**：Holme & Saramäki 2012；Holme 2015；Masuda & Lambiotte 相关章节；Gauvin et al. 2022（随机化对照）
-- [ ] **I 表示与聚合**：Krings 2012；Ribeiro 2013
-- [ ] **II 活动模式**：Barabási 2005；Goh & Barabási 2008；Saramäki 2014
-- [ ] **III 结构演化**：Barabási & Albert 1999；Dorogovtsev & Mendes 2000；Jeong 2003；Leskovec 2005；Wang, Song & Barabási 2013；动态社区 Mucha 2010、Greene 2010
-- [ ] **IV 功能**：Holme 2005；Pan & Saramäki 2011；Kim & Anderson 2012；Karsai 2011
-- [ ] 写出 gap：已有工作多针对单一数据集或单一方法，缺少"同一框架下不同类型网络对时间信息的敏感度"的横向比较
+- [x] **综述/框架**：Holme & Saramäki 2012；Holme 2015；Masuda & Lambiotte 相关章节；Gauvin et al. 2022（随机化对照）
+- [x] **I 表示与聚合**：Krings 2012；Ribeiro 2013
+- [x] **II 活动模式**：Barabási 2005；Goh & Barabási 2008；Saramäki 2014
+- [x] **III 结构演化**：Barabási & Albert 1999；Dorogovtsev & Mendes 2000；Jeong 2003；Leskovec 2005；Wang, Song & Barabási 2013；动态社区 Mucha 2010、Greene 2010
+- [x] **IV 功能**：Holme 2005；Pan & Saramäki 2011；Kim & Anderson 2012；Karsai 2011
+- [x] 写出 gap：已有工作多针对单一数据集或单一方法，缺少"同一框架下不同类型网络对时间信息的敏感度"的横向比较
 
 ## 2. 数据集（3 个）
 
@@ -97,12 +97,12 @@ final_project/
 | **CM** | 在线通信 | CollegeMsg（1,899 节点，59,835 事件，193 天） | SNAP | 1 s | 无 |
 | **CIT** | 论文引用 | AMiner DBLP-Citation-network，截取**一个** CS 子领域 | aminer.org/citation（或 Kaggle 镜像） | 1 年 | — |
 
-- [ ] 下载并记录来源、版本、许可证、下载日期
-- [ ] 统一转换为 `events.csv` + `nodes.csv`；去自环、去重复、截取观测窗口首尾
-- [ ] 每个数据集一段 data card（节点/事件数、跨度、精度、偏差），并画活动量时间序列（原 M0）
-- [ ] ⚠️ SocioPatterns 许可 CC BY-NC-SA，报告中标注来源与许可
-- [ ] ⚠️ AMiner 文件很大（数 GB～十余 GB 的单个 JSON），需流式解析（`ijson`），先按 venue/fos 截取子领域再建网络；以下载文件自身的统计为准
-- [ ] 第 0 天确认三个链接都能下载；AMiner 若第 1 周内解析不顺，退回 SNAP `cit-HepPh`（带日期、体积小，Leskovec 2005 也用过，可直接对照文献）
+- [x] 下载并记录来源、版本、许可证、下载日期
+- [x] 统一转换为 `events.csv` + `nodes.csv`；去自环、去重复、截取观测窗口首尾
+- [x] 每个数据集一段 data card（节点/事件数、跨度、精度、偏差），并画活动量时间序列（原 M0）
+- [x] ⚠️ SocioPatterns 许可 CC BY-NC-SA，报告中标注来源与许可
+- [x] ⚠️ AMiner 文件很大（数 GB～十余 GB 的单个 JSON），需流式解析（`ijson`），先按 venue/fos 截取子领域再建网络；以下载文件自身的统计为准
+- [x] 第 0 天确认三个链接都能下载；AMiner 若第 1 周内解析不顺，退回 SNAP `cit-HepPh`（带日期、体积小，Leskovec 2005 也用过，可直接对照文献）
 
 ## 3. 实验矩阵（19 个）
 
@@ -151,8 +151,8 @@ final_project/
 | null model、PA kernel | 自实现 | 无公认库 |
 | 作图 | `matplotlib` | 统一配色与字号 |
 
-- [ ] 第 0 天：统一 Python 环境，确认以上库可装、可 import
-- [ ] 单元测试：手造 5–10 个节点的小例子，验证可达性、SIR、null model 的保持性质
+- [x] 第 0 天：统一 Python 环境，确认以上库可装、可 import
+- [x] 单元测试：手造 5–10 个节点的小例子，验证可达性、SIR、null model 的保持性质
 
 ## 5. 五人分工
 
@@ -179,31 +179,31 @@ A 的实验数少，但承担数据整理和汇总；B 的 5 个实验全在同�
 
 ## 6. 实现清单
 
-- [ ] 环境与库验证（第 0 天）
-- [ ] `io.py` + 转换脚本，跑通 3 个数据集
-- [ ] M1：快照与窗口；Δt 网格（PS 5 min–1 day；CM 1 h–1 month；CIT 1 年）
-- [ ] M2a/M2b：事件间隔、B、M；边持续性与 Jaccard
+- [x] 环境与库验证（第 0 天）
+- [x] `io.py` + 转换脚本，跑通 3 个数据集
+- [x] M1：快照与窗口；Δt 网格（PS 5 min–1 day；CM 1 h–1 month；CIT 1 年）
+- [x] M2a/M2b：事件间隔、B、M；边持续性与 Jaccard
 - [x] M2c-1：PA kernel（Jeong 2003），按年份累积"被引前度数 → 新增引用"的计数
 - [x] M2c-2：老化曲线与三种衰减形式的拟合比较（`powerlaw` 库的分布比较或自写 AIC）；按 cohort 分组
 - [x] M2c-3：densification 拟合 E∝N^a；有效直径（90% 分位）逐年计算，大图用抽样 BFS
 - [x] M2c-4：WSB 模型拟合（每篇论文的累积引用曲线，按数据下载自带的年份）；用前 5 年预测最终引用数，与基线（累积引用数线性外推）比较
 - [x] P3a/P3b 实现与单元测试：手造小 DAG 验证发表年份、参考文献数不变
-- [ ] M3a/M3b/M3c：时间可达性、时序 closeness、事件驱动 SIR（≥100 个随机种子）
-- [ ] M4：每快照社区检测 → 跨快照匹配 → 与静态划分、班级真值比较
-- [ ] Null models（Gauvin 2022）：P1 打乱时间戳（保留静态图，破坏时间相关）；P2 打乱边（保留事件时间，破坏拓扑）；每个 ≥20 样本，报告均值 ± 标准差
+- [x] M3a/M3b/M3c：时间可达性、时序 closeness、事件驱动 SIR（≥100 个随机种子）
+- [x] M4：每快照社区检测 → 跨快照匹配 → 与静态划分、班级真值比较
+- [x] Null models（Gauvin 2022）：P1 打乱时间戳（保留静态图，破坏时间相关）；P2 打乱边（保留事件时间，破坏拓扑）；每个 ≥20 样本，报告均值 ± 标准差
 
 ## 7. 结果与分析
 
-- [ ] 19 个实验各产出一张图或一行表
-- [ ] 汇总表：H1–H7 × 三个数据集的时间效应指标（核心表）
-- [ ] 稳健性：Δt 的选择、观测区间（前半/后半）、null model 的选择、社区分辨率参数
-- [ ] 每个假设给结论：支持 / 不支持 / 依赖数据类型或窗口
-- [ ] Discussion 四问：
+- [x] 19 个实验各产出一张图或一行表
+- [x] 汇总表：H1–H7 × 三个数据集的时间效应指标（核心表）
+- [x] 稳健性：Δt 的选择、观测区间（前半/后半）、null model 的选择、社区分辨率参数
+- [x] 每个假设给结论：支持 / 不支持 / 依赖数据类型或窗口
+- [x] Discussion 四问：
   1. 哪些结论静态网络就能得到？
   2. 哪些必须用时间窗口或完整事件顺序？
   3. 为什么不同网络对时间的敏感度不同（生成机制、时间尺度、边语义）？
   4. 结论是否依赖窗口、观测区间、随机化规则？
-- [ ] 局限性：每类只有一个数据集（结论的普遍性有限）、时间精度、观测边界、引用网络的退化性（DAG、无删除）
+- [x] 局限性：每类只有一个数据集（结论的普遍性有限）、时间精度、观测边界、引用网络的退化性（DAG、无删除）
 
 ## 8. 报告结构
 
@@ -219,7 +219,7 @@ A 的实验数少，但承担数据整理和汇总；B 的 5 个实验全在同�
 - 每个 Results 小节结尾写 "Verdict on Hx"；`results_cross.tex` 汇总 H1–H7 × 数据集。
 - Methods 的表 `tab:hypotheses` 同时给出文献、方法、null model 和适用数据集。
 - 每个 `.tex` 文件用 `% Owner: X` 标出段落负责人；共用文件时只改自己的段落。
-- [ ] Abstract（最后写）、Introduction、Related Work、Data、Methods、Results、Discussion & Limitations、Conclusion
+- [x] Abstract（最后写）、Introduction、Related Work、Data、Methods、Results、Discussion & Limitations、Conclusion
 - [ ] 检查：引用格式、图表编号、页数（⚠️ 待确认老师的页数/格式要求）
 
 ## 9. 时间安排（截止日期待确认，按周倒推）
@@ -253,3 +253,12 @@ B 的五项实验（M1/CIT、M2c-1～4）已完成；以上勾选表示实验与
 - 报告：`report/b_report.pdf` 为 8 页 B 独立报告；主报告 B 数据卡、Methods、Results 已填写。
 - 实测结论：支持次线性度数偏好和年龄依赖；全期观察到稠密化，但未检测到有效直径收缩；WSB 的紧凑拟合不等于确立其对线性外推的预测优势。
 - 保存：本地项目与 HPC 持久目录均已归档；6,079,589,707 字节原始文件的本地、工作与持久副本 SHA-256 一致。详见 `results/b/COMPLETION_AUDIT.md`。
+
+
+## 全组完成记录（2026-11-02）
+
+- 19 个实验全部完成；H1–H7 各有 Verdict，跨网络汇总表见 `results/cross_network_summary.csv` 与报告 Tab. 13。
+- A 的 M1（PS、CM）已审查合并：结果由独立脚本复算一致（误差 < 1e-15），见 `results/m1/`。
+- C 的补充检验 `scripts/run_c_sensitivity.py`：M2b 窗口宽度（PS 15–120 min，CM 1–14 d）、PS 原始记录 vs 接触片段、事件间隔分布（指数 vs 对数正态 AIC）。
+- 实现与计划的差异（报告中已说明）：P2 采用端点交换（P2b），P2a 未评估；时间路径与社区追踪为自实现/igraph，未用 raphtory/tnetwork；事件间隔分布用 scipy 拟合而非 `powerlaw` 库。
+- 待办：作者署名、页数/格式要求与截止日期。

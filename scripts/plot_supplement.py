@@ -46,6 +46,17 @@ def main():
         ax.grid(axis='y');ax.minorticks_off()
     axs[2].legend(frameon=False,loc='upper left',handlelength=1.4,labelspacing=.2)
     save(fig,'ac_m1_windows')
+    # H2: complementary CDF of pooled within-dyad inter-event times, real vs one P1 sample.
+    fig,axs=figstyle.grid(None,1,2,figstyle.COLUMN,1.3)
+    axs=axs[0]
+    for ax,name,letter in zip(axs,['PS','CM'],'ab'):
+        for kind,c in zip(['real','P1'],COLORS):
+            x=np.sort(pd.read_csv(ROOT/f'results/ac/c_iet_{name}_{kind}.csv').iet_s.to_numpy())
+            ax.step(x,1-np.arange(len(x))/len(x),where='post',color=c,label='Real' if kind=='real' else 'P1')
+        ax.set(xscale='log',yscale='log',xlabel='Inter-event time (s)',title=f'({letter}) {name}')
+        ax.minorticks_off();ax.grid(axis='y')
+    axs[0].set_ylabel('CCDF');axs[0].legend(frameon=False,loc='lower left',handlelength=1.2)
+    save(fig,'c_iet_ccdf')
     d=pd.read_csv(ROOT/'results/d_summary.csv')
     def row(ds,key):return d[(d.dataset==ds)&(d.metric==key)].iloc[0]
     fig,axs=plt.subplots(1,2,figsize=(7,2.8))

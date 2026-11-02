@@ -56,7 +56,7 @@ spread of real/null ratios, not seed uncertainty or a confidence interval.
 7. `python scripts/run_e_robustness.py`; `python scripts/run_b_robustness.py`.
 8. `python scripts/make_summary_table.py`; `python scripts/summarize_robustness.py`.
 9. `python scripts/plot_supplement.py` and
-   `python scripts/sync_report_results.py` (writes the initialized `report/` submodule).
+   the report sections, which are edited directly in the report repository (the former `sync_report_results.py` generator is retired).
 
 PBS deployment scripts remain local under `hpc/`, following the repository's
 pre-existing exclusion rule. Checkpoints/raw data are not committed. Per-network

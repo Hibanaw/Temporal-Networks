@@ -181,14 +181,16 @@ Install `requirements-supplement.txt`; the exact CBIS environment and job proven
 are retained in `results/robustness/`. Run the commands in
 [notes/SUPPLEMENT_PROTOCOL.md](notes/SUPPLEMENT_PROTOCOL.md).
 
-- `scripts/run_ac.py`: M1 and M2a/M2b, full and elapsed-time halves, nested 20/60 P1.
+- `scripts/run_m1.py`: Member A's M1 (complete windows, fixed node set); primary H1 for PS/CM.
+- `scripts/run_ac.py`: M2a/M2b, full and elapsed-time halves, nested 20/60 P1. Its M1 output in
+  `results/ac/m1_*` and `results/a_summary.csv` uses an earlier protocol and is superseded by `run_m1.py`.
+- `scripts/run_c_sensitivity.py`: M2b window widths, PS raw-record vs episode H2, inter-event distributions.
 - `scripts/run_d.py`: M3a/M3c, checkpointed per network; four settings, 200 event-start seeds.
 - `scripts/run_e_robustness.py`: primary M4/M3b halves and 20/60 P1; retains existing resolution grid.
 - `scripts/run_b_robustness.py`: PA, age and diameter, halves and nested 20/60 P3.
 - `scripts/make_summary_table.py`: primary H1--H7 summaries; explicit null references and separately labelled H7 ratios.
 - `scripts/summarize_robustness.py`: all checks with explicit coverage and limitations.
 - `scripts/plot_supplement.py`: figures from saved results.
-- `scripts/sync_report_results.py`: measured sections into the `report/` submodule.
 
 `src/io.py` is imported as `src.io` to avoid Python's built-in `io`; legacy D/E
 imports through `e_datasets` use this same reader. Cleaned CSVs remain untracked;

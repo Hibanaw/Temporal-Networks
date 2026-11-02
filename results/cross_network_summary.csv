@@ -1,6 +1,6 @@
 hypothesis,dataset,reference,metric,status,value,null_mean,null_std,effect,ratio,effect_definition,value_unit,estimate_type,source
-H1,PS,none,H1_window_sensitivity_density,measured,3.35891147331212,,,,,value_minus_null_mean,dimensionless,descriptive_no_null,results/a_summary.csv
-H1,CM,none,H1_window_sensitivity_density,measured,3.861720691634716,,,,,value_minus_null_mean,dimensionless,descriptive_no_null,results/a_summary.csv
+H1,PS,none,H1_window_sensitivity_density,measured,3.262280185117472,,,,,value_minus_null_mean,dimensionless,descriptive_no_null,results/m1/A_summary.csv
+H1,CM,none,H1_window_sensitivity_density,measured,5.410920299543415,,,,,value_minus_null_mean,dimensionless,descriptive_no_null,results/m1/A_summary.csv
 H1,CIT,none,H1_window_sensitivity_density_directed,measured,1.797650912079418,,,,,value_minus_null_mean,dimensionless,descriptive_no_null,results/b_summary.csv
 H2,PS,P1,m2_burstiness,measured,0.5346410110393122,0.5183892843467,0.0004340011529295,0.01625172669261221,,value_minus_null_mean,dimensionless,null_contrast,results/c_summary.csv
 H2,CM,P1,m2_burstiness,measured,0.5810724917160218,0.2450927192645307,0.0011948370262545,0.33597977245149113,,value_minus_null_mean,dimensionless,null_contrast,results/c_summary.csv

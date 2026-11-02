@@ -52,7 +52,12 @@ def main():
     for owner in 'abcde':
         path = ROOT / f'results/{owner}_summary.csv'
         if path.exists():
-            g = pd.read_csv(path); g['source'] = str(path.relative_to(ROOT)); frames.append(g)
+            g = pd.read_csv(path); g['source'] = str(path.relative_to(ROOT))
+            if owner == 'a':  # PS/CM H1 comes from Member A's M1 run (results/m1/)
+                g = g[~g.metric.str.startswith('H1_')]
+            frames.append(g)
+    m1 = ROOT / 'results/m1/A_summary.csv'
+    g = pd.read_csv(m1); g['source'] = str(m1.relative_to(ROOT)); frames.append(g)
     allrows = pd.concat(frames, ignore_index=True)
     allrows.to_csv(ROOT / 'results/all_summary.csv', index=False)
     out = build_cross_table(allrows)
@@ -63,7 +68,12 @@ def main():
         ('Null contrasts: effect = value - null_mean (hypothesis-specific units)', out[out.hypothesis.isin(['H2','H3','H4','H5','H6'])], 'effect'),
         ('H7 conditional peak ratios (distinct from the seconds-valued effect column)', out[out.hypothesis == 'H7'], 'ratio')]:
         table = part.pivot(index=['hypothesis','reference'], columns='dataset', values=column).reindex(columns=['PS','CM','CIT'])
-        displays.append(title + '\n\n' + table.fillna('--').to_markdown())
+        table = table.fillna('--')
+        try:
+            text = table.to_markdown()
+        except ImportError:  # tabulate is optional
+            text = '```\n' + table.to_string() + '\n```'
+        displays.append(title + '\n\n' + text)
     (ROOT / 'results/cross_network_summary.md').write_text('\n\n'.join(displays) +
         '\n\nH1 effect is undefined because there is no null. H7 value/null_mean/effect are peak delays in seconds; ratio is separate.\n'
         'H7 compares network-specific seed populations conditional on at least 5% infected. No common overall sensitivity scale is implied.\n')
