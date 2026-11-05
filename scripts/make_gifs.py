@@ -39,12 +39,12 @@ def hhmm(t):
     return f"Day {day}  {s // 3600:02d}:{(s % 3600) // 60:02d}"
 
 
-def save(anim, name, fps):
+def save(anim, name, fps, dpi=DPI):
     OUT.mkdir(parents=True, exist_ok=True)
     path = OUT / f"{name}.gif"
     # Render locally first: writing many small chunks into a synced folder can time out.
     with tempfile.TemporaryDirectory() as tmp:
-        anim.save(Path(tmp) / path.name, writer=PillowWriter(fps=fps), dpi=DPI)
+        anim.save(Path(tmp) / path.name, writer=PillowWriter(fps=fps), dpi=dpi)
         shutil.copyfile(Path(tmp) / path.name, path)
     plt.close(anim._fig)
     print(f"wrote {path.relative_to(ROOT)}  ({path.stat().st_size / 1e6:.1f} MB)")
@@ -304,7 +304,7 @@ def prevalence(inf, grid, duration):
 
 
 def sir_animation(name, title, ev, nodes, pos, beta, duration, directed, horizon, step, unit,
-                  unit_name, clock, n_runs=200, size=18, ms=None):
+                  unit_name, clock, n_runs=200, size=18, ms=None, compact=False):
     """Real vs P1 SIR: one representative outbreak on the layout plus mean prevalence curves."""
     idx = {n: i for i, n in enumerate(nodes["id"])}
     n = len(nodes)
@@ -413,7 +413,41 @@ def sir_animation(name, title, ev, nodes, pos, beta, duration, directed, horizon
         return []
 
     frames = list(range(len(frame_t))) + [len(frame_t) - 1] * 10
-    save(FuncAnimation(fig, frame, frames=frames), name, fps=8)
+    if not compact:
+        save(FuncAnimation(fig, frame, frames=frames), name, fps=8)
+        return
+    plt.close(fig)
+
+    # Slide inset: two networks, large labels, nothing else.
+    fig = plt.figure(figsize=(6, 3.3))
+    axr = fig.add_axes([0.0, 0.1, 0.5, 0.72])
+    axs = fig.add_axes([0.5, 0.1, 0.5, 0.72])
+    big = fig.text(.5, .955, "", ha="center", va="top", fontsize=17, weight="bold")
+    fig.text(.5, .015, "red: infectious    grey: recovered    white: susceptible", ha="center",
+             fontsize=11, color="#444")
+
+    def cdraw(ax, inf, now, label, col):
+        ax.clear()
+        ax.set_xlim(-lim, lim)
+        ax.set_ylim(-lim, lim)
+        ax.set_aspect("equal")
+        ax.axis("off")
+        infd = inf <= now
+        ill = infd & (now < inf + duration)
+        order = np.argsort(infd.astype(int) + ill)
+        fc = np.where(ill, "#d62728", np.where(infd, "#9a9a9a", "white"))[order]
+        ax.scatter(pos[order, 0], pos[order, 1], s=size * .8, c=list(fc), edgecolors="#666",
+                   linewidths=.25 if ms is None else ms)
+        ax.set_title(f"{label}: {infd.mean():.0%}", color=col, fontsize=15, weight="bold", pad=2)
+
+    def cframe(k):
+        now = frame_t[k]
+        cdraw(axr, shown["real"], now, "Real", REAL)
+        cdraw(axs, shown["shuf"], now, "Shuffled", NULL)
+        big.set_text(f"{unit_name.rstrip('s').capitalize()} {now / unit:.0f}: share infected so far")
+        return []
+
+    save(FuncAnimation(fig, cframe, frames=frames), name, fps=8, dpi=110)
 
 
 def gif_sir():
@@ -674,8 +708,148 @@ def gif_cit():
     save(FuncAnimation(fig, frame, frames=frames), "gif_cit", fps=4)
 
 
+# ---------------------------------------------------------------- slide insets
+# Small versions for the deck: only the animated network, with large text, so they stay
+# legible at about 3.5 in wide next to the static figures already on the slides.
+
+def _net_axes(figsize=(5, 3.4)):
+    fig = plt.figure(figsize=figsize)
+    ax = fig.add_axes([0.0, 0.06, 1.0, 0.74])
+    ax.axis("off")
+    head = fig.text(.5, .975, "", ha="center", va="top", fontsize=19, weight="bold")
+    sub = fig.text(.5, .865, "", ha="center", va="top", fontsize=13, color="#333")
+    return fig, ax, head, sub
+
+
+def _reset(ax, lim):
+    ax.clear()
+    ax.set_xlim(-lim * 1.45, lim * 1.45)
+    ax.set_ylim(-lim, lim)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+
+def slide_window():
+    ev, nodes = load_ps()
+    idx = {n: i for i, n in enumerate(nodes["id"])}
+    pos, _, colour = class_layout(nodes)
+    n = len(nodes)
+    t0 = 10 * 3600
+    widths = np.unique(np.round(np.geomspace(60, 7.2 * 3600, 36) / 20) * 20)
+    cols = [colour[l] for l in nodes["label"]]
+    fig, ax, head, subt = _net_axes()
+
+    def frame(k):
+        w = widths[k]
+        sub = ev[(ev.t >= t0) & (ev.t < t0 + w)].drop_duplicates(["u", "v"])
+        u, v = sub.u.map(idx).to_numpy(), sub.v.map(idx).to_numpy()
+        roots = components(n, u, v)
+        active = np.zeros(n, bool)
+        active[u] = active[v] = True
+        lcc = np.bincount(roots[active]).max() / n if active.any() else 0
+        _reset(ax, 1.3)
+        segs = np.stack([pos[u], pos[v]], axis=1)
+        alpha = max(.04, min(.5, 40 / max(len(u), 1)))
+        ax.add_collection(LineCollection(segs, colors=[(0.09, 0.25, 0.37, alpha)], lw=.7))
+        ax.scatter(pos[:, 0], pos[:, 1], s=16, c=cols, alpha=np.where(active, 1, .2), linewidths=0)
+        lab = f"{w / 60:.0f} min" if w < 3600 else f"{w / 3600:.1f} h"
+        head.set_text(f"Δt = {lab}")
+        subt.set_text(f"largest component: {lcc:.0%} of children")
+        return []
+
+    frames = list(range(len(widths))) + [len(widths) - 1] * 8
+    save(FuncAnimation(fig, frame, frames=frames), "slide_window", fps=5, dpi=110)
+
+
+def slide_day():
+    ev, nodes = load_ps()
+    idx = {n: i for i, n in enumerate(nodes["id"])}
+    lab = nodes["label"].to_numpy()
+    pos, _, colour = class_layout(nodes)
+    cols = [colour[l] for l in lab]
+    width, step = 900, 300
+    starts = np.arange(31200, 61800, step)
+    fig, ax, head, subt = _net_axes()
+    fig.text(.5, .015, "red lines: contacts between different classes", ha="center",
+             fontsize=11, color="#444")
+
+    def frame(k):
+        s = starts[k]
+        sub = ev[(ev.t >= s) & (ev.t < s + width)].drop_duplicates(["u", "v"])
+        u, v = sub.u.map(idx).to_numpy(), sub.v.map(idx).to_numpy()
+        cross = lab[u] != lab[v]
+        _reset(ax, 1.3)
+        segs = np.stack([pos[u], pos[v]], axis=1)
+        ax.add_collection(LineCollection(segs[~cross], colors=[(0.3, 0.3, 0.3, .35)], lw=.7))
+        ax.add_collection(LineCollection(segs[cross], colors=[(0.84, 0.15, 0.16, .55)], lw=.8))
+        active = np.zeros(len(lab), bool)
+        active[u] = active[v] = True
+        ax.scatter(pos[:, 0], pos[:, 1], s=16, c=cols, alpha=np.where(active, 1, .2), linewidths=0)
+        sec = int(s % 86400)
+        lunch = "  ·  lunch" if 12 * 3600 <= sec + width / 2 < 14 * 3600 else ""
+        head.set_text(f"Day 1  {sec // 3600:02d}:{sec % 3600 // 60:02d}{lunch}")
+        head.set_color("#d62728" if lunch else "black")
+        subt.set_text(f"{np.mean(cross):.0%} of contacts are between classes")
+        return []
+
+    save(FuncAnimation(fig, frame, frames=len(starts)), "slide_day", fps=6, dpi=110)
+
+
+def slide_cm_sir():
+    ev, nodes = load_cm()
+    pos = cm_layout(ev, nodes)
+    sir_animation("slide_cm_sir", "", ev, nodes, pos, beta=0.2, duration=14 * 86400,
+                  directed=True, horizon=60 * 86400, step=86400, unit=86400, unit_name="days",
+                  clock=cm_date, size=5, ms=.12, compact=True)
+
+
+def slide_cit():
+    import networkx as nx  # noqa: F401  (layout comes from the cache written by gif_cit)
+    ev = pd.read_csv(CIT / "events.csv")
+    nodes = pd.read_csv(CIT / "nodes.csv", usecols=["id", "year"])
+    year = nodes.set_index("id")["year"]
+    indeg = ev.v.value_counts()
+    top = indeg.index[:1500]
+    keep = set(top)
+    sub = ev[ev.u.isin(keep) & ev.v.isin(keep)]
+    p = np.load(OUT / ".cit_layout_v2.npy")
+    pos = dict(zip(top, p))
+    top_year = year.loc[top].to_numpy()
+    tid = {k: i for i, k in enumerate(top)}
+    cited_top = ev.v.map(tid)
+    ev_t = ev.t.to_numpy()
+    years = np.arange(1975, 2021)
+    fig, ax, head, subt = _net_axes()
+    fig.text(.5, .015, "1,500 most-cited papers · size = citations · red = new this year",
+             ha="center", fontsize=10.5, color="#444")
+
+    def frame(k):
+        y = years[k]
+        _reset(ax, 1.08)
+        old, new = sub[sub.t < y], sub[sub.t == y]
+        for part, col, lw in ((old, (0.09, 0.25, 0.37, .05), .4), (new, (0.84, 0.15, 0.16, .5), .6)):
+            if len(part):
+                segs = np.stack([np.array([pos[a] for a in part.u]),
+                                 np.array([pos[b] for b in part.v])], 1)
+                ax.add_collection(LineCollection(segs, colors=[col], lw=lw))
+        alive = top_year <= y
+        cites = np.bincount(cited_top[(ev_t <= y) & cited_top.notna()].astype(int),
+                            minlength=len(top))
+        ax.scatter(p[alive, 0], p[alive, 1], s=2 + cites[alive] * .25,
+                   c=np.where(top_year[alive] == y, "#d62728", REAL), alpha=.75, linewidths=0)
+        n_pap, n_cit = int((year <= y).sum()), int((ev_t <= y).sum())
+        head.set_text(str(y))
+        subt.set_text(f"{n_pap:,} papers, {n_cit:,} citations")
+        return []
+
+    frames = list(range(len(years))) + [len(years) - 1] * 8
+    save(FuncAnimation(fig, frame, frames=frames), "slide_cit", fps=4, dpi=110)
+
+
 if __name__ == "__main__":
     jobs = {"warmup": gif_warmup, "window": gif_window, "day": gif_day, "sir": gif_sir,
-            "cm_sir": gif_cm_sir, "cm_reach": gif_cm_reach, "cit": gif_cit}
+            "cm_sir": gif_cm_sir, "cm_reach": gif_cm_reach, "cit": gif_cit,
+            "slide_window": slide_window, "slide_day": slide_day, "slide_cm_sir": slide_cm_sir,
+            "slide_cit": slide_cit}
     for name in sys.argv[1:] or jobs:
         jobs[name]()
